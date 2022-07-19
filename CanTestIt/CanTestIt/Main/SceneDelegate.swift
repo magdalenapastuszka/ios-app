@@ -10,7 +10,10 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: windowScene)
         self.window = window
-        appCoordinator = AppCoordinator(window: window)
+        appCoordinator = AppCoordinator(
+            window: window,
+            navigationController: UINavigationController()
+        )
         appCoordinator?.start()
     }
 }
