@@ -9,6 +9,15 @@ final class AppCoordinator: Coordinator {
     private let window: UIWindow
     private let appEngine: AppEngine
     
+    private lazy var introCoordinator = IntroCoordinator(
+        navigationController: navigationController,
+        appEngine: appEngine
+    )
+    private lazy var loginCoordinator = LoginCoordinator(
+        navigationController: navigationController,
+        appEngine: appEngine
+    )
+    
     init(
         window: UIWindow,
         navigationController: UINavigationController,
@@ -20,20 +29,11 @@ final class AppCoordinator: Coordinator {
     }
     
     func start() {
-        navigationController = UINavigationController(
-            rootViewController: UIHostingController(
-                rootView: IntroView(
-                    viewModel: IntroViewModel(
-                        showLoginScreen: showLoginScreen
-                    )
-                )
-            )
-        )
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
-    }
-    
-    private func showLoginScreen() {
         
+        appEngine.userDefaultsManager.wasIntroDisplayed
+        ? loginCoordinator.start()
+        : introCoordinator.start()
     }
 }
