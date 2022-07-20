@@ -24,6 +24,8 @@ struct IntroView: View {
         static let buttonSpacing: CGFloat = 24
         static let socialButtonSize: CGFloat = 57
         static let socialButtonTopPadding: CGFloat = 54
+        static let spacing: CGFloat = 16
+        static let imageSize = CGSize(width: 205, height: 30)
     }
     
     @ObservedObject private var viewModel: IntroViewModel
@@ -33,20 +35,23 @@ struct IntroView: View {
     }
     
     var body: some View {
-        VStack(spacing: 15) {
+        VStack(spacing: Constants.spacing) {
             Image(uiImage: viewModel.model?.image ?? UIImage())
                 .resizable()
                 .frame(
-                    width: 205,
-                    height: 30,
+                    width: Constants.imageSize.width,
+                    height: Constants.imageSize.height,
                     alignment: .center
                 )
                 .padding(Constants.imagePadding)
+            
             Spacer()
                 .frame(alignment: .center)
+            
             Text(viewModel.model?.title ?? "")
                 .foregroundColor(.textColor)
                 .font(.title2)
+            
             Text(viewModel.model?.subtitle ?? "")
                 .foregroundColor(.secondaryTextColor)
                 .font(.body)
@@ -54,7 +59,9 @@ struct IntroView: View {
                 .alignmentGuide(VerticalAlignment.center) {
                     $0[VerticalAlignment.center]
                 }
+            
             Spacer(minLength: Constants.socialButtonTopPadding)
+            
             HStack(
                 alignment: .center,
                 spacing: Constants.buttonSpacing
@@ -70,6 +77,7 @@ struct IntroView: View {
                     height: Constants.socialButtonSize,
                     alignment: .center
                 )
+                
                 Button(
                     action: viewModel.showLinkedIn,
                     label: {
@@ -80,6 +88,7 @@ struct IntroView: View {
                     height: Constants.socialButtonSize,
                     alignment: .center
                 )
+                
                 Button(
                     action: viewModel.showInstagram,
                     label: {
@@ -91,6 +100,7 @@ struct IntroView: View {
                     alignment: .center
                 )
             }
+            
             Button(
                 action: viewModel.showLoginScreen,
                 label: { Text(viewModel.model?.buttonTitle ?? "")
@@ -105,12 +115,14 @@ struct IntroView: View {
             .background(Color.primaryColor)
             .cornerRadius(.buttonCornerRadius)
             .frame(maxHeight: .infinity, alignment: .bottom)
+            
             Divider()
             Spacer()
         }
         .background(Color.backgroundColor)
         .onAppear {
             self.viewModel.loadModel()
+            self.viewModel.viewDidLoad()
         }
     }
 }
@@ -118,6 +130,7 @@ struct IntroView: View {
 struct IntroView_Previews: PreviewProvider {
     static var previews: some View {
         IntroView(viewModel: IntroViewModel(
+            userDefaultManager: UserDefaultsMenagerImpl(),
             showLoginScreen: {},
             showFacebook: {},
             showInstagram: {},

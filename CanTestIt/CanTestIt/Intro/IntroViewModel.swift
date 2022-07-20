@@ -8,12 +8,16 @@ final class IntroViewModel: ObservableObject {
     let showInstagram: () -> Void
     let showLinkedIn: () -> Void
     
+    private let userDefaultManager: UserDefaultsMenager
+    
     init(
+        userDefaultManager: UserDefaultsMenager,
         showLoginScreen: @escaping () -> Void,
         showFacebook: @escaping () -> Void,
         showInstagram: @escaping () -> Void,
         showLinkedIn: @escaping () -> Void
     ) {
+        self.userDefaultManager = userDefaultManager
         self.showLoginScreen = showLoginScreen
         self.showFacebook = showFacebook
         self.showInstagram = showInstagram
@@ -27,5 +31,9 @@ final class IntroViewModel: ObservableObject {
             subtitle: "intro.subtitle".localized,
             buttonTitle: "intro.button-title".localized
         )
+    }
+    
+    func viewDidLoad() {
+        userDefaultManager.storeIntroWasDisplayed()
     }
 }

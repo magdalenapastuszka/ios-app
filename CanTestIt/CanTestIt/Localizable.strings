@@ -2,9 +2,11 @@
 "intro.subtitle" = "Native SwiftUI iOS App";
 "intro.button-title" = "Get Started";
 
-"login.title" = "Welcome Back!";
+"login.title" = "Welcome\nBack!";
 "login.email-textfield-title" = "User Email";
 "login.email-textfield-placeholder" = "Enter user email";
 "login.password-textfield-title" = "Password";
+"login.password-textfield-placeholder" = "Enter password";
+"login.button-title" = "Login";
 "login.error" = "Wrong User email or Password";
 "login.link-text" = "Visit our page CanTest IT";

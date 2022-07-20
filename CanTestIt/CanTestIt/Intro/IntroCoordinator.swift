@@ -7,6 +7,11 @@ final class IntroCoordinator: Coordinator {
     
     private let appEngine: AppEngine
     
+    private lazy var loginCoordinator = LoginCoordinator(
+        navigationController: navigationController,
+        appEngine: appEngine
+    )
+    
     init(
         navigationController: UINavigationController,
         appEngine: AppEngine
@@ -18,6 +23,7 @@ final class IntroCoordinator: Coordinator {
     func start() {
         let vc =  UIHostingController(rootView: IntroView(
             viewModel: IntroViewModel(
+                userDefaultManager: appEngine.userDefaultsManager,
                 showLoginScreen: showLoginScreen,
                 showFacebook: showFacebook,
                 showInstagram: showInstagram,
@@ -29,7 +35,7 @@ final class IntroCoordinator: Coordinator {
     }
     
     private func showLoginScreen() {
-        
+        loginCoordinator.start()
     }
     
     private func showFacebook() {
