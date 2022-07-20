@@ -17,9 +17,13 @@ final class LoginCoordinator: Coordinator {
     
     func start() {
         let vc = UIHostingController(rootView: LoginView(
-            viewModel: LoginViewModel()
+            viewModel: LoginViewModel(showWebsite: showWebsite)
         ))
         
         navigationController.go(to: vc, as: .root)
+    }
+    
+    private func showWebsite() {
+        
     }
 }

@@ -8,7 +8,7 @@ struct LoginView: View {
         let passwordTitle: String
         let passwordPlaceholder: String
         let buttonTitle: String
-        let link: NSAttributedString
+        let link: AttributedString
     }
     
     private let viewModel: LoginViewModel
@@ -16,28 +16,31 @@ struct LoginView: View {
     @State private var password: String = ""
     
     private enum Constants {
+        static let topPadding: CGFloat = 55
+        static let smallSpacing: CGFloat = 8
         static let spacing: CGFloat = 16
-        static let padding: EdgeInsets = EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16)
+        static let bigSpacing: CGFloat = 44
+        static let padding: CGFloat = 24
     }
     
     init(viewModel: LoginViewModel) {
         self.viewModel = viewModel
+        viewModel.loadModel()
     }
     
     var body: some View {
         VStack(
-            alignment: .center,
-            spacing: Constants.spacing
+            alignment: .leading
         ) {
             Text(viewModel.model?.title ?? "")
                 .foregroundColor(Color.textColor)
                 .font(.title2)
-                .padding(Constants.padding)
-            
+                .padding([.top], Constants.topPadding)
+                        
             Text(viewModel.model?.emailTitle ?? "")
                 .font(.callout)
                 .foregroundColor(Color.textColor)
-                .padding(Constants.padding)
+                .padding([.top], Constants.topPadding)
             
             TextField("", text: $email)
                 .placeHolder(
@@ -52,9 +55,9 @@ struct LoginView: View {
             Text(viewModel.model?.passwordTitle ?? "")
                 .font(.callout)
                 .foregroundColor(Color.textColor)
-                .padding(Constants.padding)
+                .padding([.top], Constants.spacing)
             
-            SecureField("", text: $password)
+            SecureInputView("", text: $password)
                 .placeHolder(
                     Text(viewModel.model?.passwordPlaceholder ?? "")
                         .foregroundColor(.secondaryTextColor),
@@ -70,24 +73,30 @@ struct LoginView: View {
                 },
                 label: { Text(viewModel.model?.buttonTitle ?? "")
                         .frame(
-                            height: .buttonHeight,
+                            minWidth: .zero,
+                            maxWidth: .infinity,
+                            maxHeight: .buttonHeight,
                             alignment: .center
                         )
-                        .padding(Constants.padding)
                         .foregroundColor(.buttonTitleColor)
                 })
             .font(.callout)
             .background(Color.primaryColor)
             .cornerRadius(.buttonCornerRadius)
-            .frame(maxHeight: .infinity, alignment: .bottom)
+            .padding([.top], Constants.bigSpacing)
             
             Spacer()
             Divider()
+            
+            Text(viewModel.model?.link ?? "")
+                .gesture(
+                    TapGesture()
+                        .onEnded { _ in
+                            viewModel.showWebsite()
+                        })
         }
+        .padding([.leading, .trailing], Constants.padding)
         .background(Color.backgroundColor)
-        .onAppear {
-            self.viewModel.loadModel()
-        }
     }
 }
 

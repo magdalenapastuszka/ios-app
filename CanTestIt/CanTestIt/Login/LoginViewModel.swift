@@ -3,6 +3,12 @@ import SwiftUI
 final class LoginViewModel: ObservableObject {
     @Published var model: LoginView.Model?
     
+    private let showWebsite: ()  -> Void
+    
+    init(showWebsite: @escaping () -> Void) {
+        self.showWebsite = showWebsite
+    }
+    
     func loadModel() {
         model = LoginView.Model(
             title: "login.title".localized,
@@ -11,7 +17,7 @@ final class LoginViewModel: ObservableObject {
             passwordTitle: "login.password-textfield-title".localized,
             passwordPlaceholder: "login.password-textfield-placeholder".localized,
             buttonTitle: "login.button-title".localized,
-            link: NSAttributedString(string: "login.link-text".localized)
+            link: AttributedString("login.link-text".localized)
         )
     }
     
