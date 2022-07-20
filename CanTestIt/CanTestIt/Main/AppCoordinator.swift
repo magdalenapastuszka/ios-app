@@ -7,23 +7,33 @@ final class AppCoordinator: Coordinator {
     var navigationController: UINavigationController
     
     private let window: UIWindow
+    private let appEngine: AppEngine
     
     init(
         window: UIWindow,
-        navigationController: UINavigationController
+        navigationController: UINavigationController,
+        appEngine: AppEngine
     ) {
         self.window = window
         self.navigationController = navigationController
+        self.appEngine = appEngine
     }
     
     func start() {
         navigationController = UINavigationController(
             rootViewController: UIHostingController(
-                rootView: IntroView(viewModel: IntroViewModel()
-                                   )
+                rootView: IntroView(
+                    viewModel: IntroViewModel(
+                        showLoginScreen: showLoginScreen
+                    )
+                )
             )
         )
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
+    }
+    
+    private func showLoginScreen() {
+        
     }
 }
