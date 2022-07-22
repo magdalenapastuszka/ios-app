@@ -41,6 +41,8 @@
 		5B0EA42C28883396009FAB90 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA42B28883396009FAB90 /* LoginCoordinator.swift */; };
 		5B0EA42E28885300009FAB90 /* Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA42D28885300009FAB90 /* Placeholder.swift */; };
 		5B0EA43028887A37009FAB90 /* SecureInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA42F28887A37009FAB90 /* SecureInputView.swift */; };
+		5B0EA432288AB90B009FAB90 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA431288AB90B009FAB90 /* SwiftUIView.swift */; };
+		5B0EA434288AC3F2009FAB90 /* AppVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA433288AC3F2009FAB90 /* AppVariables.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +101,8 @@
 		5B0EA42B28883396009FAB90 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		5B0EA42D28885300009FAB90 /* Placeholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Placeholder.swift; sourceTree = "<group>"; };
 		5B0EA42F28887A37009FAB90 /* SecureInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureInputView.swift; sourceTree = "<group>"; };
+		5B0EA431288AB90B009FAB90 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		5B0EA433288AC3F2009FAB90 /* AppVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVariables.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +200,7 @@
 				5B0EA42528880345009FAB90 /* FontStyle.swift */,
 				5B0EA42D28885300009FAB90 /* Placeholder.swift */,
 				5B0EA42F28887A37009FAB90 /* SecureInputView.swift */,
+				5B0EA431288AB90B009FAB90 /* SwiftUIView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -207,6 +212,7 @@
 				5B0EA3C8288730CF009FAB90 /* SceneDelegate.swift */,
 				5B0EA3F6288731D1009FAB90 /* AppCoordinator.swift */,
 				5B0EA4172887BBD3009FAB90 /* AppEngine.swift */,
+				5B0EA433288AC3F2009FAB90 /* AppVariables.swift */,
 				5B0EA4292888231B009FAB90 /* UserDefaultsMenager.swift */,
 			);
 			path = Main;
@@ -398,7 +404,9 @@
 				5B0EA43028887A37009FAB90 /* SecureInputView.swift in Sources */,
 				5B0EA41028873CAB009FAB90 /* Logger.swift in Sources */,
 				5B0EA4042887389D009FAB90 /* Encodable+Dictionary.swift in Sources */,
+				5B0EA434288AC3F2009FAB90 /* AppVariables.swift in Sources */,
 				5B0EA40928873A38009FAB90 /* LoginViewModel.swift in Sources */,
+				5B0EA432288AB90B009FAB90 /* SwiftUIView.swift in Sources */,
 				5B0EA3C9288730CF009FAB90 /* SceneDelegate.swift in Sources */,
 				5B0EA42E28885300009FAB90 /* Placeholder.swift in Sources */,
 			);

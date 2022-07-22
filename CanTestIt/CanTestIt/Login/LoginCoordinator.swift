@@ -24,6 +24,6 @@ final class LoginCoordinator: Coordinator {
     }
     
     private func showWebsite() {
-        
+        UIApplication.shared.open(AppVariables.websiteURL)
     }
 }

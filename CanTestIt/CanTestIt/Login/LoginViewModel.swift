@@ -2,8 +2,9 @@ import SwiftUI
 
 final class LoginViewModel: ObservableObject {
     @Published var model: LoginView.Model?
+    @Published var error: String? = "fsdf"
     
-    private let showWebsite: ()  -> Void
+    let showWebsite: ()  -> Void
     
     init(showWebsite: @escaping () -> Void) {
         self.showWebsite = showWebsite
@@ -17,11 +18,37 @@ final class LoginViewModel: ObservableObject {
             passwordTitle: "login.password-textfield-title".localized,
             passwordPlaceholder: "login.password-textfield-placeholder".localized,
             buttonTitle: "login.button-title".localized,
-            link: AttributedString("login.link-text".localized)
+            link: makeLink()
         )
     }
     
     func handleLoginButtonTap(email: String, password: String) {
         
+    }
+    
+    private func makeLink() -> NSAttributedString {
+        let attributedString = NSMutableAttributedString(
+            string: "login.link-text".localized,
+            attributes: [
+                .font: UIFont.font(.subheadline),
+                .foregroundColor: UIColor.textColor
+            ]
+        )
+        
+        let range = attributedString
+            .mutableString
+            .range(
+                of: "login.link-replace-text".localized,
+                options: .caseInsensitive
+            )
+        
+        attributedString.addAttributes([
+            .font: UIFont.font(size: 16, weight: .semibold),
+            .foregroundColor: UIColor.primaryColor,
+            .underlineStyle: NSUnderlineStyle.single.rawValue,
+            .underlineColor: UIColor.primaryColor,
+        ], range: range)
+        
+        return attributedString
     }
 }

@@ -39,14 +39,14 @@ final class IntroCoordinator: Coordinator {
     }
     
     private func showFacebook() {
-        
+        UIApplication.shared.open(AppVariables.facebookURL)
     }
     
     private func showInstagram() {
-        
+        UIApplication.shared.open(AppVariables.instagramURL)
     }
     
     private func showLinkedIn() {
-        
+        UIApplication.shared.open(AppVariables.linkedInURL)
     }
 }

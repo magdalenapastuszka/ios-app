@@ -10,3 +10,4 @@
 "login.button-title" = "Login";
 "login.error" = "Wrong User email or Password";
 "login.link-text" = "Visit our page CanTest IT";
+"login.link-replace-text" = "CanTest IT";

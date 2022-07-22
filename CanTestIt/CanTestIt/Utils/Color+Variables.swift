@@ -8,4 +8,5 @@ extension Color {
     static let secondaryTextColor = Color(uiColor: .secondaryTextColor)
     static let textFieldBackgroundColor = Color(uiColor: .textFieldBackgroundColor)
     static let placeholderColor = Color(uiColor: .placeholderColor)
+    static let errorColor = Color(uiColor: .errorColor)
 }

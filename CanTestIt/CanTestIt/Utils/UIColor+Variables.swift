@@ -1,4 +1,3 @@
-import Foundation
 import UIKit
 
 extension UIColor {
@@ -9,4 +8,5 @@ extension UIColor {
     static let secondaryTextColor = UIColor(hex: "#A5A8B0")
     static let textFieldBackgroundColor = UIColor(hex: "#313133")
     static let placeholderColor = UIColor(hex: "#8C8A93")
+    static let errorColor = UIColor(hex: "#FF6363")
 }

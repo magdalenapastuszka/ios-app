@@ -19,12 +19,11 @@ struct SecureInputView: View {
                     TextField(title, text: $text)
                 }
             }.padding(.trailing, 32)
-
             Button(action: {
                 isSecured.toggle()
             }) {
                 Image(systemName: self.isSecured ? "eye.slash" : "eye")
-                    .accentColor(.gray)
+                    .accentColor(.placeholderColor)
             }
         }
     }
