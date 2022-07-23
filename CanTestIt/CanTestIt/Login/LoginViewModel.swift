@@ -27,11 +27,15 @@ final class LoginViewModel: ObservableObject {
     }
     
     private func makeLink() -> NSAttributedString {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+        
         let attributedString = NSMutableAttributedString(
             string: "login.link-text".localized,
             attributes: [
                 .font: UIFont.font(.subheadline),
-                .foregroundColor: UIColor.textColor
+                .foregroundColor: UIColor.textColor,
+                .paragraphStyle: paragraphStyle
             ]
         )
         

@@ -12,8 +12,8 @@ struct LoginView: View {
     }
     
     private let viewModel: LoginViewModel
-    @State private var email: String = ""
-    @State private var password: String = ""
+    @State private var email: String?
+    @State private var password: String?
     
     private enum Constants {
         static let topPadding: CGFloat = 55
@@ -43,15 +43,22 @@ struct LoginView: View {
                 .foregroundColor(Color.textColor)
                 .padding([.top], Constants.topPadding)
             
-            TextField("", text: $email)
-                .placeHolder(
-                    Text(viewModel.model?.emailPlaceholder ?? "")
-                        .foregroundColor(.secondaryTextColor),
-                    show: email.isEmpty
+            InputField(
+                placeholder: viewModel.model?.emailPlaceholder,
+                rightItem: nil,
+                leftItem: nil,
+                isSecuredEntry: false,
+                handleLeftTap: {},
+                delegate: nil,
+                text: $email
+            )
+            .frame(height: .buttonHeight, alignment: .leading)
+                .background(
+                    RoundedRectangle(
+                        cornerRadius: Constants.cornerRadius,
+                        style: .continuous
+                    ).fill(Color.textFieldBackgroundColor)
                 )
-                .foregroundColor(Color.textColor)
-                .frame(height: .buttonHeight, alignment: .leading)
-                .background(Color.textFieldBackgroundColor)
                 .background(
                     RoundedRectangle(
                         cornerRadius: Constants.cornerRadius,
@@ -67,28 +74,37 @@ struct LoginView: View {
                 .foregroundColor(Color.textColor)
                 .padding([.top], Constants.spacing)
             
-            SecureInputView("", text: $password)
-                .placeHolder(
-                    Text(viewModel.model?.passwordPlaceholder ?? "")
-                        .foregroundColor(.secondaryTextColor),
-                    show: password.isEmpty
+            InputField(
+                placeholder: viewModel.model?.passwordPlaceholder,
+                rightItem: UIImage(systemName: "eye"),
+                leftItem: nil,
+                isSecuredEntry: true,
+                handleLeftTap: {},
+                delegate: nil,
+                text: $password
+            )
+            .frame(height: .buttonHeight, alignment: .leading)
+            .background(
+                RoundedRectangle(
+                    cornerRadius: Constants.cornerRadius,
+                    style: .continuous
+                ).fill(Color.textFieldBackgroundColor)
+            )
+            .background(
+                RoundedRectangle(
+                    cornerRadius: Constants.cornerRadius,
+                    style: .continuous
+                ).stroke(
+                    viewModel.error != nil ? Color.errorColor : Color.clear, lineWidth: 1
                 )
-                .foregroundColor(Color.textColor)
-                .frame(height: .buttonHeight, alignment: .leading)
-                .background(Color.textFieldBackgroundColor)
-                .background(
-                    RoundedRectangle(
-                        cornerRadius: Constants.cornerRadius,
-                        style: .continuous
-                    )
-                    .stroke(
-                        viewModel.error != nil ? Color.errorColor : Color.clear, lineWidth: 1
-                    )
-                )
+            )
             
             Button(
                 action: {
-                    self.viewModel.handleLoginButtonTap(email: email, password: password)
+                    self.viewModel.handleLoginButtonTap(
+                        email: email ?? "",
+                        password: password ?? ""
+                    )
                 },
                 label: { Text(viewModel.model?.buttonTitle ?? "")
                         .frame(
@@ -109,9 +125,14 @@ struct LoginView: View {
             Spacer()
             Divider()
             
-            AttributedText(viewModel.model?.link ?? NSAttributedString(string: ""))
-                .gesture(TapGesture().onEnded(viewModel.showWebsite))
+            HStack(alignment: .center) {
+                Spacer()
+                AttributedText(viewModel.model?.link ?? NSAttributedString(string: ""))
+                    .gesture(TapGesture().onEnded(viewModel.showWebsite))
+                Spacer()
+            }
         }
+        .frame(width: UIScreen.main.bounds.width - 32)
         .padding([.leading, .trailing], Constants.padding)
         .background(Color.backgroundColor)
     }
