@@ -45,6 +45,11 @@
 		5B0EA436288B2B57009FAB90 /* InputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA435288B2B57009FAB90 /* InputField.swift */; };
 		5B0EA438288B2F52009FAB90 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA437288B2F52009FAB90 /* UITextField+Extension.swift */; };
 		5B0EA43A288C31EA009FAB90 /* TextFieldWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA439288C31EA009FAB90 /* TextFieldWithPadding.swift */; };
+		5B0EA43D288C439E009FAB90 /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA43C288C439E009FAB90 /* EventListViewController.swift */; };
+		5B0EA43F288C43AC009FAB90 /* EventListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA43E288C43AC009FAB90 /* EventListViewModel.swift */; };
+		5B0EA441288C446F009FAB90 /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA440288C446F009FAB90 /* EventListView.swift */; };
+		5B0EA443288D7A46009FAB90 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA442288D7A46009FAB90 /* EventTableViewCell.swift */; };
+		5B0EA445288D8195009FAB90 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA444288D8195009FAB90 /* UIView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +112,11 @@
 		5B0EA435288B2B57009FAB90 /* InputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputField.swift; sourceTree = "<group>"; };
 		5B0EA437288B2F52009FAB90 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		5B0EA439288C31EA009FAB90 /* TextFieldWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithPadding.swift; sourceTree = "<group>"; };
+		5B0EA43C288C439E009FAB90 /* EventListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewController.swift; sourceTree = "<group>"; };
+		5B0EA43E288C43AC009FAB90 /* EventListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewModel.swift; sourceTree = "<group>"; };
+		5B0EA440288C446F009FAB90 /* EventListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListView.swift; sourceTree = "<group>"; };
+		5B0EA442288D7A46009FAB90 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		5B0EA444288D8195009FAB90 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +167,7 @@
 		5B0EA3C5288730CF009FAB90 /* CanTestIt */ = {
 			isa = PBXGroup;
 			children = (
+				5B0EA43B288C4388009FAB90 /* EventList */,
 				5B0EA40A28873AC9009FAB90 /* Intro */,
 				5B0EA40528873A1E009FAB90 /* Login */,
 				5B0EA3FC288734F9009FAB90 /* Networking */,
@@ -207,6 +218,7 @@
 				5B0EA435288B2B57009FAB90 /* InputField.swift */,
 				5B0EA437288B2F52009FAB90 /* UITextField+Extension.swift */,
 				5B0EA439288C31EA009FAB90 /* TextFieldWithPadding.swift */,
+				5B0EA444288D8195009FAB90 /* UIView+Extension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -252,6 +264,17 @@
 				5B0EA4272888206F009FAB90 /* IntroCoordinator.swift */,
 			);
 			path = Intro;
+			sourceTree = "<group>";
+		};
+		5B0EA43B288C4388009FAB90 /* EventList */ = {
+			isa = PBXGroup;
+			children = (
+				5B0EA43C288C439E009FAB90 /* EventListViewController.swift */,
+				5B0EA43E288C43AC009FAB90 /* EventListViewModel.swift */,
+				5B0EA440288C446F009FAB90 /* EventListView.swift */,
+				5B0EA442288D7A46009FAB90 /* EventTableViewCell.swift */,
+			);
+			path = EventList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -385,15 +408,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B0EA443288D7A46009FAB90 /* EventTableViewCell.swift in Sources */,
 				5B0EA3F7288731D1009FAB90 /* AppCoordinator.swift in Sources */,
 				5B0EA41A2887C545009FAB90 /* UIImage+Variables.swift in Sources */,
 				5B0EA42428880326009FAB90 /* Font+Extension.swift in Sources */,
 				5B0EA3FE28873505009FAB90 /* Request.swift in Sources */,
+				5B0EA43D288C439E009FAB90 /* EventListViewController.swift in Sources */,
 				5B0EA42C28883396009FAB90 /* LoginCoordinator.swift in Sources */,
 				5B0EA438288B2F52009FAB90 /* UITextField+Extension.swift in Sources */,
 				5B0EA42A2888231B009FAB90 /* UserDefaultsMenager.swift in Sources */,
 				5B0EA41E2887F00B009FAB90 /* String+Extension.swift in Sources */,
 				5B0EA40028873523009FAB90 /* APIClient.swift in Sources */,
+				5B0EA441288C446F009FAB90 /* EventListView.swift in Sources */,
 				5B0EA436288B2B57009FAB90 /* InputField.swift in Sources */,
 				5B0EA42628880345009FAB90 /* FontStyle.swift in Sources */,
 				5B0EA41628873F65009FAB90 /* UIColor+Variables.swift in Sources */,
@@ -412,7 +438,9 @@
 				5B0EA41028873CAB009FAB90 /* Logger.swift in Sources */,
 				5B0EA4042887389D009FAB90 /* Encodable+Dictionary.swift in Sources */,
 				5B0EA434288AC3F2009FAB90 /* AppVariables.swift in Sources */,
+				5B0EA445288D8195009FAB90 /* UIView+Extension.swift in Sources */,
 				5B0EA40928873A38009FAB90 /* LoginViewModel.swift in Sources */,
+				5B0EA43F288C43AC009FAB90 /* EventListViewModel.swift in Sources */,
 				5B0EA432288AB90B009FAB90 /* AttributedText.swift in Sources */,
 				5B0EA3C9288730CF009FAB90 /* SceneDelegate.swift in Sources */,
 				5B0EA43A288C31EA009FAB90 /* TextFieldWithPadding.swift in Sources */,
