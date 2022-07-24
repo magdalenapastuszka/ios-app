@@ -5,6 +5,11 @@ final class LoginCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     
+    private lazy var eventListCoordinator = EventListCoordinator(
+        navigationController: navigationController,
+        appEngine: appEngine
+    )
+    
     private let appEngine: AppEngine
     
     init(
@@ -17,7 +22,10 @@ final class LoginCoordinator: Coordinator {
     
     func start() {
         let vc = UIHostingController(rootView: LoginView(
-            viewModel: LoginViewModel(showWebsite: showWebsite)
+            viewModel: LoginViewModel(
+                showWebsite: showWebsite,
+                showEventList: showEventList
+            )
         ))
         
         navigationController.go(to: vc, as: .root)
@@ -25,5 +33,9 @@ final class LoginCoordinator: Coordinator {
     
     private func showWebsite() {
         UIApplication.shared.open(AppVariables.websiteURL)
+    }
+    
+    private func showEventList() {
+        eventListCoordinator.start()
     }
 }

@@ -11,3 +11,8 @@
 "login.error" = "Wrong User email or Password";
 "login.link-text" = "Visit our page CanTest IT";
 "login.link-replace-text" = "CanTest IT";
+
+"event-list.welcome-text" = "Hello!";
+"event-list.title" = "Find your event";
+"event-list.search-field-placeholder" = "search for an event";
+"event-list.events-button-title" = "Events";

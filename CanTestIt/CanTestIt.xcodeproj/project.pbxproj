@@ -50,6 +50,8 @@
 		5B0EA441288C446F009FAB90 /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA440288C446F009FAB90 /* EventListView.swift */; };
 		5B0EA443288D7A46009FAB90 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA442288D7A46009FAB90 /* EventTableViewCell.swift */; };
 		5B0EA445288D8195009FAB90 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA444288D8195009FAB90 /* UIView+Extension.swift */; };
+		5B0EA447288D9038009FAB90 /* Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA446288D9038009FAB90 /* Then.swift */; };
+		5B0EA449288DBDA3009FAB90 /* EventListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA448288DBDA3009FAB90 /* EventListCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +119,8 @@
 		5B0EA440288C446F009FAB90 /* EventListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListView.swift; sourceTree = "<group>"; };
 		5B0EA442288D7A46009FAB90 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		5B0EA444288D8195009FAB90 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		5B0EA446288D9038009FAB90 /* Then.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Then.swift; sourceTree = "<group>"; };
+		5B0EA448288DBDA3009FAB90 /* EventListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +223,7 @@
 				5B0EA437288B2F52009FAB90 /* UITextField+Extension.swift */,
 				5B0EA439288C31EA009FAB90 /* TextFieldWithPadding.swift */,
 				5B0EA444288D8195009FAB90 /* UIView+Extension.swift */,
+				5B0EA446288D9038009FAB90 /* Then.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -273,6 +278,7 @@
 				5B0EA43E288C43AC009FAB90 /* EventListViewModel.swift */,
 				5B0EA440288C446F009FAB90 /* EventListView.swift */,
 				5B0EA442288D7A46009FAB90 /* EventTableViewCell.swift */,
+				5B0EA448288DBDA3009FAB90 /* EventListCoordinator.swift */,
 			);
 			path = EventList;
 			sourceTree = "<group>";
@@ -434,8 +440,10 @@
 				5B0EA41428873F44009FAB90 /* UIColor+Extension.swift in Sources */,
 				5B0EA4282888206F009FAB90 /* IntroCoordinator.swift in Sources */,
 				5B0EA4202887FA6F009FAB90 /* CGFloat+Variables.swift in Sources */,
+				5B0EA447288D9038009FAB90 /* Then.swift in Sources */,
 				5B0EA3C7288730CF009FAB90 /* AppDelegate.swift in Sources */,
 				5B0EA41028873CAB009FAB90 /* Logger.swift in Sources */,
+				5B0EA449288DBDA3009FAB90 /* EventListCoordinator.swift in Sources */,
 				5B0EA4042887389D009FAB90 /* Encodable+Dictionary.swift in Sources */,
 				5B0EA434288AC3F2009FAB90 /* AppVariables.swift in Sources */,
 				5B0EA445288D8195009FAB90 /* UIView+Extension.swift in Sources */,

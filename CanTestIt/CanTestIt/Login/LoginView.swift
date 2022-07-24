@@ -140,6 +140,9 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView(viewModel: LoginViewModel(showWebsite: {}))
+        LoginView(viewModel: LoginViewModel(
+            showWebsite: {},
+            showEventList: {}
+        ))
     }
 }

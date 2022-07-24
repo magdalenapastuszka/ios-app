@@ -5,9 +5,14 @@ final class LoginViewModel: ObservableObject {
     @Published var error: String? = "fsdf"
     
     let showWebsite: ()  -> Void
+    private let showEventList: () -> Void
     
-    init(showWebsite: @escaping () -> Void) {
+    init(
+        showWebsite: @escaping () -> Void,
+        showEventList: @escaping () -> Void
+    ) {
         self.showWebsite = showWebsite
+        self.showEventList = showEventList
     }
     
     func loadModel() {
@@ -23,7 +28,7 @@ final class LoginViewModel: ObservableObject {
     }
     
     func handleLoginButtonTap(email: String, password: String) {
-        
+        showEventList()
     }
     
     private func makeLink() -> NSAttributedString {
