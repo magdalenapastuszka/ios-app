@@ -17,6 +17,8 @@ final class EventListView: UIView {
         static let addButtonSize: CGFloat = 42
     }
     
+    private let containerView = UIView(frame: .zero)
+    
     private let welcomeLabel = UILabel().then {
         $0.font = .font(.callout)
         $0.textColor = .textColor
@@ -74,7 +76,8 @@ final class EventListView: UIView {
     }
     
     private func setUpViewHierarchy() {
-        addSubviews([
+        addSubview(containerView)
+        containerView.addSubviews([
             welcomeLabel,
             titleLabel,
             searchField,
@@ -85,6 +88,7 @@ final class EventListView: UIView {
     }
     
     private func setUpConstraints() {
+        setUpContainerViewConstraints()
         setUpWelcomeLabelConstraints()
         setUpTitleLabelConstraints()
         setUpSearchFieldConstraints()
@@ -93,20 +97,30 @@ final class EventListView: UIView {
         setUpEventsButtonConstraints()
     }
     
+    private func setUpContainerViewConstraints() {
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            containerView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            containerView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            containerView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            containerView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
+        ])
+    }
+    
     private func setUpWelcomeLabelConstraints() {
         welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            welcomeLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.padding),
-            welcomeLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.padding),
-            welcomeLabel.topAnchor.constraint(equalTo: topAnchor, constant: Constants.padding)
+            welcomeLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: Constants.padding),
+            welcomeLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -Constants.padding),
+            welcomeLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: Constants.padding)
         ])
     }
     
     private func setUpTitleLabelConstraints() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.padding),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.padding),
+            titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: Constants.padding),
+            titleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -Constants.padding),
             titleLabel.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor)
         ])
     }
@@ -114,8 +128,8 @@ final class EventListView: UIView {
     private func setUpSearchFieldConstraints() {
         searchField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            searchField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.padding),
-            searchField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.padding),
+            searchField.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: Constants.padding),
+            searchField.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -Constants.padding),
             searchField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Constants.spacing)
         ])
     }
@@ -123,8 +137,8 @@ final class EventListView: UIView {
     private func setUpTableViewConstraints() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            tableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.padding),
-            tableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.padding),
+            tableView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: Constants.padding),
+            tableView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -Constants.padding),
             tableView.topAnchor.constraint(equalTo: searchField.bottomAnchor, constant: Constants.tableViewTopPadding)
         ])
     }
@@ -134,7 +148,7 @@ final class EventListView: UIView {
         NSLayoutConstraint.activate([
             addButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             addButton.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: Constants.spacing),
-            addButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: Constants.spacing),
+            addButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: Constants.spacing),
             addButton.heightAnchor.constraint(equalToConstant: Constants.addButtonSize),
             addButton.widthAnchor.constraint(equalToConstant: Constants.addButtonSize)
         ])
@@ -143,7 +157,7 @@ final class EventListView: UIView {
     private func setUpEventsButtonConstraints() {
         eventsButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            eventsButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.padding),
+            eventsButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: Constants.padding),
             eventsButton.heightAnchor.constraint(equalToConstant: Constants.eventsButtonSize),
             eventsButton.centerYAnchor.constraint(equalTo: addButton.centerYAnchor)
         ])

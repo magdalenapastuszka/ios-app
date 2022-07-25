@@ -9,4 +9,6 @@ extension UIImage {
     static let calendar = UIImage(named: "calendar")!
     static let house = UIImage(named: "house")!
     static let plus = UIImage(named: "plus")!
+    static let hamburger = UIImage(named: "hamburger")!
+    static let arrowLeft = UIImage(named: "arrowLeft")!
 }

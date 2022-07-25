@@ -16,6 +16,7 @@ final class EventListCoordinator: Coordinator {
     
     func start() {
         let vc = EventListViewController(viewModel: EventListViewModel())
+        vc.configureHamburgerNav()
         navigationController.go(to: vc, as: .root)
     }
 }

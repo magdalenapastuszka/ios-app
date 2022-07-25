@@ -52,6 +52,8 @@
 		5B0EA445288D8195009FAB90 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA444288D8195009FAB90 /* UIView+Extension.swift */; };
 		5B0EA447288D9038009FAB90 /* Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA446288D9038009FAB90 /* Then.swift */; };
 		5B0EA449288DBDA3009FAB90 /* EventListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA448288DBDA3009FAB90 /* EventListCoordinator.swift */; };
+		5B0EA44B288EB413009FAB90 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA44A288EB413009FAB90 /* UIViewController+Extension.swift */; };
+		5B0EA44D288ECA68009FAB90 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA44C288ECA68009FAB90 /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +123,8 @@
 		5B0EA444288D8195009FAB90 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		5B0EA446288D9038009FAB90 /* Then.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Then.swift; sourceTree = "<group>"; };
 		5B0EA448288DBDA3009FAB90 /* EventListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListCoordinator.swift; sourceTree = "<group>"; };
+		5B0EA44A288EB413009FAB90 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		5B0EA44C288ECA68009FAB90 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +228,8 @@
 				5B0EA439288C31EA009FAB90 /* TextFieldWithPadding.swift */,
 				5B0EA444288D8195009FAB90 /* UIView+Extension.swift */,
 				5B0EA446288D9038009FAB90 /* Then.swift */,
+				5B0EA44A288EB413009FAB90 /* UIViewController+Extension.swift */,
+				5B0EA44C288ECA68009FAB90 /* BaseViewController.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -422,6 +428,8 @@
 				5B0EA43D288C439E009FAB90 /* EventListViewController.swift in Sources */,
 				5B0EA42C28883396009FAB90 /* LoginCoordinator.swift in Sources */,
 				5B0EA438288B2F52009FAB90 /* UITextField+Extension.swift in Sources */,
+				5B0EA44B288EB413009FAB90 /* UIViewController+Extension.swift in Sources */,
+				5B0EA44D288ECA68009FAB90 /* BaseViewController.swift in Sources */,
 				5B0EA42A2888231B009FAB90 /* UserDefaultsMenager.swift in Sources */,
 				5B0EA41E2887F00B009FAB90 /* String+Extension.swift in Sources */,
 				5B0EA40028873523009FAB90 /* APIClient.swift in Sources */,

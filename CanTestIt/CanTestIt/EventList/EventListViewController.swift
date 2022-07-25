@@ -1,6 +1,6 @@
 import UIKit
 
-final class EventListViewController: UIViewController {
+final class EventListViewController: BaseViewController {
     private let viewModel: EventListViewModel
     private lazy var mainView = EventListView(
         model: viewModel.loadModel(),
@@ -11,12 +11,9 @@ final class EventListViewController: UIViewController {
     init(viewModel: EventListViewModel) {
         self.viewModel = viewModel
         
-        super.init(nibName: nil, bundle: nil)
+        super.init()
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+
     
     override func loadView() {
         view = mainView
