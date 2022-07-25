@@ -1,6 +1,6 @@
 import UIKit
 
-final class EventListView: UIView {
+final class EventListView: BaseView {
     struct Model {
         let welcomeText: String
         let title: String
@@ -16,12 +16,10 @@ final class EventListView: UIView {
         static let tableViewTopPadding: CGFloat = 30
         static let addButtonSize: CGFloat = 42
     }
-    
-    private let containerView = UIView(frame: .zero)
-    
+        
     private let welcomeLabel = UILabel().then {
         $0.font = .font(.callout)
-        $0.textColor = .textColor
+        $0.textColor = .primaryColor
     }
     
     private let titleLabel = UILabel().then {
@@ -29,7 +27,16 @@ final class EventListView: UIView {
         $0.textColor = .textColor
     }
     
-    private let searchField = UITextField()
+    private let searchField = TextFieldWithPadding().then {
+        $0.backgroundColor = .secondaryBackgroundColor
+        $0.textColor = .textColor
+        $0.layer.cornerRadius = Constants.cornerRadius
+        let leftView = UIButton()
+        leftView.setImage(.loupe, for: .normal)
+        leftView.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -.defaultPadding)
+        $0.leftView = leftView
+        $0.leftViewMode = .always
+    }
     
     private let tableView = UITableView()
     
@@ -58,14 +65,10 @@ final class EventListView: UIView {
     ) {
         self.handleDidTapAddButton = handleDidTapAddButton
         self.handleDidTapEventsButton = handleDidTapEventsButton
-        super.init(frame: .zero)
+        super.init()
         fill(with: model)
         setUpViewHierarchy()
         setUpConstraints()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     private func fill(with model: Model) {
@@ -73,6 +76,7 @@ final class EventListView: UIView {
         titleLabel.text = model.title
         eventsButton.setTitle(model.eventsButtonTitle, for: .normal)
         searchField.placeholder = model.searchFieldPlaceholder
+        searchField.placeholderColor(.placeholderColor)
     }
     
     private func setUpViewHierarchy() {
@@ -88,23 +92,12 @@ final class EventListView: UIView {
     }
     
     private func setUpConstraints() {
-        setUpContainerViewConstraints()
         setUpWelcomeLabelConstraints()
         setUpTitleLabelConstraints()
         setUpSearchFieldConstraints()
         setUpTableViewConstraints()
         setUpAddButtonConstraints()
         setUpEventsButtonConstraints()
-    }
-    
-    private func setUpContainerViewConstraints() {
-        containerView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            containerView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            containerView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            containerView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            containerView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
-        ])
     }
     
     private func setUpWelcomeLabelConstraints() {
@@ -130,7 +123,8 @@ final class EventListView: UIView {
         NSLayoutConstraint.activate([
             searchField.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: Constants.padding),
             searchField.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -Constants.padding),
-            searchField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Constants.spacing)
+            searchField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Constants.spacing),
+            searchField.heightAnchor.constraint(equalToConstant: .buttonHeight)
         ])
     }
     

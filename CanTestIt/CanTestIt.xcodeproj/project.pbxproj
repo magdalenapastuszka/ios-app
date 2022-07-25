@@ -54,6 +54,7 @@
 		5B0EA449288DBDA3009FAB90 /* EventListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA448288DBDA3009FAB90 /* EventListCoordinator.swift */; };
 		5B0EA44B288EB413009FAB90 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA44A288EB413009FAB90 /* UIViewController+Extension.swift */; };
 		5B0EA44D288ECA68009FAB90 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA44C288ECA68009FAB90 /* BaseViewController.swift */; };
+		5B0EA44F288ECF43009FAB90 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA44E288ECF43009FAB90 /* BaseView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +126,7 @@
 		5B0EA448288DBDA3009FAB90 /* EventListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListCoordinator.swift; sourceTree = "<group>"; };
 		5B0EA44A288EB413009FAB90 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		5B0EA44C288ECA68009FAB90 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		5B0EA44E288ECF43009FAB90 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +232,7 @@
 				5B0EA446288D9038009FAB90 /* Then.swift */,
 				5B0EA44A288EB413009FAB90 /* UIViewController+Extension.swift */,
 				5B0EA44C288ECA68009FAB90 /* BaseViewController.swift */,
+				5B0EA44E288ECF43009FAB90 /* BaseView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 				5B0EA43F288C43AC009FAB90 /* EventListViewModel.swift in Sources */,
 				5B0EA432288AB90B009FAB90 /* AttributedText.swift in Sources */,
 				5B0EA3C9288730CF009FAB90 /* SceneDelegate.swift in Sources */,
+				5B0EA44F288ECF43009FAB90 /* BaseView.swift in Sources */,
 				5B0EA43A288C31EA009FAB90 /* TextFieldWithPadding.swift in Sources */,
 				5B0EA42E28885300009FAB90 /* Placeholder.swift in Sources */,
 			);
