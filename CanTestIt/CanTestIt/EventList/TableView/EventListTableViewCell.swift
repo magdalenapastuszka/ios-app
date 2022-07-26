@@ -1,7 +1,8 @@
 import UIKit
 
-final class EventTableViewCell: UITableViewCell {
-    struct Model {
+final class EventListTableViewCell: UITableViewCell {
+    struct Model: Hashable {
+        let id = UUID()
         let title: String
         let image: UIImage
         let priceTitle: String
@@ -10,6 +11,14 @@ final class EventTableViewCell: UITableViewCell {
         let startDateTitle: String
         let startDate: String
         let startHour: String
+        
+        func hash(into hasher: inout Hasher) {
+            hasher.combine(self.id)
+        }
+        
+        static func == (lhs: Model, rhs: Model) -> Bool {
+            return lhs.id == rhs.id
+        }
     }
     
     private enum Constants {
@@ -76,6 +85,7 @@ final class EventTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setUpViewHierarchy()
         setUpConstraints()
+        backgroundColor = .backgroundColor
     }
     
     required init?(coder: NSCoder) {

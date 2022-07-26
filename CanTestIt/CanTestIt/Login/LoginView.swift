@@ -131,6 +131,7 @@ struct LoginView: View {
                     .gesture(TapGesture().onEnded(viewModel.showWebsite))
                 Spacer()
             }
+            .padding([.bottom], Constants.padding)
         }
         .frame(width: UIScreen.main.bounds.width - 32)
         .padding([.leading, .trailing], Constants.padding)

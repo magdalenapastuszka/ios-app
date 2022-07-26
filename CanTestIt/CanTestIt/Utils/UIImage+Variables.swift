@@ -12,4 +12,5 @@ extension UIImage {
     static let hamburger = UIImage(named: "hamburger")!
     static let arrowLeft = UIImage(named: "arrowLeft")!
     static let loupe = UIImage(named: "loupe")!
+    static let noResult = UIImage(named: "noResult")!
 }

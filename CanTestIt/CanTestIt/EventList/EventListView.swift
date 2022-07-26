@@ -38,7 +38,15 @@ final class EventListView: BaseView {
         $0.leftViewMode = .always
     }
     
-    private let tableView = UITableView()
+    private let tableView = UITableView().then {
+        $0.register(EventListTableViewCell.self)
+        $0.register(EmptyEventListTableViewCell.self)
+        $0.backgroundColor = .backgroundColor
+    }
+    
+    private let footerView = UIView(frame: .zero).then {
+        $0.backgroundColor = .black
+    }
     
     private let eventsButton = UIButton().then {
         $0.setImage(.house, for: .normal)
@@ -55,21 +63,34 @@ final class EventListView: BaseView {
         $0.addTarget(self, action: #selector(didTapAddButton), for: .touchUpInside)
     }
     
+    private let bottomSafeAreaCoverView = UIView(frame: .zero).then {
+        $0.backgroundColor = .black
+    }
+    
+    private lazy var dataSource = EventListTableViewDataSource(tableView)
     private let handleDidTapEventsButton: () -> Void
     private let handleDidTapAddButton: () -> Void
+    private let handleDidTapEvent: (Int) -> Void
     
     init(
         model: Model,
+        handleDidTapEvent: @escaping (Int) -> Void,
         handleDidTapEventsButton: @escaping () -> Void,
         handleDidTapAddButton: @escaping () -> Void
     ) {
+        self.handleDidTapEvent = handleDidTapEvent
         self.handleDidTapAddButton = handleDidTapAddButton
         self.handleDidTapEventsButton = handleDidTapEventsButton
         super.init()
         fill(with: model)
         setUpViewHierarchy()
         setUpConstraints()
+        tableView.delegate = self
     }
+    
+    func reloadTable(with data: [EventListData]) {
+        dataSource.reload(with: data)
+     }
     
     private func fill(with model: Model) {
         welcomeLabel.text = model.welcomeText
@@ -80,12 +101,19 @@ final class EventListView: BaseView {
     }
     
     private func setUpViewHierarchy() {
-        addSubview(containerView)
+        addSubviews([
+            containerView,
+            bottomSafeAreaCoverView
+        ])
         containerView.addSubviews([
             welcomeLabel,
             titleLabel,
             searchField,
             tableView,
+            footerView
+        ])
+        
+        footerView.addSubviews([
             eventsButton,
             addButton
         ])
@@ -96,8 +124,10 @@ final class EventListView: BaseView {
         setUpTitleLabelConstraints()
         setUpSearchFieldConstraints()
         setUpTableViewConstraints()
+        setUpFooterViewConstraints()
         setUpAddButtonConstraints()
         setUpEventsButtonConstraints()
+        setUpBottomSafeAreaCoverViewConstraints()
     }
     
     private func setUpWelcomeLabelConstraints() {
@@ -137,12 +167,22 @@ final class EventListView: BaseView {
         ])
     }
     
+    private func setUpFooterViewConstraints() {
+        footerView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            footerView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            footerView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            footerView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            footerView.topAnchor.constraint(equalTo: tableView.bottomAnchor)
+        ])
+    }
+    
     private func setUpAddButtonConstraints() {
         addButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             addButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            addButton.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: Constants.spacing),
-            addButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: Constants.spacing),
+            addButton.topAnchor.constraint(equalTo: footerView.topAnchor, constant: Constants.spacing),
+            addButton.bottomAnchor.constraint(equalTo: footerView.bottomAnchor, constant: -Constants.spacing),
             addButton.heightAnchor.constraint(equalToConstant: Constants.addButtonSize),
             addButton.widthAnchor.constraint(equalToConstant: Constants.addButtonSize)
         ])
@@ -151,9 +191,19 @@ final class EventListView: BaseView {
     private func setUpEventsButtonConstraints() {
         eventsButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            eventsButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: Constants.padding),
+            eventsButton.leadingAnchor.constraint(equalTo: footerView.leadingAnchor, constant: Constants.padding),
             eventsButton.heightAnchor.constraint(equalToConstant: Constants.eventsButtonSize),
             eventsButton.centerYAnchor.constraint(equalTo: addButton.centerYAnchor)
+        ])
+    }
+    
+    private func setUpBottomSafeAreaCoverViewConstraints() {
+        bottomSafeAreaCoverView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            bottomSafeAreaCoverView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            bottomSafeAreaCoverView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            bottomSafeAreaCoverView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            bottomSafeAreaCoverView.topAnchor.constraint(equalTo: footerView.bottomAnchor)
         ])
     }
     
@@ -163,5 +213,11 @@ final class EventListView: BaseView {
     
     @objc private func didTapAddButton() {
         handleDidTapAddButton()
+    }
+}
+
+extension EventListView: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        handleDidTapEvent(indexPath.row)
     }
 }

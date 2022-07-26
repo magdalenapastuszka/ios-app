@@ -16,3 +16,5 @@
 "event-list.title" = "Find your event";
 "event-list.search-field-placeholder" = "search for an event";
 "event-list.events-button-title" = "Events";
+
+"event-list.empty-cell.title" = "NO RESULTS";

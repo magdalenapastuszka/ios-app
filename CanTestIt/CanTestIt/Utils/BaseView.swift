@@ -8,6 +8,8 @@ open class BaseView: UIView {
         super.init(frame: .zero)
         addSubview(containerView)
         setUpContainerViewConstraints()
+        containerView.backgroundColor = .backgroundColor
+        backgroundColor = .backgroundColor
     }
 
     @available(*, unavailable)

@@ -48,13 +48,18 @@
 		5B0EA43D288C439E009FAB90 /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA43C288C439E009FAB90 /* EventListViewController.swift */; };
 		5B0EA43F288C43AC009FAB90 /* EventListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA43E288C43AC009FAB90 /* EventListViewModel.swift */; };
 		5B0EA441288C446F009FAB90 /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA440288C446F009FAB90 /* EventListView.swift */; };
-		5B0EA443288D7A46009FAB90 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA442288D7A46009FAB90 /* EventTableViewCell.swift */; };
+		5B0EA443288D7A46009FAB90 /* EventListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA442288D7A46009FAB90 /* EventListTableViewCell.swift */; };
 		5B0EA445288D8195009FAB90 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA444288D8195009FAB90 /* UIView+Extension.swift */; };
 		5B0EA447288D9038009FAB90 /* Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA446288D9038009FAB90 /* Then.swift */; };
 		5B0EA449288DBDA3009FAB90 /* EventListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA448288DBDA3009FAB90 /* EventListCoordinator.swift */; };
 		5B0EA44B288EB413009FAB90 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA44A288EB413009FAB90 /* UIViewController+Extension.swift */; };
 		5B0EA44D288ECA68009FAB90 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA44C288ECA68009FAB90 /* BaseViewController.swift */; };
 		5B0EA44F288ECF43009FAB90 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA44E288ECF43009FAB90 /* BaseView.swift */; };
+		5B0EA452288EDFCF009FAB90 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA451288EDFCF009FAB90 /* Event.swift */; };
+		5B0EA454288EE472009FAB90 /* EventListDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA453288EE472009FAB90 /* EventListDiffableDataSource.swift */; };
+		5B0EA456288EE671009FAB90 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA455288EE671009FAB90 /* UITableViewCell+Extension.swift */; };
+		5B0EA458288EE689009FAB90 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA457288EE689009FAB90 /* UITableView+Extension.swift */; };
+		5B0EA45A288EE9FF009FAB90 /* EmptyEventListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA459288EE9FF009FAB90 /* EmptyEventListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,13 +125,18 @@
 		5B0EA43C288C439E009FAB90 /* EventListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewController.swift; sourceTree = "<group>"; };
 		5B0EA43E288C43AC009FAB90 /* EventListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewModel.swift; sourceTree = "<group>"; };
 		5B0EA440288C446F009FAB90 /* EventListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListView.swift; sourceTree = "<group>"; };
-		5B0EA442288D7A46009FAB90 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		5B0EA442288D7A46009FAB90 /* EventListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListTableViewCell.swift; sourceTree = "<group>"; };
 		5B0EA444288D8195009FAB90 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		5B0EA446288D9038009FAB90 /* Then.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Then.swift; sourceTree = "<group>"; };
 		5B0EA448288DBDA3009FAB90 /* EventListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListCoordinator.swift; sourceTree = "<group>"; };
 		5B0EA44A288EB413009FAB90 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		5B0EA44C288ECA68009FAB90 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		5B0EA44E288ECF43009FAB90 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		5B0EA451288EDFCF009FAB90 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		5B0EA453288EE472009FAB90 /* EventListDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListDiffableDataSource.swift; sourceTree = "<group>"; };
+		5B0EA455288EE671009FAB90 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
+		5B0EA457288EE689009FAB90 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		5B0EA459288EE9FF009FAB90 /* EmptyEventListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyEventListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +187,7 @@
 		5B0EA3C5288730CF009FAB90 /* CanTestIt */ = {
 			isa = PBXGroup;
 			children = (
+				5B0EA450288EDFC5009FAB90 /* Models */,
 				5B0EA43B288C4388009FAB90 /* EventList */,
 				5B0EA40A28873AC9009FAB90 /* Intro */,
 				5B0EA40528873A1E009FAB90 /* Login */,
@@ -233,6 +244,8 @@
 				5B0EA44A288EB413009FAB90 /* UIViewController+Extension.swift */,
 				5B0EA44C288ECA68009FAB90 /* BaseViewController.swift */,
 				5B0EA44E288ECF43009FAB90 /* BaseView.swift */,
+				5B0EA455288EE671009FAB90 /* UITableViewCell+Extension.swift */,
+				5B0EA457288EE689009FAB90 /* UITableView+Extension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -283,13 +296,31 @@
 		5B0EA43B288C4388009FAB90 /* EventList */ = {
 			isa = PBXGroup;
 			children = (
+				5B0EA45B288EEA40009FAB90 /* TableView */,
 				5B0EA43C288C439E009FAB90 /* EventListViewController.swift */,
 				5B0EA43E288C43AC009FAB90 /* EventListViewModel.swift */,
 				5B0EA440288C446F009FAB90 /* EventListView.swift */,
-				5B0EA442288D7A46009FAB90 /* EventTableViewCell.swift */,
 				5B0EA448288DBDA3009FAB90 /* EventListCoordinator.swift */,
 			);
 			path = EventList;
+			sourceTree = "<group>";
+		};
+		5B0EA450288EDFC5009FAB90 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5B0EA451288EDFCF009FAB90 /* Event.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5B0EA45B288EEA40009FAB90 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				5B0EA453288EE472009FAB90 /* EventListDiffableDataSource.swift */,
+				5B0EA442288D7A46009FAB90 /* EventListTableViewCell.swift */,
+				5B0EA459288EE9FF009FAB90 /* EmptyEventListTableViewCell.swift */,
+			);
+			path = TableView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -423,7 +454,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B0EA443288D7A46009FAB90 /* EventTableViewCell.swift in Sources */,
+				5B0EA443288D7A46009FAB90 /* EventListTableViewCell.swift in Sources */,
+				5B0EA452288EDFCF009FAB90 /* Event.swift in Sources */,
 				5B0EA3F7288731D1009FAB90 /* AppCoordinator.swift in Sources */,
 				5B0EA41A2887C545009FAB90 /* UIImage+Variables.swift in Sources */,
 				5B0EA42428880326009FAB90 /* Font+Extension.swift in Sources */,
@@ -431,6 +463,7 @@
 				5B0EA43D288C439E009FAB90 /* EventListViewController.swift in Sources */,
 				5B0EA42C28883396009FAB90 /* LoginCoordinator.swift in Sources */,
 				5B0EA438288B2F52009FAB90 /* UITextField+Extension.swift in Sources */,
+				5B0EA454288EE472009FAB90 /* EventListDiffableDataSource.swift in Sources */,
 				5B0EA44B288EB413009FAB90 /* UIViewController+Extension.swift in Sources */,
 				5B0EA44D288ECA68009FAB90 /* BaseViewController.swift in Sources */,
 				5B0EA42A2888231B009FAB90 /* UserDefaultsMenager.swift in Sources */,
@@ -446,9 +479,12 @@
 				5B0EA40728873A2C009FAB90 /* LoginView.swift in Sources */,
 				5B0EA40E28873AED009FAB90 /* IntroView.swift in Sources */,
 				5B0EA3FA2887322C009FAB90 /* Coordinator.swift in Sources */,
+				5B0EA456288EE671009FAB90 /* UITableViewCell+Extension.swift in Sources */,
 				5B0EA41228873EB7009FAB90 /* Color+Variables.swift in Sources */,
 				5B0EA40228873872009FAB90 /* NetworkDispatcher.swift in Sources */,
+				5B0EA45A288EE9FF009FAB90 /* EmptyEventListTableViewCell.swift in Sources */,
 				5B0EA41428873F44009FAB90 /* UIColor+Extension.swift in Sources */,
+				5B0EA458288EE689009FAB90 /* UITableView+Extension.swift in Sources */,
 				5B0EA4282888206F009FAB90 /* IntroCoordinator.swift in Sources */,
 				5B0EA4202887FA6F009FAB90 /* CGFloat+Variables.swift in Sources */,
 				5B0EA447288D9038009FAB90 /* Then.swift in Sources */,
