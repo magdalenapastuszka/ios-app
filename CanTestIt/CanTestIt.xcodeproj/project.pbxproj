@@ -60,6 +60,11 @@
 		5B0EA456288EE671009FAB90 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA455288EE671009FAB90 /* UITableViewCell+Extension.swift */; };
 		5B0EA458288EE689009FAB90 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA457288EE689009FAB90 /* UITableView+Extension.swift */; };
 		5B0EA45A288EE9FF009FAB90 /* EmptyEventListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA459288EE9FF009FAB90 /* EmptyEventListTableViewCell.swift */; };
+		5B0EA45E2890219E009FAB90 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA45D2890219E009FAB90 /* MenuViewController.swift */; };
+		5B0EA460289021AC009FAB90 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA45F289021AC009FAB90 /* MenuViewModel.swift */; };
+		5B0EA462289021B6009FAB90 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA461289021B6009FAB90 /* MenuView.swift */; };
+		5B0EA46428902313009FAB90 /* MenuListTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA46328902313009FAB90 /* MenuListTableViewDataSource.swift */; };
+		5B0EA4672890241E009FAB90 /* MenuListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA4662890241E009FAB90 /* MenuListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +142,11 @@
 		5B0EA455288EE671009FAB90 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
 		5B0EA457288EE689009FAB90 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		5B0EA459288EE9FF009FAB90 /* EmptyEventListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyEventListTableViewCell.swift; sourceTree = "<group>"; };
+		5B0EA45D2890219E009FAB90 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		5B0EA45F289021AC009FAB90 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
+		5B0EA461289021B6009FAB90 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		5B0EA46328902313009FAB90 /* MenuListTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListTableViewDataSource.swift; sourceTree = "<group>"; };
+		5B0EA4662890241E009FAB90 /* MenuListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +197,7 @@
 		5B0EA3C5288730CF009FAB90 /* CanTestIt */ = {
 			isa = PBXGroup;
 			children = (
+				5B0EA45C2890218B009FAB90 /* Menu */,
 				5B0EA450288EDFC5009FAB90 /* Models */,
 				5B0EA43B288C4388009FAB90 /* EventList */,
 				5B0EA40A28873AC9009FAB90 /* Intro */,
@@ -323,6 +334,26 @@
 			path = TableView;
 			sourceTree = "<group>";
 		};
+		5B0EA45C2890218B009FAB90 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				5B0EA46528902319009FAB90 /* TableView */,
+				5B0EA45D2890219E009FAB90 /* MenuViewController.swift */,
+				5B0EA45F289021AC009FAB90 /* MenuViewModel.swift */,
+				5B0EA461289021B6009FAB90 /* MenuView.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		5B0EA46528902319009FAB90 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				5B0EA46328902313009FAB90 /* MenuListTableViewDataSource.swift */,
+				5B0EA4662890241E009FAB90 /* MenuListTableViewCell.swift */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -455,12 +486,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B0EA443288D7A46009FAB90 /* EventListTableViewCell.swift in Sources */,
+				5B0EA460289021AC009FAB90 /* MenuViewModel.swift in Sources */,
 				5B0EA452288EDFCF009FAB90 /* Event.swift in Sources */,
 				5B0EA3F7288731D1009FAB90 /* AppCoordinator.swift in Sources */,
 				5B0EA41A2887C545009FAB90 /* UIImage+Variables.swift in Sources */,
 				5B0EA42428880326009FAB90 /* Font+Extension.swift in Sources */,
 				5B0EA3FE28873505009FAB90 /* Request.swift in Sources */,
 				5B0EA43D288C439E009FAB90 /* EventListViewController.swift in Sources */,
+				5B0EA45E2890219E009FAB90 /* MenuViewController.swift in Sources */,
 				5B0EA42C28883396009FAB90 /* LoginCoordinator.swift in Sources */,
 				5B0EA438288B2F52009FAB90 /* UITextField+Extension.swift in Sources */,
 				5B0EA454288EE472009FAB90 /* EventListDiffableDataSource.swift in Sources */,
@@ -480,6 +513,7 @@
 				5B0EA40E28873AED009FAB90 /* IntroView.swift in Sources */,
 				5B0EA3FA2887322C009FAB90 /* Coordinator.swift in Sources */,
 				5B0EA456288EE671009FAB90 /* UITableViewCell+Extension.swift in Sources */,
+				5B0EA46428902313009FAB90 /* MenuListTableViewDataSource.swift in Sources */,
 				5B0EA41228873EB7009FAB90 /* Color+Variables.swift in Sources */,
 				5B0EA40228873872009FAB90 /* NetworkDispatcher.swift in Sources */,
 				5B0EA45A288EE9FF009FAB90 /* EmptyEventListTableViewCell.swift in Sources */,
@@ -487,6 +521,7 @@
 				5B0EA458288EE689009FAB90 /* UITableView+Extension.swift in Sources */,
 				5B0EA4282888206F009FAB90 /* IntroCoordinator.swift in Sources */,
 				5B0EA4202887FA6F009FAB90 /* CGFloat+Variables.swift in Sources */,
+				5B0EA462289021B6009FAB90 /* MenuView.swift in Sources */,
 				5B0EA447288D9038009FAB90 /* Then.swift in Sources */,
 				5B0EA3C7288730CF009FAB90 /* AppDelegate.swift in Sources */,
 				5B0EA41028873CAB009FAB90 /* Logger.swift in Sources */,
@@ -499,6 +534,7 @@
 				5B0EA432288AB90B009FAB90 /* AttributedText.swift in Sources */,
 				5B0EA3C9288730CF009FAB90 /* SceneDelegate.swift in Sources */,
 				5B0EA44F288ECF43009FAB90 /* BaseView.swift in Sources */,
+				5B0EA4672890241E009FAB90 /* MenuListTableViewCell.swift in Sources */,
 				5B0EA43A288C31EA009FAB90 /* TextFieldWithPadding.swift in Sources */,
 				5B0EA42E28885300009FAB90 /* Placeholder.swift in Sources */,
 			);
