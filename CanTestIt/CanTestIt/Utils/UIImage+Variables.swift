@@ -14,4 +14,11 @@ extension UIImage {
     static let loupe = UIImage(named: "loupe")!
     static let noResult = UIImage(named: "noResult")!
     static let event = UIImage(named: "event")!
+    static let menuEvents = UIImage(named: "menuEvents")!
+    static let menuCRM = UIImage(named: "menuCRM")!
+    static let menuFinance = UIImage(named: "menuFinance")!
+    static let menuInsights = UIImage(named: "menuInsights")!
+    static let menuSales = UIImage(named: "menuSales")!
+    static let menuSettings = UIImage(named: "menuSettings")!
+    static let logout = UIImage(named: "logout")!
 }

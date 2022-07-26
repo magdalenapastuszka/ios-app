@@ -6,15 +6,28 @@ final class MenuListTableViewCell: UITableViewCell {
         let image: UIImage
         let title: String
         let textColor: UIColor
+        let action: (() -> Void)?
+        
+        func hash(into hasher: inout Hasher) {
+            hasher.combine(self.id)
+        }
+        
+        static func == (lhs: Model, rhs: Model) -> Bool {
+            return lhs.id == rhs.id
+        }
     }
     
     private enum Constants {
         static let smallPadding: CGFloat = 10
         static let padding: CGFloat = 30
         static let iconSize: CGFloat = 40
+        static let cornerRadius: CGFloat = 8
     }
     
-    private let pictureView = UIImageView()
+    private let pictureView = UIButton().then {
+        $0.backgroundColor = .secondaryBackgroundColor
+        $0.layer.cornerRadius = Constants.cornerRadius
+    }
     
     private let titleLabel = UILabel().then {
         $0.font = .font(.callout)
@@ -24,6 +37,7 @@ final class MenuListTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setUpViewHierarchy()
         setUpConstraints()
+        contentView.backgroundColor = .backgroundColor
     }
     
     required init?(coder: NSCoder) {
@@ -31,7 +45,7 @@ final class MenuListTableViewCell: UITableViewCell {
     }
     
     func configure(with model: Model) {
-        pictureView.image = model.image
+        pictureView.setImage(model.image, for: .normal)
         titleLabel.text = model.title
         titleLabel.textColor = model.textColor
     }
@@ -55,7 +69,7 @@ final class MenuListTableViewCell: UITableViewCell {
             pictureView.widthAnchor.constraint(equalToConstant: Constants.iconSize),
             pictureView.heightAnchor.constraint(equalToConstant: Constants.iconSize),
             pictureView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Constants.smallPadding),
-            pictureView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: Constants.smallPadding)
+            pictureView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Constants.smallPadding)
         ])
     }
     

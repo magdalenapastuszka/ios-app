@@ -1,4 +1,3 @@
-import Foundation
 import UIKit
 
 extension UIViewController {
@@ -24,12 +23,12 @@ extension UIViewController {
         return false
     }
     
-    func configureHamburgerNav() {
+    func configureHamburgerNav(target: Any?, action: Selector?) {
         let hamburgerButton = UIBarButtonItem(
             image: .hamburger,
             style: .plain,
-            target: self,
-            action: #selector(openMenu)
+            target: target,
+            action: action
         )
         navigationItem.leftBarButtonItem = hamburgerButton
     }
@@ -42,10 +41,6 @@ extension UIViewController {
             action: #selector(dismissOrPopup)
         )
         navigationItem.leftBarButtonItem = backButton
-    }
-    
-    @objc private func openMenu() {
-        
     }
     
     @objc private func dismissOrPopup() {

@@ -24,6 +24,7 @@ final class MenuView: BaseView {
     private let tableView = UITableView().then {
         $0.register(MenuListTableViewCell.self)
         $0.backgroundColor = .backgroundColor
+        $0.separatorStyle = .none
     }
     
     private lazy var dataSource = MenuListTableViewDataSource(tableView)
@@ -33,6 +34,7 @@ final class MenuView: BaseView {
         fill(with: model)
         setUpViewHierarchy()
         setUpConstraints()
+        tableView.delegate = self
     }
     
     func reloadTable(with data: [MenuListData]) {
@@ -80,8 +82,13 @@ final class MenuView: BaseView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: Constants.tableViewTopPadding),
+            tableView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
         ])
     }
+}
+
+extension MenuView: UITableViewDelegate {
+    
 }

@@ -18,3 +18,12 @@
 "event-list.events-button-title" = "Events";
 
 "event-list.empty-cell.title" = "NO RESULTS";
+
+"menu.events" = "Events";
+"menu.finance" = "Finance";
+"menu.crm" = "CRM";
+"menu.sales" = "Sales";
+"menu.insights" = "Insights";
+"menu.settings" = "Settings";
+"menu.logout" = "Log out";
+

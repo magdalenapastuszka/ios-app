@@ -65,6 +65,7 @@
 		5B0EA462289021B6009FAB90 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA461289021B6009FAB90 /* MenuView.swift */; };
 		5B0EA46428902313009FAB90 /* MenuListTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA46328902313009FAB90 /* MenuListTableViewDataSource.swift */; };
 		5B0EA4672890241E009FAB90 /* MenuListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA4662890241E009FAB90 /* MenuListTableViewCell.swift */; };
+		5B0EA46928905F9A009FAB90 /* MenuCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA46828905F9A009FAB90 /* MenuCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +148,7 @@
 		5B0EA461289021B6009FAB90 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		5B0EA46328902313009FAB90 /* MenuListTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListTableViewDataSource.swift; sourceTree = "<group>"; };
 		5B0EA4662890241E009FAB90 /* MenuListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListTableViewCell.swift; sourceTree = "<group>"; };
+		5B0EA46828905F9A009FAB90 /* MenuCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -340,6 +342,7 @@
 				5B0EA46528902319009FAB90 /* TableView */,
 				5B0EA45D2890219E009FAB90 /* MenuViewController.swift */,
 				5B0EA45F289021AC009FAB90 /* MenuViewModel.swift */,
+				5B0EA46828905F9A009FAB90 /* MenuCoordinator.swift */,
 				5B0EA461289021B6009FAB90 /* MenuView.swift */,
 			);
 			path = Menu;
@@ -493,6 +496,7 @@
 				5B0EA42428880326009FAB90 /* Font+Extension.swift in Sources */,
 				5B0EA3FE28873505009FAB90 /* Request.swift in Sources */,
 				5B0EA43D288C439E009FAB90 /* EventListViewController.swift in Sources */,
+				5B0EA46928905F9A009FAB90 /* MenuCoordinator.swift in Sources */,
 				5B0EA45E2890219E009FAB90 /* MenuViewController.swift in Sources */,
 				5B0EA42C28883396009FAB90 /* LoginCoordinator.swift in Sources */,
 				5B0EA438288B2F52009FAB90 /* UITextField+Extension.swift in Sources */,
