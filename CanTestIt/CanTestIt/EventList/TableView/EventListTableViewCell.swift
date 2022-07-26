@@ -26,14 +26,19 @@ final class EventListTableViewCell: UITableViewCell {
         static let spacing: CGFloat = 8
         static let iconSize: CGFloat = 19
         static let categoryLabelHeight: CGFloat = 20
+        static let cornerRadius: CGFloat = 12
     }
     
     private let pictureView = UIImageView().then {
         $0.contentMode = .scaleAspectFit
+        $0.layer.cornerRadius = Constants.cornerRadius
+        $0.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
     }
     
     private let infoContainer = UIView().then {
         $0.backgroundColor = .secondaryBackgroundColor
+        $0.layer.cornerRadius = Constants.cornerRadius
+        $0.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
     }
     
     private let titleLabel = UILabel().then {
@@ -60,11 +65,13 @@ final class EventListTableViewCell: UITableViewCell {
         $0.textColor = .textColor
     }
     
-    private let categoryLabel = UILabel().then {
-        $0.textColor = .primaryColor
-        $0.font = .font(size: 8, weight: .regular)
+    private let categoryLabel = UIButton().then {
+        $0.setTitleColor(.primaryColor, for: .normal)
+        $0.titleLabel?.font = .font(size: 8, weight: .regular)
         $0.layer.cornerRadius = 8
-        $0.backgroundColor = .backgroundColor
+        $0.backgroundColor = .black
+        $0.contentEdgeInsets = UIEdgeInsets(top: 0, left: .defaultPadding, bottom: 0, right: .defaultPadding)
+        $0.isUserInteractionEnabled = false
     }
     
     private let priceContainerView = UIView()
@@ -100,6 +107,7 @@ final class EventListTableViewCell: UITableViewCell {
         startDateTitleLabel.text = model.startDateTitle
         startDateLabel.text = model.startDate
         startDateHourLabel.text = model.startHour
+        categoryLabel.setTitle(model.category, for: .normal)
     }
     
     private func setUpViewHierarchy() {
@@ -177,7 +185,7 @@ final class EventListTableViewCell: UITableViewCell {
         startDateContainerView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             startDateContainerView.leadingAnchor.constraint(equalTo: infoContainer.leadingAnchor, constant: Constants.padding),
-            startDateContainerView.bottomAnchor.constraint(equalTo: infoContainer.bottomAnchor, constant: Constants.spacing),
+            startDateContainerView.bottomAnchor.constraint(equalTo: infoContainer.bottomAnchor, constant: -Constants.spacing),
             startDateContainerView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Constants.spacing)
         ])
     }
@@ -196,7 +204,7 @@ final class EventListTableViewCell: UITableViewCell {
         startDateTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             startDateTitleLabel.topAnchor.constraint(equalTo: startDateContainerView.topAnchor),
-            startDateTitleLabel.leadingAnchor.constraint(equalTo: startDateImageView.trailingAnchor),
+            startDateTitleLabel.leadingAnchor.constraint(equalTo: startDateImageView.trailingAnchor, constant: Constants.spacing),
             startDateTitleLabel.trailingAnchor.constraint(equalTo: startDateContainerView.trailingAnchor)
         ])
     }
@@ -205,7 +213,7 @@ final class EventListTableViewCell: UITableViewCell {
         startDateLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             startDateLabel.topAnchor.constraint(equalTo: startDateTitleLabel.bottomAnchor),
-            startDateLabel.leadingAnchor.constraint(equalTo: startDateImageView.trailingAnchor),
+            startDateLabel.leadingAnchor.constraint(equalTo: startDateTitleLabel.leadingAnchor),
             startDateLabel.trailingAnchor.constraint(equalTo: startDateContainerView.trailingAnchor)
         ])
     }
@@ -214,7 +222,7 @@ final class EventListTableViewCell: UITableViewCell {
         startDateHourLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             startDateHourLabel.topAnchor.constraint(equalTo: startDateLabel.bottomAnchor),
-            startDateHourLabel.leadingAnchor.constraint(equalTo: startDateImageView.trailingAnchor),
+            startDateHourLabel.leadingAnchor.constraint(equalTo: startDateTitleLabel.leadingAnchor),
             startDateHourLabel.trailingAnchor.constraint(equalTo: startDateContainerView.trailingAnchor),
             startDateHourLabel.bottomAnchor.constraint(equalTo: startDateContainerView.bottomAnchor)
         ])
@@ -225,7 +233,7 @@ final class EventListTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             categoryLabel.centerYAnchor.constraint(equalTo: startDateContainerView.centerYAnchor),
             categoryLabel.centerXAnchor.constraint(equalTo: infoContainer.centerXAnchor),
-            categoryLabel.leadingAnchor.constraint(equalTo: startDateContainerView.trailingAnchor),
+            categoryLabel.leadingAnchor.constraint(greaterThanOrEqualTo: startDateContainerView.trailingAnchor),
             categoryLabel.heightAnchor.constraint(equalToConstant: Constants.categoryLabelHeight)
         ])
     }
@@ -234,7 +242,7 @@ final class EventListTableViewCell: UITableViewCell {
         priceContainerView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             priceContainerView.topAnchor.constraint(equalTo: startDateContainerView.topAnchor),
-            priceContainerView.leadingAnchor.constraint(equalTo: categoryLabel.trailingAnchor),
+            priceContainerView.leadingAnchor.constraint(greaterThanOrEqualTo: categoryLabel.trailingAnchor),
             priceContainerView.trailingAnchor.constraint(equalTo: infoContainer.trailingAnchor, constant: -Constants.padding),
             priceContainerView.bottomAnchor.constraint(equalTo: startDateContainerView.bottomAnchor)
         ])
@@ -244,7 +252,7 @@ final class EventListTableViewCell: UITableViewCell {
         priceTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             priceTitleLabel.topAnchor.constraint(equalTo: priceContainerView.topAnchor),
-            priceTitleLabel.leadingAnchor.constraint(equalTo: priceImageView.trailingAnchor),
+            priceTitleLabel.leadingAnchor.constraint(equalTo: priceImageView.trailingAnchor, constant: Constants.spacing),
             priceTitleLabel.trailingAnchor.constraint(equalTo: priceContainerView.trailingAnchor),
         ])
     }
@@ -262,7 +270,7 @@ final class EventListTableViewCell: UITableViewCell {
     private func setUpPriceLabelConstraints() {
         priceLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            priceLabel.leadingAnchor.constraint(equalTo: priceImageView.trailingAnchor),
+            priceLabel.leadingAnchor.constraint(equalTo: priceTitleLabel.leadingAnchor),
             priceLabel.trailingAnchor.constraint(equalTo: priceContainerView.trailingAnchor),
             priceLabel.topAnchor.constraint(equalTo: priceTitleLabel.bottomAnchor)
         ])

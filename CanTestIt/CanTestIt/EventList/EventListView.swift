@@ -15,6 +15,7 @@ final class EventListView: BaseView {
         static let spacing: CGFloat = 12
         static let tableViewTopPadding: CGFloat = 30
         static let addButtonSize: CGFloat = 42
+        static let eventsButtonCenterPadding: CGFloat = 8
     }
         
     private let welcomeLabel = UILabel().then {
@@ -46,14 +47,18 @@ final class EventListView: BaseView {
     
     private let footerView = UIView(frame: .zero).then {
         $0.backgroundColor = .black
+        $0.layer.cornerRadius = Constants.cornerRadius
+        $0.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
     }
     
     private let eventsButton = UIButton().then {
         $0.setImage(.house, for: .normal)
-        $0.layer.cornerRadius = Constants.eventsButtonSize
+        $0.layer.cornerRadius = Constants.eventsButtonSize / 2
         $0.setTitleColor(.textColor, for: .normal)
         $0.backgroundColor = .alternativeBsackgroundColor
         $0.addTarget(self, action: #selector(didTapEventsButton), for: .touchUpInside)
+        $0.contentEdgeInsets = UIEdgeInsets(top: 0, left: .defaultPadding, bottom: 0, right: .defaultPadding + Constants.eventsButtonCenterPadding)
+        $0.titleEdgeInsets = UIEdgeInsets(top: 0, left: Constants.eventsButtonCenterPadding, bottom: 0, right: -Constants.eventsButtonCenterPadding)
     }
     
     private let addButton = UIButton().then {
