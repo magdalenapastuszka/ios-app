@@ -1,12 +1,11 @@
 
 import UIKit
 
-internal protocol NotificationPresenterDelegate: class {
-    
+protocol NotificationPresenterDelegate: AnyObject {
     func didFinishDisplayingNotification()
 }
 
-internal final class NotificationDefaultViewPresenter {
+final class NotificationDefaultViewPresenter {
     
     private struct Constants {
         
@@ -23,7 +22,11 @@ internal final class NotificationDefaultViewPresenter {
     
     func presentDefaultNotificationView(withParameters parameters: NotificationParameters) {
         DispatchQueue.main.async {
-            self.notificationDefaultView = NotificationDefaultView(withParameters: parameters)
+            self.notificationDefaultView = NotificationDefaultView.instanceFromNib()
+            self.notificationDefaultView?.closeAction = { [weak self] in
+                self?.hide()
+            }
+            self.notificationDefaultView?.configure(with: parameters)
             self.show(parameters.hideDelay)
         }
     }

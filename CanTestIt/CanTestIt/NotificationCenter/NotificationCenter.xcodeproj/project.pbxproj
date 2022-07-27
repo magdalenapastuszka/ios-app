@@ -13,8 +13,11 @@
 		2E54183E2194B700002FCDA9 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5418362194B6FF002FCDA9 /* NotificationCenter.swift */; };
 		2E54183F2194B700002FCDA9 /* NotificationParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5418372194B6FF002FCDA9 /* NotificationParameters.swift */; };
 		2E5418402194B700002FCDA9 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5418382194B6FF002FCDA9 /* Notification.swift */; };
-		2E5418412194B700002FCDA9 /* NotificationVerticalAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5418392194B6FF002FCDA9 /* NotificationVerticalAlignment.swift */; };
 		2E5418422194B700002FCDA9 /* NotificationPriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E54183A2194B6FF002FCDA9 /* NotificationPriority.swift */; };
+		5B0EA4752891A471009FAB90 /* NotificationDefaultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B0EA4742891A471009FAB90 /* NotificationDefaultView.xib */; };
+		5B0EA4772891A775009FAB90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B0EA4762891A775009FAB90 /* Assets.xcassets */; };
+		5B0EA4792891AA11009FAB90 /* NotificationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA4782891AA11009FAB90 /* NotificationState.swift */; };
+		5B0EA47E2891C2F9009FAB90 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA47D2891C2F9009FAB90 /* UIColor+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,8 +29,11 @@
 		2E5418362194B6FF002FCDA9 /* NotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		2E5418372194B6FF002FCDA9 /* NotificationParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationParameters.swift; sourceTree = "<group>"; };
 		2E5418382194B6FF002FCDA9 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
-		2E5418392194B6FF002FCDA9 /* NotificationVerticalAlignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationVerticalAlignment.swift; sourceTree = "<group>"; };
 		2E54183A2194B6FF002FCDA9 /* NotificationPriority.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationPriority.swift; sourceTree = "<group>"; };
+		5B0EA4742891A471009FAB90 /* NotificationDefaultView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationDefaultView.xib; sourceTree = "<group>"; };
+		5B0EA4762891A775009FAB90 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5B0EA4782891AA11009FAB90 /* NotificationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationState.swift; sourceTree = "<group>"; };
+		5B0EA47D2891C2F9009FAB90 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,11 +66,13 @@
 		2E54182A2194B627002FCDA9 /* NotificationCenter */ = {
 			isa = PBXGroup;
 			children = (
+				5B0EA47C2891C2E8009FAB90 /* Utils */,
 				2E5418442194B743002FCDA9 /* Model */,
 				2E5418432194B734002FCDA9 /* View */,
 				2E5418362194B6FF002FCDA9 /* NotificationCenter.swift */,
 				2E54182B2194B627002FCDA9 /* NotificationCenter.h */,
 				2E54182C2194B627002FCDA9 /* Info.plist */,
+				5B0EA4762891A775009FAB90 /* Assets.xcassets */,
 			);
 			path = NotificationCenter;
 			sourceTree = "<group>";
@@ -74,6 +82,7 @@
 			children = (
 				2E5418332194B6FF002FCDA9 /* NotificationDefaultViewPresenter.swift */,
 				2E5418352194B6FF002FCDA9 /* NotificationDefaultView.swift */,
+				5B0EA4742891A471009FAB90 /* NotificationDefaultView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -81,12 +90,20 @@
 		2E5418442194B743002FCDA9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				2E5418392194B6FF002FCDA9 /* NotificationVerticalAlignment.swift */,
 				2E54183A2194B6FF002FCDA9 /* NotificationPriority.swift */,
 				2E5418372194B6FF002FCDA9 /* NotificationParameters.swift */,
+				5B0EA4782891AA11009FAB90 /* NotificationState.swift */,
 				2E5418382194B6FF002FCDA9 /* Notification.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		5B0EA47C2891C2E8009FAB90 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				5B0EA47D2891C2F9009FAB90 /* UIColor+Extension.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,6 +175,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B0EA4772891A775009FAB90 /* Assets.xcassets in Resources */,
+				5B0EA4752891A471009FAB90 /* NotificationDefaultView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,13 +187,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B0EA4792891AA11009FAB90 /* NotificationState.swift in Sources */,
 				2E54183B2194B700002FCDA9 /* NotificationDefaultViewPresenter.swift in Sources */,
 				2E54183F2194B700002FCDA9 /* NotificationParameters.swift in Sources */,
 				2E5418402194B700002FCDA9 /* Notification.swift in Sources */,
-				2E5418412194B700002FCDA9 /* NotificationVerticalAlignment.swift in Sources */,
 				2E54183E2194B700002FCDA9 /* NotificationCenter.swift in Sources */,
 				2E5418422194B700002FCDA9 /* NotificationPriority.swift in Sources */,
 				2E54183D2194B700002FCDA9 /* NotificationDefaultView.swift in Sources */,
+				5B0EA47E2891C2F9009FAB90 /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,7 +253,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -291,7 +311,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

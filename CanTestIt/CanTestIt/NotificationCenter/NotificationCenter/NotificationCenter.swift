@@ -1,9 +1,8 @@
 
 import Foundation
 
-@objc public final class NotificationCenter: NSObject {
-    
-    @objc public static let shared = NotificationCenter()
+public final class NotificationCenter: NSObject {
+    public static let shared = NotificationCenter()
     
     private var notificationDefaultViewPresenter: NotificationDefaultViewPresenter?
     private var isOtherNotificationRunning: Bool {
@@ -23,15 +22,8 @@ import Foundation
         super.init()
     }
     
-    @objc public func show(message: String) {
-        let parameters = NotificationParameters(message: message)
+    public func showMessage(with parameters: NotificationParameters) {
         let notification = Notification(parameters: parameters)
-        add(notification: notification)
-    }
-    
-    @objc public func show(message: String, hideDelay: TimeInterval, priority: NotificationPriority, verticalAlignment: NotificationVerticalAlignment) {
-        let parameters = NotificationParameters(message: message, hideDelay: hideDelay, verticalAlignment: verticalAlignment)
-        let notification = Notification(priority: priority, parameters: parameters)
         add(notification: notification)
     }
     
@@ -54,7 +46,6 @@ import Foundation
 }
 
 extension NotificationCenter: NotificationPresenterDelegate {
-    
     func didFinishDisplayingNotification() {
         notificationDefaultViewPresenter = nil
         guard let indexToRemove = queue.index(where: { $0.notificationHasBeenShown == true }) else { return }

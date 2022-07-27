@@ -1,15 +1,20 @@
-
 import Foundation
 
-internal struct NotificationParameters {
+public struct NotificationParameters {
+    let title: String
+    let subtitle: String
+    let state: NotificationState
+    let hideDelay: TimeInterval
     
-    var message: String
-    var hideDelay: TimeInterval
-    var verticalAlignment: NotificationVerticalAlignment
-    
-    init(message: String, hideDelay: TimeInterval = 3, verticalAlignment: NotificationVerticalAlignment = .center) {
-        self.message = message
+    public init(
+        title: String,
+        subtitle: String,
+        state: NotificationState,
+        hideDelay: TimeInterval = 3
+    ) {
+        self.title = title
+        self.subtitle = subtitle
+        self.state = state
         self.hideDelay = hideDelay
-        self.verticalAlignment = verticalAlignment
     }
 }

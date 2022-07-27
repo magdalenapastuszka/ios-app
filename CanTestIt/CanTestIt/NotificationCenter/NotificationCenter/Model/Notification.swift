@@ -1,7 +1,7 @@
 
 import Foundation
 
-internal final class Notification {
+final class Notification {
     
     let priority: NotificationPriority
     let creationDate: Date = Date()

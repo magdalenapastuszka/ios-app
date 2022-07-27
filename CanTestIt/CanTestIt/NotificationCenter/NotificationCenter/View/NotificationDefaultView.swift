@@ -1,105 +1,70 @@
 
 import UIKit
 
-internal final class NotificationDefaultView: UIView {
+final class NotificationDefaultView: UIView {
+    @IBOutlet weak var topContainerView: UIView!
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var bubblesImageView: UIImageView!
     
     private struct Constants {
-        
-        static let backgroundColor: UIColor = .black
-        static let textColor: UIColor = .white
-        static let textFont: UIFont = UIFont.systemFont(ofSize: 15)
-        static let cornerRadius: CGFloat = 6
-        static let padding: CGFloat = 9
-        static let outerMargin: CGFloat = 8
-        static let topOrBottomOffset: CGFloat = 30
         static let minWidth: CGFloat = 210
         static let minHeight: CGFloat = 60
+        static let outerMargin: CGFloat = 16
+        static let borderWidth: CGFloat = 1
+        static let cornerRadius: CGFloat = 26
+    }
+        
+    class func instanceFromNib() -> NotificationDefaultView {
+        return UINib(nibName: "NotificationDefaultView", bundle: Bundle(for: NotificationDefaultView.self) ).instantiate(withOwner: nil, options: nil)[0] as! NotificationDefaultView
     }
     
-    private let titleLabel = UILabel(frame: CGRect.zero)
+    var closeAction: (() -> Void)?
     
-    init(withParameters parameters: NotificationParameters) {
-        super.init(frame: CGRect.zero)
+    func configure(with parameters: NotificationParameters) {
+        backgroundColor = .clear
+        topContainerView.backgroundColor = .clear
+        containerView.backgroundColor = .black
+        containerView.layer.borderColor = parameters.state.borderColor.cgColor
+        containerView.layer.borderWidth = Constants.borderWidth
+        containerView.layer.cornerRadius = Constants.cornerRadius
+        
+        titleLabel.textColor = .white
+        titleLabel.text = parameters.title
 
-        setUp(withParameters: parameters)
+        subtitleLabel.textColor = .white
+        subtitleLabel.text = parameters.subtitle
+        
+        imageView.image = parameters.state.icon
+        bubblesImageView.image = parameters.state.bubble
+        bubblesImageView.clipsToBounds = true
+        bubblesImageView.layer.cornerRadius = Constants.cornerRadius
+        bubblesImageView.layer.maskedCorners = [.layerMinXMaxYCorner]
+        
+        closeButton.addTarget(self, action: #selector(didTapCloseButton), for: .touchUpInside)
+        
+        setUpDefaultViewConstraints()
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    // MARK: - Private
-    
-    private func setUp(withParameters parameters: NotificationParameters) {
-        setUpViewsHierarchy()
-        setUpTitleLabel()
-        setText(parameters.message)
-        setUpConstraints(withVerticalAlignment: parameters.verticalAlignment)
-        alpha = 0.0
-        layer.cornerRadius = Constants.cornerRadius
-        clipsToBounds = true
-        backgroundColor = Constants.backgroundColor
-    }
-    
-    private func setUpViewsHierarchy() {
+    private func setUpDefaultViewConstraints() {
         guard let window = UIApplication.shared.keyWindow else {
             return
         }
-
+        
         window.addSubview(self)
-        addSubview(titleLabel)
-    }
-    
-    private func setUpTitleLabel() {
-        titleLabel.numberOfLines = 0
-        titleLabel.textColor = Constants.textColor
-        titleLabel.font = Constants.textFont
-        titleLabel.textAlignment = .center
-    }
-    
-    private func setText(_ text: String) {
-        titleLabel.text = text
-    }
-    
-    private func setUpConstraints(withVerticalAlignment verticalAlignment: NotificationVerticalAlignment) {
-        guard let window = UIApplication.shared.keyWindow else {
-            return
-        }
-
-        setUpDefaultViewConstraints(withWindow: window, verticalAlignment: verticalAlignment)
-        setUpTitleLabelConstraints()
-    }
-    
-    private func setUpDefaultViewConstraints(withWindow window: UIWindow, verticalAlignment: NotificationVerticalAlignment) {
         translatesAutoresizingMaskIntoConstraints = false
         
-        var constraints = [
-            widthAnchor.constraint(greaterThanOrEqualToConstant: Constants.minWidth),
-            widthAnchor.constraint(lessThanOrEqualToConstant: window.frame.width - 2 * Constants.outerMargin),
-            heightAnchor.constraint(greaterThanOrEqualToConstant: Constants.minHeight),
+        NSLayoutConstraint.activate([
+            widthAnchor.constraint(equalToConstant: window.frame.width - 2 * Constants.outerMargin),
             centerXAnchor.constraint(equalTo: window.centerXAnchor),
-            ]
-        
-        switch verticalAlignment {
-        case .top:
-            constraints.append(topAnchor.constraint(equalTo: window.topAnchor, constant: Constants.topOrBottomOffset))
-        case .center:
-            constraints.append(centerYAnchor.constraint(equalTo: window.centerYAnchor))
-        case .bottom:
-            constraints.append(bottomAnchor.constraint(equalTo: window.bottomAnchor, constant: Constants.topOrBottomOffset * -1))
-        }
-        
-        NSLayoutConstraint.activate(constraints)
+            bottomAnchor.constraint(equalTo: window.safeAreaLayoutGuide.bottomAnchor, constant: -Constants.outerMargin)
+        ])
     }
     
-    private func setUpTitleLabelConstraints() {
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.padding),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Constants.padding * -1),
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: Constants.padding),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: Constants.padding * -1)
-            ])
+    @objc private func didTapCloseButton() {
+        closeAction?()
     }
 }

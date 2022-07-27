@@ -1,5 +1,6 @@
 import UIKit
 import Combine
+import NotificationCenter
 
 final class MenuViewController: BaseViewController {
     private lazy var mainView = MenuView(model: viewModel.loadModel())
@@ -21,6 +22,7 @@ final class MenuViewController: BaseViewController {
         cancellable = viewModel.$menuRows
             .sink { [weak self] data in
                 self?.mainView.reloadTable(with: data)
-            }        
+            }
+        NotificationCenter.shared.showMessage(with: NotificationParameters(title: "fsdfsf", subtitle: "fsfsdfsf", state: .error))
     }
 }
