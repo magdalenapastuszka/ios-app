@@ -21,6 +21,6 @@ final class MenuViewController: BaseViewController {
         cancellable = viewModel.$menuRows
             .sink { [weak self] data in
                 self?.mainView.reloadTable(with: data)
-            }
+            }        
     }
 }

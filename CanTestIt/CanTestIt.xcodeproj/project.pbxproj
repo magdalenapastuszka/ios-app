@@ -66,6 +66,8 @@
 		5B0EA46428902313009FAB90 /* MenuListTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA46328902313009FAB90 /* MenuListTableViewDataSource.swift */; };
 		5B0EA4672890241E009FAB90 /* MenuListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA4662890241E009FAB90 /* MenuListTableViewCell.swift */; };
 		5B0EA46928905F9A009FAB90 /* MenuCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA46828905F9A009FAB90 /* MenuCoordinator.swift */; };
+		5B0EA47128919C1D009FAB90 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B0EA46F28919BE5009FAB90 /* NotificationCenter.framework */; };
+		5B0EA47228919C1D009FAB90 /* NotificationCenter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5B0EA46F28919BE5009FAB90 /* NotificationCenter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,7 +85,28 @@
 			remoteGlobalIDString = 5B0EA3C2288730CF009FAB90;
 			remoteInfo = CanTestIt;
 		};
+		5B0EA46E28919BE5009FAB90 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5B0EA46A28919BE5009FAB90 /* NotificationCenter.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2E5418282194B627002FCDA9;
+			remoteInfo = NotificationCenter;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5B0EA47328919C1D009FAB90 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5B0EA47228919C1D009FAB90 /* NotificationCenter.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		5B0EA3C3288730CF009FAB90 /* CanTestIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CanTestIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,6 +172,7 @@
 		5B0EA46328902313009FAB90 /* MenuListTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListTableViewDataSource.swift; sourceTree = "<group>"; };
 		5B0EA4662890241E009FAB90 /* MenuListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListTableViewCell.swift; sourceTree = "<group>"; };
 		5B0EA46828905F9A009FAB90 /* MenuCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCoordinator.swift; sourceTree = "<group>"; };
+		5B0EA46A28919BE5009FAB90 /* NotificationCenter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = NotificationCenter.xcodeproj; path = CanTestIt/NotificationCenter/NotificationCenter.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +180,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B0EA47128919C1D009FAB90 /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,10 +204,12 @@
 		5B0EA3BA288730CF009FAB90 = {
 			isa = PBXGroup;
 			children = (
+				5B0EA46A28919BE5009FAB90 /* NotificationCenter.xcodeproj */,
 				5B0EA3C5288730CF009FAB90 /* CanTestIt */,
 				5B0EA3DC288730D1009FAB90 /* CanTestItTests */,
 				5B0EA3E6288730D1009FAB90 /* CanTestItUITests */,
 				5B0EA3C4288730CF009FAB90 /* Products */,
+				5B0EA47028919C1D009FAB90 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -357,6 +384,21 @@
 			path = TableView;
 			sourceTree = "<group>";
 		};
+		5B0EA46B28919BE5009FAB90 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5B0EA46F28919BE5009FAB90 /* NotificationCenter.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5B0EA47028919C1D009FAB90 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -367,6 +409,7 @@
 				5B0EA3BF288730CF009FAB90 /* Sources */,
 				5B0EA3C0288730CF009FAB90 /* Frameworks */,
 				5B0EA3C1288730CF009FAB90 /* Resources */,
+				5B0EA47328919C1D009FAB90 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -447,6 +490,12 @@
 			mainGroup = 5B0EA3BA288730CF009FAB90;
 			productRefGroup = 5B0EA3C4288730CF009FAB90 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 5B0EA46B28919BE5009FAB90 /* Products */;
+					ProjectRef = 5B0EA46A28919BE5009FAB90 /* NotificationCenter.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				5B0EA3C2288730CF009FAB90 /* CanTestIt */,
@@ -455,6 +504,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		5B0EA46F28919BE5009FAB90 /* NotificationCenter.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = NotificationCenter.framework;
+			remoteRef = 5B0EA46E28919BE5009FAB90 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		5B0EA3C1288730CF009FAB90 /* Resources */ = {
