@@ -4,7 +4,10 @@ import Combine
 
 final class ImagePickerViewController: BaseViewController {
     private let viewModel: ImagePickerViewModel
-    private lazy var mainView = ImagePickerView(model: viewModel.loadModel())
+    private lazy var mainView = ImagePickerView(
+        model: viewModel.loadModel(),
+        handleDidTapChooseButton: viewModel.handleDidTapChooseButton
+    )
     
     private var cancellable: AnyCancellable?
     

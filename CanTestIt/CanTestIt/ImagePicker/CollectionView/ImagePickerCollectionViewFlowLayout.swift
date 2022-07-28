@@ -13,7 +13,6 @@ enum ImagePickerCollectionViewFlowLayoutAnimation {
 }
 
 final class ImagePickerCollectionViewFlowLayout: UICollectionViewFlowLayout {
-    
     fileprivate struct LayoutState {
         var size: CGSize
         var direction: UICollectionView.ScrollDirection

@@ -15,4 +15,8 @@ final class ImagePickerViewModel {
     func loadModel() -> ImagePickerView.Model {
         ImagePickerView.Model(buttonTitle: "image-picker.button-title".localized)
     }
+    
+    func handleDidTapChooseButton(selectedPage: Int?) {
+        
+    }
 }
