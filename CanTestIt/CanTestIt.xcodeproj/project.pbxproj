@@ -77,6 +77,7 @@
 		5B0EA4912892CA85009FAB90 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA4902892CA85009FAB90 /* UICollectionView+Extension.swift */; };
 		5B0EA4932892CB2A009FAB90 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA4922892CB2A009FAB90 /* ImageCollectionViewCell.swift */; };
 		5B0EA4952892DFFD009FAB90 /* ImagePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA4942892DFFD009FAB90 /* ImagePickerCoordinator.swift */; };
+		5B0EA49928930F31009FAB90 /* UIMagicDropDown in Frameworks */ = {isa = PBXBuildFile; productRef = 5B0EA49828930F31009FAB90 /* UIMagicDropDown */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -199,6 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B0EA47128919C1D009FAB90 /* NotificationCenter.framework in Frameworks */,
+				5B0EA49928930F31009FAB90 /* UIMagicDropDown in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,6 +461,9 @@
 			dependencies = (
 			);
 			name = CanTestIt;
+			packageProductDependencies = (
+				5B0EA49828930F31009FAB90 /* UIMagicDropDown */,
+			);
 			productName = CanTestIt;
 			productReference = 5B0EA3C3288730CF009FAB90 /* CanTestIt.app */;
 			productType = "com.apple.product-type.application";
@@ -531,6 +536,9 @@
 				Base,
 			);
 			mainGroup = 5B0EA3BA288730CF009FAB90;
+			packageReferences = (
+				5B0EA49728930F31009FAB90 /* XCRemoteSwiftPackageReference "UIMagicDropDown" */,
+			);
 			productRefGroup = 5B0EA3C4288730CF009FAB90 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
@@ -977,6 +985,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5B0EA49728930F31009FAB90 /* XCRemoteSwiftPackageReference "UIMagicDropDown" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CodeNationDev/UIMagicDropDown";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5B0EA49828930F31009FAB90 /* UIMagicDropDown */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5B0EA49728930F31009FAB90 /* XCRemoteSwiftPackageReference "UIMagicDropDown" */;
+			productName = UIMagicDropDown;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5B0EA3BB288730CF009FAB90 /* Project object */;
 }
