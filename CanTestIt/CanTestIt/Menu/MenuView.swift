@@ -89,6 +89,4 @@ final class MenuView: BaseView {
     }
 }
 
-extension MenuView: UITableViewDelegate {
-    
-}
+extension MenuView: UITableViewDelegate {}

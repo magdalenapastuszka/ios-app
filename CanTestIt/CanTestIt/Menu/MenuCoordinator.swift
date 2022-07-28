@@ -20,12 +20,15 @@ final class MenuCoordiantor: Coordinator {
     }
     
     func start() {
-        let vc = MenuViewController(viewModel: MenuViewModel())
+        let vc = MenuViewController(viewModel: MenuViewModel(
+            logOut: logOut
+        ))
         vc.configureGoBackNav()
         navigationController.go(to: vc, as: .push)
     }
     
     private func logOut() {
-        loginCoordinator.start()
+        ImagePickerCoordiantor(navigationController: navigationController, appEngine: appEngine).start()
+//        loginCoordinator.start()
     }
 }

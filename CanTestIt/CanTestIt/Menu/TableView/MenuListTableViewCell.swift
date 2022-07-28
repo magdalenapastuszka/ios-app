@@ -33,11 +33,14 @@ final class MenuListTableViewCell: UITableViewCell {
         $0.font = .font(.callout)
     }
     
+    private var action: (() -> Void)?
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setUpViewHierarchy()
         setUpConstraints()
         contentView.backgroundColor = .backgroundColor
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTap)))
     }
     
     required init?(coder: NSCoder) {
@@ -48,6 +51,7 @@ final class MenuListTableViewCell: UITableViewCell {
         pictureView.setImage(model.image, for: .normal)
         titleLabel.text = model.title
         titleLabel.textColor = model.textColor
+        action = model.action
     }
     
     private func setUpViewHierarchy() {
@@ -81,5 +85,9 @@ final class MenuListTableViewCell: UITableViewCell {
             titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor)
         ])
+    }
+    
+    @objc private func didTap() {
+        action?()
     }
 }

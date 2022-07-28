@@ -8,7 +8,10 @@ final class ImagePickerView: BaseView {
     private lazy var collectionView = UICollectionView(
         frame: .zero,
         collectionViewLayout: layout
-    )
+    ).then {
+        $0.register(ImageCollectionViewCell.self)
+        $0.backgroundColor = .backgroundColor
+    }
     
     private let chooseButton = UIButton().then {
         $0.backgroundColor = .primaryColor
@@ -20,6 +23,7 @@ final class ImagePickerView: BaseView {
     
     private let layout = ImagePickerCollectionViewFlowLayout().then {
         $0.itemSize = CGSize(width: 250, height: 250)
+        $0.scrollDirection = .horizontal
     }
     private lazy var dataSource = ImageCollectionViewDataSource(collectionView)
     
@@ -28,6 +32,7 @@ final class ImagePickerView: BaseView {
         fill(with: model)
         setUpViewHierarchy()
         setUpConstraints()
+        collectionView.delegate = self
     }
     
     func reloadCollectionView(with data: [ImageCollectionData]) {
@@ -65,7 +70,7 @@ final class ImagePickerView: BaseView {
         chooseButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             chooseButton.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
-            chooseButton.topAnchor.constraint(equalTo: collectionView.bottomAnchor),
+            chooseButton.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: .defaultPadding),
             chooseButton.heightAnchor.constraint(equalToConstant: .buttonHeight)
         ])
     }
@@ -73,7 +78,13 @@ final class ImagePickerView: BaseView {
     private func setUpPageControlConstraints() {
         pageControl.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-        
+            pageControl.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            pageControl.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            pageControl.topAnchor.constraint(equalTo: chooseButton.bottomAnchor, constant: .defaultPadding)
         ])
     }
+}
+
+extension ImagePickerView: UICollectionViewDelegate {
+    
 }

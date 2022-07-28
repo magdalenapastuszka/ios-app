@@ -1,9 +1,12 @@
 import Foundation
 import UIKit
+import Combine
 
 final class ImagePickerViewController: BaseViewController {
     private let viewModel: ImagePickerViewModel
     private lazy var mainView = ImagePickerView(model: viewModel.loadModel())
+    
+    private var cancellable: AnyCancellable?
     
     init(viewModel: ImagePickerViewModel) {
         self.viewModel = viewModel
@@ -16,9 +19,9 @@ final class ImagePickerViewController: BaseViewController {
     }
     
     private func bindAction() {
-        viewModel.$data
+        cancellable = viewModel.$data
             .sink { [weak self] data in
-                mainView.reloadCollectionView(with: data)
+                self?.mainView.reloadCollectionView(with: data)
             }
     }
 }
