@@ -68,6 +68,15 @@
 		5B0EA46928905F9A009FAB90 /* MenuCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA46828905F9A009FAB90 /* MenuCoordinator.swift */; };
 		5B0EA47128919C1D009FAB90 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B0EA46F28919BE5009FAB90 /* NotificationCenter.framework */; };
 		5B0EA47228919C1D009FAB90 /* NotificationCenter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5B0EA46F28919BE5009FAB90 /* NotificationCenter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5B0EA4842892C13B009FAB90 /* ImagePickerCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA4832892C13B009FAB90 /* ImagePickerCollectionViewFlowLayout.swift */; };
+		5B0EA4862892C196009FAB90 /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA4852892C196009FAB90 /* ImagePickerViewController.swift */; };
+		5B0EA4882892C1A0009FAB90 /* ImagePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA4872892C1A0009FAB90 /* ImagePickerViewModel.swift */; };
+		5B0EA48A2892C1A9009FAB90 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA4892892C1A9009FAB90 /* ImagePickerView.swift */; };
+		5B0EA48D2892C8C4009FAB90 /* ImageCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA48C2892C8C4009FAB90 /* ImageCollectionViewDataSource.swift */; };
+		5B0EA48F2892CA55009FAB90 /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA48E2892CA55009FAB90 /* UICollectionViewCell+Extension.swift */; };
+		5B0EA4912892CA85009FAB90 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA4902892CA85009FAB90 /* UICollectionView+Extension.swift */; };
+		5B0EA4932892CB2A009FAB90 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA4922892CB2A009FAB90 /* ImageCollectionViewCell.swift */; };
+		5B0EA4952892DFFD009FAB90 /* ImagePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA4942892DFFD009FAB90 /* ImagePickerCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -173,6 +182,15 @@
 		5B0EA4662890241E009FAB90 /* MenuListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListTableViewCell.swift; sourceTree = "<group>"; };
 		5B0EA46828905F9A009FAB90 /* MenuCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCoordinator.swift; sourceTree = "<group>"; };
 		5B0EA46A28919BE5009FAB90 /* NotificationCenter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = NotificationCenter.xcodeproj; path = CanTestIt/NotificationCenter/NotificationCenter.xcodeproj; sourceTree = "<group>"; };
+		5B0EA4832892C13B009FAB90 /* ImagePickerCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		5B0EA4852892C196009FAB90 /* ImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerViewController.swift; sourceTree = "<group>"; };
+		5B0EA4872892C1A0009FAB90 /* ImagePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerViewModel.swift; sourceTree = "<group>"; };
+		5B0EA4892892C1A9009FAB90 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
+		5B0EA48C2892C8C4009FAB90 /* ImageCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		5B0EA48E2892CA55009FAB90 /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
+		5B0EA4902892CA85009FAB90 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
+		5B0EA4922892CB2A009FAB90 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		5B0EA4942892DFFD009FAB90 /* ImagePickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +244,7 @@
 		5B0EA3C5288730CF009FAB90 /* CanTestIt */ = {
 			isa = PBXGroup;
 			children = (
+				5B0EA4822892C124009FAB90 /* ImagePicker */,
 				5B0EA45C2890218B009FAB90 /* Menu */,
 				5B0EA450288EDFC5009FAB90 /* Models */,
 				5B0EA43B288C4388009FAB90 /* EventList */,
@@ -285,7 +304,9 @@
 				5B0EA44C288ECA68009FAB90 /* BaseViewController.swift */,
 				5B0EA44E288ECF43009FAB90 /* BaseView.swift */,
 				5B0EA455288EE671009FAB90 /* UITableViewCell+Extension.swift */,
+				5B0EA48E2892CA55009FAB90 /* UICollectionViewCell+Extension.swift */,
 				5B0EA457288EE689009FAB90 /* UITableView+Extension.swift */,
+				5B0EA4902892CA85009FAB90 /* UICollectionView+Extension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -397,6 +418,28 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5B0EA4822892C124009FAB90 /* ImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				5B0EA48B2892C8A9009FAB90 /* CollectionView */,
+				5B0EA4852892C196009FAB90 /* ImagePickerViewController.swift */,
+				5B0EA4872892C1A0009FAB90 /* ImagePickerViewModel.swift */,
+				5B0EA4892892C1A9009FAB90 /* ImagePickerView.swift */,
+				5B0EA4942892DFFD009FAB90 /* ImagePickerCoordinator.swift */,
+			);
+			path = ImagePicker;
+			sourceTree = "<group>";
+		};
+		5B0EA48B2892C8A9009FAB90 /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				5B0EA4832892C13B009FAB90 /* ImagePickerCollectionViewFlowLayout.swift */,
+				5B0EA48C2892C8C4009FAB90 /* ImageCollectionViewDataSource.swift */,
+				5B0EA4922892CB2A009FAB90 /* ImageCollectionViewCell.swift */,
+			);
+			path = CollectionView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -552,29 +595,35 @@
 				5B0EA452288EDFCF009FAB90 /* Event.swift in Sources */,
 				5B0EA3F7288731D1009FAB90 /* AppCoordinator.swift in Sources */,
 				5B0EA41A2887C545009FAB90 /* UIImage+Variables.swift in Sources */,
+				5B0EA48D2892C8C4009FAB90 /* ImageCollectionViewDataSource.swift in Sources */,
 				5B0EA42428880326009FAB90 /* Font+Extension.swift in Sources */,
 				5B0EA3FE28873505009FAB90 /* Request.swift in Sources */,
 				5B0EA43D288C439E009FAB90 /* EventListViewController.swift in Sources */,
 				5B0EA46928905F9A009FAB90 /* MenuCoordinator.swift in Sources */,
 				5B0EA45E2890219E009FAB90 /* MenuViewController.swift in Sources */,
 				5B0EA42C28883396009FAB90 /* LoginCoordinator.swift in Sources */,
+				5B0EA4952892DFFD009FAB90 /* ImagePickerCoordinator.swift in Sources */,
 				5B0EA438288B2F52009FAB90 /* UITextField+Extension.swift in Sources */,
 				5B0EA454288EE472009FAB90 /* EventListDiffableDataSource.swift in Sources */,
 				5B0EA44B288EB413009FAB90 /* UIViewController+Extension.swift in Sources */,
 				5B0EA44D288ECA68009FAB90 /* BaseViewController.swift in Sources */,
 				5B0EA42A2888231B009FAB90 /* UserDefaultsMenager.swift in Sources */,
+				5B0EA4862892C196009FAB90 /* ImagePickerViewController.swift in Sources */,
+				5B0EA4842892C13B009FAB90 /* ImagePickerCollectionViewFlowLayout.swift in Sources */,
 				5B0EA41E2887F00B009FAB90 /* String+Extension.swift in Sources */,
 				5B0EA40028873523009FAB90 /* APIClient.swift in Sources */,
 				5B0EA441288C446F009FAB90 /* EventListView.swift in Sources */,
 				5B0EA436288B2B57009FAB90 /* InputField.swift in Sources */,
 				5B0EA42628880345009FAB90 /* FontStyle.swift in Sources */,
 				5B0EA41628873F65009FAB90 /* UIColor+Variables.swift in Sources */,
+				5B0EA4912892CA85009FAB90 /* UICollectionView+Extension.swift in Sources */,
 				5B0EA40C28873AD5009FAB90 /* IntroViewModel.swift in Sources */,
 				5B0EA422288802F4009FAB90 /* Fonts.swift in Sources */,
 				5B0EA4182887BBD3009FAB90 /* AppEngine.swift in Sources */,
 				5B0EA40728873A2C009FAB90 /* LoginView.swift in Sources */,
 				5B0EA40E28873AED009FAB90 /* IntroView.swift in Sources */,
 				5B0EA3FA2887322C009FAB90 /* Coordinator.swift in Sources */,
+				5B0EA4932892CB2A009FAB90 /* ImageCollectionViewCell.swift in Sources */,
 				5B0EA456288EE671009FAB90 /* UITableViewCell+Extension.swift in Sources */,
 				5B0EA46428902313009FAB90 /* MenuListTableViewDataSource.swift in Sources */,
 				5B0EA41228873EB7009FAB90 /* Color+Variables.swift in Sources */,
@@ -582,11 +631,13 @@
 				5B0EA45A288EE9FF009FAB90 /* EmptyEventListTableViewCell.swift in Sources */,
 				5B0EA41428873F44009FAB90 /* UIColor+Extension.swift in Sources */,
 				5B0EA458288EE689009FAB90 /* UITableView+Extension.swift in Sources */,
+				5B0EA48A2892C1A9009FAB90 /* ImagePickerView.swift in Sources */,
 				5B0EA4282888206F009FAB90 /* IntroCoordinator.swift in Sources */,
 				5B0EA4202887FA6F009FAB90 /* CGFloat+Variables.swift in Sources */,
 				5B0EA462289021B6009FAB90 /* MenuView.swift in Sources */,
 				5B0EA447288D9038009FAB90 /* Then.swift in Sources */,
 				5B0EA3C7288730CF009FAB90 /* AppDelegate.swift in Sources */,
+				5B0EA4882892C1A0009FAB90 /* ImagePickerViewModel.swift in Sources */,
 				5B0EA41028873CAB009FAB90 /* Logger.swift in Sources */,
 				5B0EA449288DBDA3009FAB90 /* EventListCoordinator.swift in Sources */,
 				5B0EA4042887389D009FAB90 /* Encodable+Dictionary.swift in Sources */,
@@ -598,6 +649,7 @@
 				5B0EA3C9288730CF009FAB90 /* SceneDelegate.swift in Sources */,
 				5B0EA44F288ECF43009FAB90 /* BaseView.swift in Sources */,
 				5B0EA4672890241E009FAB90 /* MenuListTableViewCell.swift in Sources */,
+				5B0EA48F2892CA55009FAB90 /* UICollectionViewCell+Extension.swift in Sources */,
 				5B0EA43A288C31EA009FAB90 /* TextFieldWithPadding.swift in Sources */,
 				5B0EA42E28885300009FAB90 /* Placeholder.swift in Sources */,
 			);

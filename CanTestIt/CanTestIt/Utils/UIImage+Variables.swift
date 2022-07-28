@@ -21,4 +21,9 @@ extension UIImage {
     static let menuSales = UIImage(named: "menuSales")!
     static let menuSettings = UIImage(named: "menuSettings")!
     static let logout = UIImage(named: "logout")!
+    
+    static let image1 = UIImage(named: "image1")!
+    static let image2 = UIImage(named: "image2")!
+    static let image3 = UIImage(named: "image3")!
+    static let image4 = UIImage(named: "image4")!
 }

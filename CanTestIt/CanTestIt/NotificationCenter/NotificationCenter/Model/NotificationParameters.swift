@@ -10,7 +10,7 @@ public struct NotificationParameters {
         title: String,
         subtitle: String,
         state: NotificationState,
-        hideDelay: TimeInterval = 3
+        hideDelay: TimeInterval = 4
     ) {
         self.title = title
         self.subtitle = subtitle
