@@ -78,6 +78,9 @@
 		5B0EA4932892CB2A009FAB90 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA4922892CB2A009FAB90 /* ImageCollectionViewCell.swift */; };
 		5B0EA4952892DFFD009FAB90 /* ImagePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA4942892DFFD009FAB90 /* ImagePickerCoordinator.swift */; };
 		5B0EA49928930F31009FAB90 /* UIMagicDropDown in Frameworks */ = {isa = PBXBuildFile; productRef = 5B0EA49828930F31009FAB90 /* UIMagicDropDown */; };
+		5B0EA49D28931228009FAB90 /* EventFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA49C28931228009FAB90 /* EventFormViewModel.swift */; };
+		5B0EA49F2893123E009FAB90 /* EventFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA49E2893123E009FAB90 /* EventFormView.swift */; };
+		5B0EA4A128931258009FAB90 /* EventFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA4A028931258009FAB90 /* EventFormViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -192,6 +195,9 @@
 		5B0EA4902892CA85009FAB90 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		5B0EA4922892CB2A009FAB90 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		5B0EA4942892DFFD009FAB90 /* ImagePickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerCoordinator.swift; sourceTree = "<group>"; };
+		5B0EA49C28931228009FAB90 /* EventFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFormViewModel.swift; sourceTree = "<group>"; };
+		5B0EA49E2893123E009FAB90 /* EventFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFormView.swift; sourceTree = "<group>"; };
+		5B0EA4A028931258009FAB90 /* EventFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFormViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -246,6 +252,7 @@
 		5B0EA3C5288730CF009FAB90 /* CanTestIt */ = {
 			isa = PBXGroup;
 			children = (
+				5B0EA49B2893120B009FAB90 /* EventForm */,
 				5B0EA4822892C124009FAB90 /* ImagePicker */,
 				5B0EA45C2890218B009FAB90 /* Menu */,
 				5B0EA450288EDFC5009FAB90 /* Models */,
@@ -444,6 +451,16 @@
 			path = CollectionView;
 			sourceTree = "<group>";
 		};
+		5B0EA49B2893120B009FAB90 /* EventForm */ = {
+			isa = PBXGroup;
+			children = (
+				5B0EA49C28931228009FAB90 /* EventFormViewModel.swift */,
+				5B0EA4A028931258009FAB90 /* EventFormViewController.swift */,
+				5B0EA49E2893123E009FAB90 /* EventFormView.swift */,
+			);
+			path = EventForm;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -629,6 +646,7 @@
 				5B0EA422288802F4009FAB90 /* Fonts.swift in Sources */,
 				5B0EA4182887BBD3009FAB90 /* AppEngine.swift in Sources */,
 				5B0EA40728873A2C009FAB90 /* LoginView.swift in Sources */,
+				5B0EA49F2893123E009FAB90 /* EventFormView.swift in Sources */,
 				5B0EA40E28873AED009FAB90 /* IntroView.swift in Sources */,
 				5B0EA3FA2887322C009FAB90 /* Coordinator.swift in Sources */,
 				5B0EA4932892CB2A009FAB90 /* ImageCollectionViewCell.swift in Sources */,
@@ -648,6 +666,7 @@
 				5B0EA4882892C1A0009FAB90 /* ImagePickerViewModel.swift in Sources */,
 				5B0EA41028873CAB009FAB90 /* Logger.swift in Sources */,
 				5B0EA449288DBDA3009FAB90 /* EventListCoordinator.swift in Sources */,
+				5B0EA4A128931258009FAB90 /* EventFormViewController.swift in Sources */,
 				5B0EA4042887389D009FAB90 /* Encodable+Dictionary.swift in Sources */,
 				5B0EA434288AC3F2009FAB90 /* AppVariables.swift in Sources */,
 				5B0EA445288D8195009FAB90 /* UIView+Extension.swift in Sources */,
@@ -660,6 +679,7 @@
 				5B0EA48F2892CA55009FAB90 /* UICollectionViewCell+Extension.swift in Sources */,
 				5B0EA43A288C31EA009FAB90 /* TextFieldWithPadding.swift in Sources */,
 				5B0EA42E28885300009FAB90 /* Placeholder.swift in Sources */,
+				5B0EA49D28931228009FAB90 /* EventFormViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
