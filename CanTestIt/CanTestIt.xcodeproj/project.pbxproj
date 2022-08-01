@@ -81,6 +81,7 @@
 		5B0EA49D28931228009FAB90 /* EventFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA49C28931228009FAB90 /* EventFormViewModel.swift */; };
 		5B0EA49F2893123E009FAB90 /* EventFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA49E2893123E009FAB90 /* EventFormView.swift */; };
 		5B0EA4A128931258009FAB90 /* EventFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA4A028931258009FAB90 /* EventFormViewController.swift */; };
+		5B0EA4A328946E7C009FAB90 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA4A228946E7C009FAB90 /* UIStackView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -198,6 +199,7 @@
 		5B0EA49C28931228009FAB90 /* EventFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFormViewModel.swift; sourceTree = "<group>"; };
 		5B0EA49E2893123E009FAB90 /* EventFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFormView.swift; sourceTree = "<group>"; };
 		5B0EA4A028931258009FAB90 /* EventFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFormViewController.swift; sourceTree = "<group>"; };
+		5B0EA4A228946E7C009FAB90 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -308,6 +310,7 @@
 				5B0EA437288B2F52009FAB90 /* UITextField+Extension.swift */,
 				5B0EA439288C31EA009FAB90 /* TextFieldWithPadding.swift */,
 				5B0EA444288D8195009FAB90 /* UIView+Extension.swift */,
+				5B0EA4A228946E7C009FAB90 /* UIStackView+Extension.swift */,
 				5B0EA446288D9038009FAB90 /* Then.swift */,
 				5B0EA44A288EB413009FAB90 /* UIViewController+Extension.swift */,
 				5B0EA44C288ECA68009FAB90 /* BaseViewController.swift */,
@@ -680,6 +683,7 @@
 				5B0EA43A288C31EA009FAB90 /* TextFieldWithPadding.swift in Sources */,
 				5B0EA42E28885300009FAB90 /* Placeholder.swift in Sources */,
 				5B0EA49D28931228009FAB90 /* EventFormViewModel.swift in Sources */,
+				5B0EA4A328946E7C009FAB90 /* UIStackView+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
