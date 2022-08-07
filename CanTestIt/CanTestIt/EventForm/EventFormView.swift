@@ -57,17 +57,15 @@ final class EventFormView: BaseView {
         $0.font = .font(size: 10, weight: .regular)
     }
     
-    private let categoryDropdownField = UIMagicDropdown(theme: MagicDropDownConfig(), items: [
-        UIMagicDropdownData(label: "aaaaaaa", value: "aaaaa"),
-        UIMagicDropdownData(label: "bbbbbbb", value: "bbbbbbb"),
-        UIMagicDropdownData(label: "ccccccc", value: "ccccccc"),
-        UIMagicDropdownData(label: "ddddddd", value: "ddddddd"),
-        UIMagicDropdownData(label: "eeeeeee", value: "eeeeeee")
-    ]).then {
-        $0.theme?.colors?.dropDownBoxBackgroundColor = .textFieldBackgroundColor
-        $0.theme?.colors?.hintTextColor = .placeholderColor
-        $0.theme?.layers?.boxCornerRadius = .defaultCornerRadius
-    }
+    private let categoryDropdownField = UIMagicDropdown(
+        theme: MagicDropDownConfig.category,
+        items: [
+            UIMagicDropdownData(label: "aaaaaaa", value: "aaaaa"),
+            UIMagicDropdownData(label: "bbbbbbb", value: "bbbbbbb"),
+            UIMagicDropdownData(label: "ccccccc", value: "ccccccc"),
+            UIMagicDropdownData(label: "ddddddd", value: "ddddddd"),
+            UIMagicDropdownData(label: "eeeeeee", value: "eeeeeee")
+        ])
     
     private let startDateTitleLabel = UILabel().then {
         $0.textColor = .textColor
@@ -168,6 +166,7 @@ final class EventFormView: BaseView {
         titleLabel.text = model.viewTitle
         eventTitleLabel.text = model.eventFieldTitle
         eventTtitleTextField.placeholder = model.eventFieldPlaceholder
+        eventTtitleTextField.placeholderColor(.placeholderColor)
         categoryTitleLabel.text = model.categoryFieldTitle
         categoryDropdownField.hintMessage = model.categoryFieldPlaceholder
         startDateTitleLabel.text = model.startDateFieldTitle
@@ -175,7 +174,8 @@ final class EventFormView: BaseView {
         endDateTitleLabel.text = model.endDateFieldTitle
         endDateButton.setTitle(model.endDateFieldPlaceholder, for: .normal)
         priceTitleLabel.text = model.priceFieldTitle
-        priceTextField.text = model.priceFieldPlaceholder
+        priceTextField.placeholder = model.priceFieldPlaceholder
+        priceTextField.placeholderColor(.placeholderColor)
         premiumEventTitleLabel.text = model.premiumSwitchTitle
         saveButton.setTitle(model.saveButtonTitle, for: .normal)
         cancelButton.setTitle(model.cancelButtonTitle, for: .normal)
@@ -312,7 +312,7 @@ final class EventFormView: BaseView {
             categoryDropdownField.leadingAnchor.constraint(equalTo: formView.leadingAnchor, constant: .defaultPadding),
             categoryDropdownField.trailingAnchor.constraint(equalTo: formView.trailingAnchor, constant: -.defaultPadding),
             categoryDropdownField.topAnchor.constraint(equalTo: categoryTitleLabel.bottomAnchor, constant: Constants.smallSpacing),
-            categoryDropdownField.heightAnchor.constraint(equalToConstant: .defaultControlHeight)
+//            categoryDropdownField.heightAnchor.constraint(equalToConstant: .defaultControlHeight)
         ])
     }
     
@@ -452,9 +452,12 @@ final class EventFormView: BaseView {
 
 extension EventFormView: UIMagicDropDownDelegate {
     func dropDownSelected(_ item: UIMagicDropdownData, _ sender: UIMagicDropdown) {
+        categoryDropdownField.theme?.colors?.hintTextColor = categoryDropdownField.itemSelected == nil
+        ? .placeholderColor
+        : .textColor
     }
     
     func dropdownExpanded(_ sender: UIMagicDropdown) {
-           bringSubviewToFront(sender)
+        formView.bringSubviewToFront(sender)
     }
 }
