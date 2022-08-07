@@ -21,7 +21,6 @@ struct LoginView: View {
         static let spacing: CGFloat = 16
         static let bigSpacing: CGFloat = 44
         static let padding: CGFloat = 24
-        static let cornerRadius: CGFloat = 4
     }
     
     init(viewModel: LoginViewModel) {
@@ -52,16 +51,16 @@ struct LoginView: View {
                 delegate: nil,
                 text: $email
             )
-            .frame(height: .buttonHeight, alignment: .leading)
+            .frame(height: .defaultControlHeight, alignment: .leading)
                 .background(
                     RoundedRectangle(
-                        cornerRadius: Constants.cornerRadius,
+                        cornerRadius: .defaultCornerRadius,
                         style: .continuous
                     ).fill(Color.textFieldBackgroundColor)
                 )
                 .background(
                     RoundedRectangle(
-                        cornerRadius: Constants.cornerRadius,
+                        cornerRadius: .defaultCornerRadius,
                         style: .continuous
                     )
                     .stroke(
@@ -83,16 +82,16 @@ struct LoginView: View {
                 delegate: nil,
                 text: $password
             )
-            .frame(height: .buttonHeight, alignment: .leading)
+            .frame(height: .defaultControlHeight, alignment: .leading)
             .background(
                 RoundedRectangle(
-                    cornerRadius: Constants.cornerRadius,
+                    cornerRadius: .defaultCornerRadius,
                     style: .continuous
                 ).fill(Color.textFieldBackgroundColor)
             )
             .background(
                 RoundedRectangle(
-                    cornerRadius: Constants.cornerRadius,
+                    cornerRadius: .defaultCornerRadius,
                     style: .continuous
                 ).stroke(
                     viewModel.error != nil ? Color.errorColor : Color.clear, lineWidth: 1
@@ -110,14 +109,14 @@ struct LoginView: View {
                         .frame(
                             minWidth: .zero,
                             maxWidth: .infinity,
-                            maxHeight: .buttonHeight,
+                            maxHeight: .defaultControlHeight,
                             alignment: .center
                         )
                         .foregroundColor(.buttonTitleColor)
                 })
             .font(.callout)
             .background(Color.primaryColor)
-            .cornerRadius(.buttonCornerRadius)
+            .cornerRadius(.defaultCornerRadius)
             .padding([.top], Constants.bigSpacing)
             Text(viewModel.error ?? "")
                 .font(.body)

@@ -12,4 +12,5 @@ extension UIColor {
     static let placeholderColor = UIColor(hex: "#8C8A93")
     static let errorColor = UIColor(hex: "#FF6363")
     static let logoutColor = UIColor(hex: "#FF6363")
+    static let cancelColor = UIColor(hex: "#DCDEE3")
 }

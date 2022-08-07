@@ -7,7 +7,7 @@ final class EventListViewController: BaseViewController {
         model: viewModel.loadModel(),
         handleDidTapEvent: viewModel.didTapEvent,
         handleDidTapEventsButton: {},
-        handleDidTapAddButton: {}
+        handleDidTapAddButton: viewModel.didTapAddButton
     )
     
     private var cancellables = Set<AnyCancellable>()

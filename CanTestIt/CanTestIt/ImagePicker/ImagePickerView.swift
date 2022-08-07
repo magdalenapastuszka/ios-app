@@ -21,7 +21,7 @@ final class ImagePickerView: BaseView {
     
     private let chooseButton = UIButton().then {
         $0.backgroundColor = .primaryColor
-        $0.layer.cornerRadius = .buttonCornerRadius
+        $0.layer.cornerRadius = .defaultCornerRadius
         $0.setTitleColor(.buttonTitleColor, for: .normal)
         $0.contentEdgeInsets = UIEdgeInsets(top: 0, left: .defaultPadding, bottom: 0, right: .defaultPadding)
         $0.addTarget(self, action: #selector(didTapChooseButton), for: .touchUpInside)
@@ -88,7 +88,7 @@ final class ImagePickerView: BaseView {
         NSLayoutConstraint.activate([
             chooseButton.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
             chooseButton.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: .defaultPadding),
-            chooseButton.heightAnchor.constraint(equalToConstant: .buttonHeight)
+            chooseButton.heightAnchor.constraint(equalToConstant: .defaultControlHeight)
         ])
     }
     

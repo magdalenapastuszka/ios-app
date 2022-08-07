@@ -82,6 +82,7 @@
 		5B0EA49F2893123E009FAB90 /* EventFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA49E2893123E009FAB90 /* EventFormView.swift */; };
 		5B0EA4A128931258009FAB90 /* EventFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA4A028931258009FAB90 /* EventFormViewController.swift */; };
 		5B0EA4A328946E7C009FAB90 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA4A228946E7C009FAB90 /* UIStackView+Extension.swift */; };
+		6C2E27A7289E92B000D95703 /* EventFormCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2E27A6289E92B000D95703 /* EventFormCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -200,6 +201,7 @@
 		5B0EA49E2893123E009FAB90 /* EventFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFormView.swift; sourceTree = "<group>"; };
 		5B0EA4A028931258009FAB90 /* EventFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFormViewController.swift; sourceTree = "<group>"; };
 		5B0EA4A228946E7C009FAB90 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
+		6C2E27A6289E92B000D95703 /* EventFormCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFormCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -460,6 +462,7 @@
 				5B0EA49C28931228009FAB90 /* EventFormViewModel.swift */,
 				5B0EA4A028931258009FAB90 /* EventFormViewController.swift */,
 				5B0EA49E2893123E009FAB90 /* EventFormView.swift */,
+				6C2E27A6289E92B000D95703 /* EventFormCoordinator.swift */,
 			);
 			path = EventForm;
 			sourceTree = "<group>";
@@ -672,6 +675,7 @@
 				5B0EA4A128931258009FAB90 /* EventFormViewController.swift in Sources */,
 				5B0EA4042887389D009FAB90 /* Encodable+Dictionary.swift in Sources */,
 				5B0EA434288AC3F2009FAB90 /* AppVariables.swift in Sources */,
+				6C2E27A7289E92B000D95703 /* EventFormCoordinator.swift in Sources */,
 				5B0EA445288D8195009FAB90 /* UIView+Extension.swift in Sources */,
 				5B0EA40928873A38009FAB90 /* LoginViewModel.swift in Sources */,
 				5B0EA43F288C43AC009FAB90 /* EventListViewModel.swift in Sources */,

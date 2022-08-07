@@ -26,6 +26,7 @@ final class AppCoordinator: Coordinator {
         self.window = window
         self.navigationController = navigationController
         self.appEngine = appEngine
+        configureStyle()
     }
     
     func start() {
@@ -35,5 +36,12 @@ final class AppCoordinator: Coordinator {
         appEngine.userDefaultsManager.wasIntroDisplayed
         ? loginCoordinator.start()
         : introCoordinator.start()
+    }
+    
+    private func configureStyle() {
+        navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController.navigationBar.shadowImage = UIImage()
+        navigationController.navigationBar.backgroundColor = .backgroundColor
+        navigationController.navigationBar.barTintColor = .backgroundColor
     }
 }

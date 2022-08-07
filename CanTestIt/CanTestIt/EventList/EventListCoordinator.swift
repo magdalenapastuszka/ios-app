@@ -9,6 +9,10 @@ final class EventListCoordinator: Coordinator {
         appEngine: appEngine
     )
     
+    private lazy var evenFormCoordinator = EventFormCoordinator(
+        navigationController: navigationController,
+        appEngine: appEngine
+    )
     private let appEngine: AppEngine
     
     init(
@@ -20,12 +24,18 @@ final class EventListCoordinator: Coordinator {
     }
     
     func start() {
-        let vc = EventListViewController(viewModel: EventListViewModel())
+        let vc = EventListViewController(viewModel: EventListViewModel(
+            showEventForm: showEventForm
+        ))
         vc.configureHamburgerNav(target: self, action: #selector(showMenu))
         navigationController.go(to: vc, as: .root)
     }
     
     @objc private func showMenu() {
         menuCoordinator.start()
+    }
+    
+    private func showEventForm(event: Event?) {
+        evenFormCoordinator.start()
     }
 }

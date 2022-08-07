@@ -159,7 +159,7 @@ final class EventListView: BaseView {
             searchField.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: Constants.padding),
             searchField.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -Constants.padding),
             searchField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Constants.spacing),
-            searchField.heightAnchor.constraint(equalToConstant: .buttonHeight)
+            searchField.heightAnchor.constraint(equalToConstant: .defaultControlHeight)
         ])
     }
     

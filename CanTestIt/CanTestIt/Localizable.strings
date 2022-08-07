@@ -28,3 +28,19 @@
 "menu.logout" = "Log out";
 
 "image-picker.button-title" = "Choose";
+
+"event-form.title" = "Let’s create an event!";
+"event-form.event-title-field" = "Event title";
+"event-form.event-title-field-placeholder" = "name of your event*";
+"event-form.category-field-title" = "Event category";
+"event-form.category-field-placeholder" = "choose category";
+"event-form.start-date-field-title" = "Start date";
+"event-form.start-date-field-placeholder" = "Start date";
+"event-form.end-date-field-title" = "End date";
+"event-form.end-date-field-placeholder" = "End date";
+"event-form.price-field-title" = "Price";
+"event-form.price-field-placeholder" = "price* PLN";
+"event-form.premium-event-switch-title" = "Premium event";
+"event-form.save-button-title" = "Save";
+"event-form.save-cancel-title" = "Cancel";
+"event-form.save-delete-title" = "Delete";

@@ -105,7 +105,7 @@ struct IntroView: View {
                 action: viewModel.showLoginScreen,
                 label: { Text(viewModel.model?.buttonTitle ?? "")
                         .frame(
-                            height: .buttonHeight,
+                            height: .defaultControlHeight,
                             alignment: .center
                         )
                         .padding(Constants.buttonPadding)
@@ -113,7 +113,7 @@ struct IntroView: View {
                 })
             .font(.callout)
             .background(Color.primaryColor)
-            .cornerRadius(.buttonCornerRadius)
+            .cornerRadius(.defaultCornerRadius)
             .frame(maxHeight: .infinity, alignment: .bottom)
             
             Divider()

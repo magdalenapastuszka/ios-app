@@ -6,6 +6,12 @@ final class EventListViewModel {
                                                                                 .main(EventListTableViewCell.Model(title: "title title", image: .event, priceTitle: "Price", price: "200 USD", category: "Festival", startDateTitle: "Start date", startDate: "11-12-2022", startHour: "8:00")),
                                                                                 .main(EventListTableViewCell.Model(title: "title title", image: .noResult, priceTitle: "Price", price: "200 USD", category: "Festival", startDateTitle: "Start date", startDate: "11-12-2022", startHour: "8:00"))])]
     
+    private let showEventForm: (Event?) -> Void
+    
+    init(showEventForm: @escaping (Event?) -> Void) {
+        self.showEventForm = showEventForm
+    }
+    
     func loadModel() -> EventListView.Model {
         EventListView.Model(
             welcomeText: "event-list.welcome-text".localized,
@@ -17,5 +23,9 @@ final class EventListViewModel {
     
     func didTapEvent(index: Int) {
         
+    }
+    
+    func didTapAddButton() {
+        showEventForm(nil)
     }
 }
