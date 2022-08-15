@@ -8,7 +8,7 @@ protocol CategoriesAPIManagerFetcher {
 final class CategoriesAPIManager: CategoriesAPIManagerFetcher {
     private let apiClient: APIClient
     
-    init(apiClient: APIClient = APIClient(baseURL: AppVariables.baseURL)) {
+    init(apiClient: APIClient) {
         self.apiClient = apiClient
     }
     

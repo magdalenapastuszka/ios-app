@@ -1,18 +1,26 @@
 import Foundation
+import UIMagicDropDown
+import Combine
 
 final class EventFormViewModel {
-    @Published var error: String? = "dasfsafsdf"
+    @Published var error: String?
+    @Published var isLoading: Bool = false
+    @Published var categoriesDropdownData: [UIMagicDropdownData] = []
     
+    private var cancellables = Set<AnyCancellable>()
     private var event: Event?
+    private let categoriesCache: CategoriesCache
     private let showImagePicker: () -> Void
     private let dismissView: () -> Void
 
     init(
         event: Event?,
+        categoriesCache: CategoriesCache,
         showImagePicker: @escaping () -> Void,
         dismissView: @escaping () -> Void
     ) {
         self.event = event
+        self.categoriesCache = categoriesCache
         self.dismissView = dismissView
         self.showImagePicker = showImagePicker
     }
@@ -36,6 +44,14 @@ final class EventFormViewModel {
             deleteButtonTitle: "event-form.save-delete-title".localized,
             isDeleteButtonHidden: false
         )
+    }
+    
+    func loadCategoriesDropdownData(){
+        categoriesCache.fetchCategories()
+            .sink { [weak self] categories in
+                self?.categoriesDropdownData = categories.map { UIMagicDropdownData(label: $0.name, value: $0.code) }
+            }
+            .store(in: &cancellables)
     }
     
     func didTapSaveButton() {

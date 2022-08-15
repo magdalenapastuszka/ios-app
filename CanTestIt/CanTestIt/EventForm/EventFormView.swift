@@ -97,6 +97,7 @@ final class EventFormView: BaseView {
         $0.placeholderColor(.placeholderColor)
         $0.layer.cornerRadius = .defaultCornerRadius
         $0.backgroundColor = .textFieldBackgroundColor
+        $0.keyboardType = .numberPad
     }
     
     private let premiumEventSwitch = UISwitch().then {
@@ -160,6 +161,23 @@ final class EventFormView: BaseView {
     
     func showError(message: String?) {
         errorLabel.text = message
+    }
+    
+    func fill(dropDownData: [UIMagicDropdownData]) {
+        categoryDropdownField.items = dropDownData
+    }
+    
+    func fill(with event: Event) {
+        eventTtitleTextField.text = event.name
+        if let startDate = event.startDate {
+            startDateButton.setTitle(DateFormatter.yyyyMMddHHmm.string(from: startDate), for: .normal)
+        }
+        if let endDate = event.endDate {
+            endDateButton.setTitle(DateFormatter.yyyyMMddHHmm.string(from: endDate), for: .normal)
+        }
+        priceTextField.text = "\(event.price)"
+        premiumEventSwitch.isOn = event.isPremium
+        categoryDropdownField.itemSelected = categoryDropdownField.items?.firstIndex(where: { $0.label == event.category })
     }
     
     private func fill(with model: Model) {

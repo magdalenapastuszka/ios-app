@@ -44,3 +44,5 @@
 "event-form.save-button-title" = "Save";
 "event-form.save-cancel-title" = "Cancel";
 "event-form.save-delete-title" = "Delete";
+
+"pln-currency" = "PLN";

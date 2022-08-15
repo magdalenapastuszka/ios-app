@@ -37,6 +37,7 @@ final class EventListView: BaseView {
         leftView.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -.defaultPadding)
         $0.leftView = leftView
         $0.leftViewMode = .always
+        $0.addTarget(self, action: #selector(searchFieldDidChange), for: .editingChanged)
     }
     
     private let tableView = UITableView().then {
@@ -73,16 +74,19 @@ final class EventListView: BaseView {
     }
     
     private lazy var dataSource = EventListTableViewDataSource(tableView)
+    private let handleSearchFieldDidChange: (String?) -> Void
     private let handleDidTapEventsButton: () -> Void
     private let handleDidTapAddButton: () -> Void
     private let handleDidTapEvent: (Int) -> Void
     
     init(
         model: Model,
+        handleSearchFieldDidChange: @escaping (String?) -> Void,
         handleDidTapEvent: @escaping (Int) -> Void,
         handleDidTapEventsButton: @escaping () -> Void,
         handleDidTapAddButton: @escaping () -> Void
     ) {
+        self.handleSearchFieldDidChange = handleSearchFieldDidChange
         self.handleDidTapEvent = handleDidTapEvent
         self.handleDidTapAddButton = handleDidTapAddButton
         self.handleDidTapEventsButton = handleDidTapEventsButton
@@ -218,6 +222,10 @@ final class EventListView: BaseView {
     
     @objc private func didTapAddButton() {
         handleDidTapAddButton()
+    }
+    
+    @objc private func searchFieldDidChange() {
+        handleSearchFieldDidChange(searchField.text)
     }
 }
 

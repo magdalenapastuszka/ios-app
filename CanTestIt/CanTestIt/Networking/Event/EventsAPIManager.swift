@@ -12,7 +12,7 @@ protocol EventsAPIManagerCreator {
 final class EventsAPIManager: EventsAPIManagerFetcher, EventsAPIManagerCreator {
     private let apiClient: APIClient
     
-    init(apiClient: APIClient = APIClient(baseURL: AppVariables.baseURL)) {
+    init(apiClient: APIClient) {
         self.apiClient = apiClient
     }
     

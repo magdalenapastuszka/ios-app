@@ -23,6 +23,7 @@ final class EventFormCoordinator: Coordinator {
     func start() {
         let vc = EventFormViewController(viewModel: EventFormViewModel(
             event: event,
+            categoriesCache: appEngine.categoriesCache,
             showImagePicker: showImagePicker,
             dismissView: dismissView
         ))

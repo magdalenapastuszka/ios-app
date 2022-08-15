@@ -10,7 +10,7 @@ final class EventListTableViewCell: UITableViewCell {
         let category: String
         let startDateTitle: String
         let startDate: String
-        let startHour: String
+        let startHour: String?
         
         func hash(into hasher: inout Hasher) {
             hasher.combine(self.id)

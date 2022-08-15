@@ -23,10 +23,27 @@ final class EventFormViewController: BaseViewController {
         view = mainView
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        viewModel.loadCategoriesDropdownData()
+    }
+    
     private func bindAction() {
         viewModel.$error
             .sink { [weak self] error in
                 self?.mainView.showError(message: error)
+            }
+            .store(in: &cancellables)
+        
+        viewModel.$isLoading
+            .sink { [weak self] isLoading in
+                isLoading ? self?.showHud() : self?.dismissHud()
+            }
+            .store(in: &cancellables)
+        
+        viewModel.$categoriesDropdownData
+            .sink { [weak self] dropdownData in
+                self?.mainView.fill(dropDownData: dropdownData)
             }
             .store(in: &cancellables)
     }

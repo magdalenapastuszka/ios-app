@@ -5,6 +5,7 @@ final class EventListViewController: BaseViewController {
     private let viewModel: EventListViewModel
     private lazy var mainView = EventListView(
         model: viewModel.loadModel(),
+        handleSearchFieldDidChange: viewModel.didChangeSearchField,
         handleDidTapEvent: viewModel.didTapEvent,
         handleDidTapEventsButton: {},
         handleDidTapAddButton: viewModel.didTapAddButton
@@ -17,16 +18,26 @@ final class EventListViewController: BaseViewController {
         super.init()
         bindAction()
     }
-
     
     override func loadView() {
         view = mainView
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        viewModel.loadEvents()
     }
     
     private func bindAction() {
         viewModel.$tableViewData
             .sink { [weak self] data in
                 self?.mainView.reloadTable(with: data)
+            }
+            .store(in: &cancellables)
+        
+        viewModel.$isLoading
+            .sink{ [weak self] isLoading in
+                isLoading ? self?.showHud() : self?.dismissHud()
             }
             .store(in: &cancellables)
     }
