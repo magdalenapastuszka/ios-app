@@ -6,10 +6,6 @@ protocol CategoriesCache {
 }
 
 final class CategoriesCacheImpl: CategoriesCache {
-    var categories: [Category] {
-        downloadedCategories
-    }
-    
     private var downloadedCategories: [Category] = []
     private let categoriesFetcher: CategoriesAPIManagerFetcher
     
