@@ -42,7 +42,6 @@ extension HTTPRequest {
     var headers: HTTPHeaders? { return nil }
     var debug: Bool { return false }
     var decoder: JSONDecoder? { return JSONDecoder() }
-    
 }
 
 extension HTTPRequest {

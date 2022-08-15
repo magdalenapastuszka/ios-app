@@ -1,22 +1,26 @@
 import Foundation
 import UIKit
 
-final class Event {
-    var image: UIImage?
-    var title: String?
-    var category: String?
-    var price: String?
-    var startDate: String?
-    var endDate: String?
-    var isPremium: Bool?
+final class Event: Codable {
+    var name: String
+    var description: String
+    var category: String
+    var price: Float
+    var dateFrom: String
+    var dateTo: String
+    var image: String
+    var isPremium: Bool
+    var id: String?
     
-    init(image: UIImage?, title: String?, category: String?, price: String?, startDate: String?, endDate: String?, isPremium: Bool?) {
-        self.image = image
-        self.title = title
+    init(name: String, description: String, category: String, price: Float, dateFrom: String, dateTo: String, image: String, isPremium: Bool, id: String? = nil) {
+        self.name = name
+        self.description = description
         self.category = category
         self.price = price
-        self.startDate = startDate
-        self.endDate = endDate
+        self.dateFrom = dateFrom
+        self.dateTo = dateTo
+        self.image = image
         self.isPremium = isPremium
+        self.id = id
     }
 }
