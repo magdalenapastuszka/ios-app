@@ -74,4 +74,13 @@ final class EventFormViewModel {
     func didTapImageView() {
         showImagePicker()
     }
+    
+    
+    func didTapEndDateTextField() {
+        
+    }
+    
+    func didTapStartDateTextField() {
+        
+    }
 }

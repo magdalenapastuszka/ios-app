@@ -7,7 +7,9 @@ final class EventFormViewController: BaseViewController {
         handleDidTapSaveButton: viewModel.didTapSaveButton,
         handleDidTapCancelButton: viewModel.didTapCancelButton,
         handleDidTapDeleteButton: viewModel.didTapDeleteButton,
-        handleDidTapImageView: viewModel.didTapImageView
+        handleDidTapImageView: viewModel.didTapImageView,
+        handleDidTapEndDateTextField: viewModel.didTapEndDateTextField,
+        handleDidTapStartDateTextField: viewModel.didTapStartDateTextField
     )
     private let viewModel: EventFormViewModel
     

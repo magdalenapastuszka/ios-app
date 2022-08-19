@@ -73,9 +73,12 @@ final class EventFormView: BaseView {
         $0.font = .font(size: 10, weight: .regular)
     }
     
-    private let startDateButton = UIButton().then {
+    private let startDateTextField = TextFieldWithPadding().then {
+        $0.textColor = .textColor
+        $0.placeholderColor(.placeholderColor)
         $0.layer.cornerRadius = .defaultCornerRadius
         $0.backgroundColor = .textFieldBackgroundColor
+        $0.leftViewMode = .always
     }
     
     private let endDateTitleLabel = UILabel().then {
@@ -83,9 +86,12 @@ final class EventFormView: BaseView {
         $0.font = .font(size: 10, weight: .regular)
     }
     
-    private let endDateButton = UIButton().then {
+    private let endDateTextField = TextFieldWithPadding().then {
+        $0.textColor = .textColor
+        $0.placeholderColor(.placeholderColor)
         $0.layer.cornerRadius = .defaultCornerRadius
         $0.backgroundColor = .textFieldBackgroundColor
+        $0.leftViewMode = .always
     }
     
     private let priceTitleLabel = UILabel().then {
@@ -142,18 +148,24 @@ final class EventFormView: BaseView {
     private let handleDidTapCancelButton: () -> Void
     private let handleDidTapDeleteButton: () -> Void
     private let handleDidTapImageView: () -> Void
+    private let handleDidTapEndDateTextField: () -> Void
+    private let handleDidTapStartDateTextField: () -> Void
     
     init(
         model: Model,
         handleDidTapSaveButton: @escaping () -> Void,
         handleDidTapCancelButton: @escaping () -> Void,
         handleDidTapDeleteButton: @escaping () -> Void,
-        handleDidTapImageView: @escaping () -> Void
+        handleDidTapImageView: @escaping () -> Void,
+        handleDidTapEndDateTextField: @escaping () -> Void,
+        handleDidTapStartDateTextField: @escaping () -> Void
     ) {
         self.handleDidTapSaveButton = handleDidTapSaveButton
         self.handleDidTapCancelButton = handleDidTapCancelButton
         self.handleDidTapDeleteButton = handleDidTapDeleteButton
         self.handleDidTapImageView = handleDidTapImageView
+        self.handleDidTapEndDateTextField = handleDidTapEndDateTextField
+        self.handleDidTapStartDateTextField = handleDidTapStartDateTextField
         super.init()
         setUpViewHierarchy()
         setUpConstraints()
@@ -172,10 +184,10 @@ final class EventFormView: BaseView {
     func fill(with event: Event) {
         eventTtitleTextField.text = event.name
         if let startDate = event.startDate {
-            startDateButton.setTitle(DateFormatter.yyyyMMddHHmm.string(from: startDate), for: .normal)
+            startDateTextField.text = DateFormatter.yyyyMMddHHmm.string(from: startDate)
         }
         if let endDate = event.endDate {
-            endDateButton.setTitle(DateFormatter.yyyyMMddHHmm.string(from: endDate), for: .normal)
+            endDateTextField.text = DateFormatter.yyyyMMddHHmm.string(from: endDate)
         }
         priceTextField.text = "\(event.price)"
         premiumEventSwitch.isOn = event.isPremium
@@ -192,12 +204,28 @@ final class EventFormView: BaseView {
             image: model.eventFieldIcon,
             leftPadding: .defaultPadding
         )
+        
         categoryTitleLabel.text = model.categoryFieldTitle
         categoryDropdownField.hintMessage = model.categoryFieldPlaceholder
+        
         startDateTitleLabel.text = model.startDateFieldTitle
-        startDateButton.setTitle(model.startDateFieldPlaceholder, for: .normal)
+        startDateTextField.placeholder = model.startDateFieldPlaceholder
+        startDateTextField.placeholderColor(.placeholderColor)
+        startDateTextField.addIconView(
+            alginment: .left,
+            image: model.startDateIcon,
+            leftPadding: .defaultPadding
+        )
+        
         endDateTitleLabel.text = model.endDateFieldTitle
-        endDateButton.setTitle(model.endDateFieldPlaceholder, for: .normal)
+        endDateTextField.placeholder = model.endDateFieldPlaceholder
+        endDateTextField.placeholderColor(.placeholderColor)
+        endDateTextField.addIconView(
+            alginment: .left,
+            image: model.endDateIcon,
+            leftPadding: .defaultPadding
+        )
+        
         priceTitleLabel.text = model.priceFieldTitle
         priceTextField.placeholder = model.priceFieldPlaceholder
         priceTextField.placeholderColor(.placeholderColor)
@@ -206,7 +234,9 @@ final class EventFormView: BaseView {
             image: model.priceFieldIcon,
             leftPadding: .defaultPadding
         )
+        
         premiumEventTitleLabel.text = model.premiumSwitchTitle
+        
         saveButton.setTitle(model.saveButtonTitle, for: .normal)
         cancelButton.setTitle(model.cancelButtonTitle, for: .normal)
         deleteButton.setTitle(model.deleteButtonTitle, for: .normal)
@@ -228,9 +258,9 @@ final class EventFormView: BaseView {
             categoryTitleLabel,
             categoryDropdownField,
             startDateTitleLabel,
-            startDateButton,
+            startDateTextField,
             endDateTitleLabel,
-            endDateButton,
+            endDateTextField,
             priceTitleLabel,
             priceTextField,
             premiumEventSwitch,
@@ -357,13 +387,13 @@ final class EventFormView: BaseView {
     }
     
     private func setUpStartDateButtonConstraints() {
-        startDateButton.translatesAutoresizingMaskIntoConstraints = false
+        startDateTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            startDateButton.leadingAnchor.constraint(equalTo: formView.leadingAnchor, constant: .defaultPadding),
-            startDateButton.trailingAnchor.constraint(equalTo: formView.centerXAnchor, constant:
+            startDateTextField.leadingAnchor.constraint(equalTo: formView.leadingAnchor, constant: .defaultPadding),
+            startDateTextField.trailingAnchor.constraint(equalTo: formView.centerXAnchor, constant:
                                                             -Constants.dateFieldCenterSpacing),
-            startDateButton.topAnchor.constraint(equalTo: startDateTitleLabel.bottomAnchor, constant: Constants.smallSpacing),
-            startDateButton.heightAnchor.constraint(equalToConstant: .defaultControlHeight)
+            startDateTextField.topAnchor.constraint(equalTo: startDateTitleLabel.bottomAnchor, constant: Constants.smallSpacing),
+            startDateTextField.heightAnchor.constraint(equalToConstant: .defaultControlHeight)
         ])
     }
     
@@ -378,13 +408,13 @@ final class EventFormView: BaseView {
     }
     
     private func setUpEndDateButtonConstraints() {
-        endDateButton.translatesAutoresizingMaskIntoConstraints = false
+        endDateTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            endDateButton.leadingAnchor.constraint(equalTo: formView.centerXAnchor, constant: Constants.dateFieldCenterSpacing),
-            endDateButton.trailingAnchor.constraint(equalTo: formView.trailingAnchor, constant:
+            endDateTextField.leadingAnchor.constraint(equalTo: formView.centerXAnchor, constant: Constants.dateFieldCenterSpacing),
+            endDateTextField.trailingAnchor.constraint(equalTo: formView.trailingAnchor, constant:
                                                         -.defaultPadding),
-            endDateButton.topAnchor.constraint(equalTo: endDateTitleLabel.bottomAnchor, constant: Constants.smallSpacing),
-            endDateButton.heightAnchor.constraint(equalToConstant: .defaultControlHeight)
+            endDateTextField.topAnchor.constraint(equalTo: endDateTitleLabel.bottomAnchor, constant: Constants.smallSpacing),
+            endDateTextField.heightAnchor.constraint(equalToConstant: .defaultControlHeight)
         ])
     }
     
@@ -393,7 +423,7 @@ final class EventFormView: BaseView {
         NSLayoutConstraint.activate([
             priceTitleLabel.leadingAnchor.constraint(equalTo: formView.leadingAnchor, constant: .defaultPadding),
             priceTitleLabel.trailingAnchor.constraint(equalTo: formView.trailingAnchor, constant: -.defaultPadding),
-            priceTitleLabel.topAnchor.constraint(equalTo: startDateButton.bottomAnchor, constant: .defaultPadding)
+            priceTitleLabel.topAnchor.constraint(equalTo: startDateTextField.bottomAnchor, constant: .defaultPadding)
         ])
     }
     
@@ -456,6 +486,8 @@ final class EventFormView: BaseView {
     }
     
     private func bindAction() {
+        startDateTextField.delegate = self
+        endDateTextField.delegate = self
         categoryDropdownField.dropDownDelegate = self
         saveButton.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
         cancelButton.addTarget(self, action: #selector(didTapCancelButton), for: .touchUpInside)
@@ -478,6 +510,14 @@ final class EventFormView: BaseView {
     @objc private func didTapImageView() {
         handleDidTapImageView()
     }
+    
+    private func didTapEndDateTextField() {
+        handleDidTapEndDateTextField()
+    }
+    
+    private func didTapStartDateTextField() {
+        handleDidTapStartDateTextField()
+    }
 }
 
 extension EventFormView: UIMagicDropDownDelegate {
@@ -489,5 +529,21 @@ extension EventFormView: UIMagicDropDownDelegate {
     
     func dropdownExpanded(_ sender: UIMagicDropdown) {
         formView.bringSubviewToFront(sender)
+    }
+}
+
+extension EventFormView: UITextFieldDelegate {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField == endDateTextField {
+            didTapEndDateTextField()
+            return false
+        }
+        
+        if textField == startDateTextField {
+            didTapStartDateTextField()
+            return false
+        }
+        
+        return true
     }
 }
