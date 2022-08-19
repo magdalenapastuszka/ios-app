@@ -7,14 +7,19 @@ final class EventFormView: BaseView {
         let viewTitle: String
         let eventFieldTitle: String
         let eventFieldPlaceholder: String
+        let eventFieldIcon: UIImage
         let categoryFieldTitle: String
         let categoryFieldPlaceholder: String
+        let categoryFieldIcon: UIImage
         let startDateFieldTitle: String
         let startDateFieldPlaceholder: String
+        let startDateIcon: UIImage
         let endDateFieldTitle: String
         let endDateFieldPlaceholder: String
+        let endDateIcon: UIImage
         let priceFieldTitle: String
         let priceFieldPlaceholder: String
+        let priceFieldIcon: UIImage
         let premiumSwitchTitle: String
         let saveButtonTitle: String
         let cancelButtonTitle: String
@@ -45,11 +50,12 @@ final class EventFormView: BaseView {
         $0.font = .font(size: 10, weight: .regular)
     }
     
-    private let eventTtitleTextField = UITextField().then {
+    private let eventTtitleTextField = TextFieldWithPadding().then {
         $0.textColor = .textColor
         $0.placeholderColor(.placeholderColor)
         $0.layer.cornerRadius = .defaultCornerRadius
         $0.backgroundColor = .textFieldBackgroundColor
+        $0.leftViewMode = .always
     }
     
     private let categoryTitleLabel = UILabel().then {
@@ -59,13 +65,8 @@ final class EventFormView: BaseView {
     
     private let categoryDropdownField = UIMagicDropdown(
         theme: MagicDropDownConfig.category,
-        items: [
-            UIMagicDropdownData(label: "aaaaaaa", value: "aaaaa"),
-            UIMagicDropdownData(label: "bbbbbbb", value: "bbbbbbb"),
-            UIMagicDropdownData(label: "ccccccc", value: "ccccccc"),
-            UIMagicDropdownData(label: "ddddddd", value: "ddddddd"),
-            UIMagicDropdownData(label: "eeeeeee", value: "eeeeeee")
-        ])
+        items: []
+    )
     
     private let startDateTitleLabel = UILabel().then {
         $0.textColor = .textColor
@@ -92,12 +93,13 @@ final class EventFormView: BaseView {
         $0.font = .font(size: 10, weight: .regular)
     }
     
-    private let priceTextField = UITextField().then {
+    private let priceTextField = TextFieldWithPadding().then {
         $0.textColor = .textColor
         $0.placeholderColor(.placeholderColor)
         $0.layer.cornerRadius = .defaultCornerRadius
         $0.backgroundColor = .textFieldBackgroundColor
         $0.keyboardType = .numberPad
+        $0.leftViewMode = .always
     }
     
     private let premiumEventSwitch = UISwitch().then {
@@ -185,6 +187,11 @@ final class EventFormView: BaseView {
         eventTitleLabel.text = model.eventFieldTitle
         eventTtitleTextField.placeholder = model.eventFieldPlaceholder
         eventTtitleTextField.placeholderColor(.placeholderColor)
+        eventTtitleTextField.addIconView(
+            alginment: .left,
+            image: model.eventFieldIcon,
+            leftPadding: .defaultPadding
+        )
         categoryTitleLabel.text = model.categoryFieldTitle
         categoryDropdownField.hintMessage = model.categoryFieldPlaceholder
         startDateTitleLabel.text = model.startDateFieldTitle
@@ -194,6 +201,11 @@ final class EventFormView: BaseView {
         priceTitleLabel.text = model.priceFieldTitle
         priceTextField.placeholder = model.priceFieldPlaceholder
         priceTextField.placeholderColor(.placeholderColor)
+        priceTextField.addIconView(
+            alginment: .left,
+            image: model.priceFieldIcon,
+            leftPadding: .defaultPadding
+        )
         premiumEventTitleLabel.text = model.premiumSwitchTitle
         saveButton.setTitle(model.saveButtonTitle, for: .normal)
         cancelButton.setTitle(model.cancelButtonTitle, for: .normal)

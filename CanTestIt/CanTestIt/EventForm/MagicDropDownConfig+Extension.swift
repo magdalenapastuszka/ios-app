@@ -19,8 +19,8 @@ extension MagicDropDownConfig {
         colors.tableBorderColor = .textFieldBackgroundColor
         
         var fonts = MagicDropDownConfig.Fonts()
-        fonts.itemFont = .font(.subheadline)
-        fonts.hintFont = .font(.subheadline)
+        fonts.itemFont = .font(.callout)
+        fonts.hintFont = .font(.callout)
         
         var layers = MagicDropDownConfig.Layers()
         layers.boxCornerRadius = .defaultCornerRadius

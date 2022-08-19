@@ -9,7 +9,7 @@ final class ImagePickerViewController: BaseViewController {
         handleDidTapChooseButton: viewModel.handleDidTapChooseButton
     )
     
-    private var cancellable: AnyCancellable?
+    private var cancellables = Set<AnyCancellable>()
     
     init(viewModel: ImagePickerViewModel) {
         self.viewModel = viewModel
@@ -22,9 +22,16 @@ final class ImagePickerViewController: BaseViewController {
     }
     
     private func bindAction() {
-        cancellable = viewModel.$data
+        viewModel.$data
             .sink { [weak self] data in
                 self?.mainView.reloadCollectionView(with: data)
             }
+            .store(in: &cancellables)
+        
+        viewModel.$isLoading
+            .sink{ [weak self] newValue in
+                newValue ? self?.showHud() : self?.dismissHud()
+            }
+            .store(in: &cancellables)
     }
 }

@@ -36,8 +36,8 @@ final class EventListViewController: BaseViewController {
             .store(in: &cancellables)
         
         viewModel.$isLoading
-            .sink{ [weak self] isLoading in
-                isLoading ? self?.showHud() : self?.dismissHud()
+            .sink{ [weak self] newValue in
+                newValue ? self?.showHud() : self?.dismissHud()
             }
             .store(in: &cancellables)
     }

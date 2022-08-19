@@ -51,9 +51,9 @@ final class ImagePickerView: BaseView {
         collectionView.delegate = self
     }
     
-    func reloadCollectionView(with data: [ImageCollectionData]) {
-        dataSource.reload(with: data)
-        pageControl.numberOfPages = data[0].values.count
+    func reloadCollectionView(with items: [ImageCollectionSectionItem]) {
+        dataSource.reload(with: items)
+        pageControl.numberOfPages = items.count
      }
     
     private func fill(with model: Model) {

@@ -15,7 +15,8 @@ final class ImagePickerCoordiantor: Coordinator {
     }
     
     func start() {
-        let vc = ImagePickerViewController(viewModel: ImagePickerViewModel())
+        let vc = ImagePickerViewController(
+            viewModel: ImagePickerViewModel(imagesCache: appEngine.eventImagesCache))
         vc.configureGoBackNav()
         navigationController.go(to: vc, as: .push)
     }

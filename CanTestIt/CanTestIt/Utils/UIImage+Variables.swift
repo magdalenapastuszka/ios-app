@@ -21,6 +21,10 @@ extension UIImage {
     static let menuSales = UIImage(named: "menuSales")!
     static let menuSettings = UIImage(named: "menuSettings")!
     static let logout = UIImage(named: "logout")!
+    static let eventCalendar = UIImage(named: "eventCalendar")!
+    static let eventName = UIImage(named: "eventName")!
+    static let eventPrice = UIImage(named: "eventPrice")!
+    static let eventCategory = UIImage(named: "eventCategory")!
     
     static let image1 = UIImage(named: "image1")!
     static let image2 = UIImage(named: "image2")!
