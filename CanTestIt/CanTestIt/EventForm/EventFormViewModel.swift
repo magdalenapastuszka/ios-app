@@ -77,10 +77,10 @@ final class EventFormViewModel {
     
     
     func didTapEndDateTextField() {
-        
+
     }
     
     func didTapStartDateTextField() {
-        
+
     }
 }

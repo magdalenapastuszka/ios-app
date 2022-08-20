@@ -96,6 +96,7 @@
 		6C54530528AA7CCC000C843C /* DateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C54530428AA7CCC000C843C /* DateFormatter+Extension.swift */; };
 		6C54530728AAAE30000C843C /* CategoriesCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C54530628AAAE30000C843C /* CategoriesCache.swift */; };
 		6C54530A28AAC3F6000C843C /* EventImagesCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C54530928AAC3F6000C843C /* EventImagesCache.swift */; };
+		6CB9B9BD28B1444A00B540D9 /* DateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB9B9BC28B1444A00B540D9 /* DateTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -227,6 +228,7 @@
 		6C54530428AA7CCC000C843C /* DateFormatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extension.swift"; sourceTree = "<group>"; };
 		6C54530628AAAE30000C843C /* CategoriesCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCache.swift; sourceTree = "<group>"; };
 		6C54530928AAC3F6000C843C /* EventImagesCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventImagesCache.swift; sourceTree = "<group>"; };
+		6CB9B9BC28B1444A00B540D9 /* DateTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -337,6 +339,7 @@
 				5B0EA435288B2B57009FAB90 /* InputField.swift */,
 				5B0EA437288B2F52009FAB90 /* UITextField+Extension.swift */,
 				5B0EA439288C31EA009FAB90 /* TextFieldWithPadding.swift */,
+				6CB9B9BC28B1444A00B540D9 /* DateTextField.swift */,
 				5B0EA444288D8195009FAB90 /* UIView+Extension.swift */,
 				5B0EA4A228946E7C009FAB90 /* UIStackView+Extension.swift */,
 				5B0EA446288D9038009FAB90 /* Then.swift */,
@@ -690,6 +693,7 @@
 				5B0EA452288EDFCF009FAB90 /* Event.swift in Sources */,
 				5B0EA3F7288731D1009FAB90 /* AppCoordinator.swift in Sources */,
 				5B0EA41A2887C545009FAB90 /* UIImage+Variables.swift in Sources */,
+				6CB9B9BD28B1444A00B540D9 /* DateTextField.swift in Sources */,
 				5B0EA48D2892C8C4009FAB90 /* ImageCollectionViewDataSource.swift in Sources */,
 				5B0EA42428880326009FAB90 /* Font+Extension.swift in Sources */,
 				5B0EA3FE28873505009FAB90 /* Request.swift in Sources */,

@@ -73,7 +73,7 @@ final class EventFormView: BaseView {
         $0.font = .font(size: 10, weight: .regular)
     }
     
-    private let startDateTextField = TextFieldWithPadding().then {
+    private let startDateTextField = DateTextField().then {
         $0.textColor = .textColor
         $0.placeholderColor(.placeholderColor)
         $0.layer.cornerRadius = .defaultCornerRadius
@@ -86,7 +86,7 @@ final class EventFormView: BaseView {
         $0.font = .font(size: 10, weight: .regular)
     }
     
-    private let endDateTextField = TextFieldWithPadding().then {
+    private let endDateTextField = DateTextField().then {
         $0.textColor = .textColor
         $0.placeholderColor(.placeholderColor)
         $0.layer.cornerRadius = .defaultCornerRadius
@@ -148,24 +148,19 @@ final class EventFormView: BaseView {
     private let handleDidTapCancelButton: () -> Void
     private let handleDidTapDeleteButton: () -> Void
     private let handleDidTapImageView: () -> Void
-    private let handleDidTapEndDateTextField: () -> Void
-    private let handleDidTapStartDateTextField: () -> Void
     
     init(
         model: Model,
         handleDidTapSaveButton: @escaping () -> Void,
         handleDidTapCancelButton: @escaping () -> Void,
         handleDidTapDeleteButton: @escaping () -> Void,
-        handleDidTapImageView: @escaping () -> Void,
-        handleDidTapEndDateTextField: @escaping () -> Void,
-        handleDidTapStartDateTextField: @escaping () -> Void
+        handleDidTapImageView: @escaping () -> Void
+
     ) {
         self.handleDidTapSaveButton = handleDidTapSaveButton
         self.handleDidTapCancelButton = handleDidTapCancelButton
         self.handleDidTapDeleteButton = handleDidTapDeleteButton
         self.handleDidTapImageView = handleDidTapImageView
-        self.handleDidTapEndDateTextField = handleDidTapEndDateTextField
-        self.handleDidTapStartDateTextField = handleDidTapStartDateTextField
         super.init()
         setUpViewHierarchy()
         setUpConstraints()
@@ -486,8 +481,6 @@ final class EventFormView: BaseView {
     }
     
     private func bindAction() {
-        startDateTextField.delegate = self
-        endDateTextField.delegate = self
         categoryDropdownField.dropDownDelegate = self
         saveButton.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
         cancelButton.addTarget(self, action: #selector(didTapCancelButton), for: .touchUpInside)
@@ -510,14 +503,6 @@ final class EventFormView: BaseView {
     @objc private func didTapImageView() {
         handleDidTapImageView()
     }
-    
-    private func didTapEndDateTextField() {
-        handleDidTapEndDateTextField()
-    }
-    
-    private func didTapStartDateTextField() {
-        handleDidTapStartDateTextField()
-    }
 }
 
 extension EventFormView: UIMagicDropDownDelegate {
@@ -529,21 +514,5 @@ extension EventFormView: UIMagicDropDownDelegate {
     
     func dropdownExpanded(_ sender: UIMagicDropdown) {
         formView.bringSubviewToFront(sender)
-    }
-}
-
-extension EventFormView: UITextFieldDelegate {
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if textField == endDateTextField {
-            didTapEndDateTextField()
-            return false
-        }
-        
-        if textField == startDateTextField {
-            didTapStartDateTextField()
-            return false
-        }
-        
-        return true
     }
 }

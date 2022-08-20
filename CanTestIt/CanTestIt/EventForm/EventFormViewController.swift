@@ -7,10 +7,9 @@ final class EventFormViewController: BaseViewController {
         handleDidTapSaveButton: viewModel.didTapSaveButton,
         handleDidTapCancelButton: viewModel.didTapCancelButton,
         handleDidTapDeleteButton: viewModel.didTapDeleteButton,
-        handleDidTapImageView: viewModel.didTapImageView,
-        handleDidTapEndDateTextField: viewModel.didTapEndDateTextField,
-        handleDidTapStartDateTextField: viewModel.didTapStartDateTextField
+        handleDidTapImageView: viewModel.didTapImageView
     )
+
     private let viewModel: EventFormViewModel
     
     private var cancellables = Set<AnyCancellable>()

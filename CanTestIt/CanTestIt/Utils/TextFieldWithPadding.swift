@@ -1,6 +1,6 @@
 import UIKit
 
-final class TextFieldWithPadding: UITextField {
+class TextFieldWithPadding: UITextField {
     var textPadding = UIEdgeInsets(
         top: 0,
         left: .defaultPadding,
@@ -16,5 +16,14 @@ final class TextFieldWithPadding: UITextField {
     override func editingRect(forBounds bounds: CGRect) -> CGRect {
         let rect = super.editingRect(forBounds: bounds)
         return rect.inset(by: textPadding)
+    }
+    
+    init() {
+        super.init(frame: .zero)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
