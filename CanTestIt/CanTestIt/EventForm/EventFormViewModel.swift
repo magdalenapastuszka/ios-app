@@ -27,6 +27,8 @@ final class EventFormViewModel {
     
     func loadModel() -> EventFormView.Model {
         EventFormView.Model(
+            emptyPicture: .emptyImage,
+            emptyPictureTitle: "event-form.empty-picture-title".localized,
             viewTitle: "event-form.title".localized,
             eventFieldTitle: "event-form.event-title-field".localized,
             eventFieldPlaceholder: "event-form.event-title-field-placeholder".localized,
@@ -71,16 +73,7 @@ final class EventFormViewModel {
         
     }
     
-    func didTapImageView() {
+    func didTapPictureButton() {
         showImagePicker()
-    }
-    
-    
-    func didTapEndDateTextField() {
-
-    }
-    
-    func didTapStartDateTextField() {
-
     }
 }

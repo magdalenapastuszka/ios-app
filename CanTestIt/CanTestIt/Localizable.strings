@@ -29,6 +29,7 @@
 
 "image-picker.button-title" = "Choose";
 
+"event-form.empty-picture-title" = "Tap choose your cover photo";
 "event-form.title" = "Let’s create an event!";
 "event-form.event-title-field" = "Event title";
 "event-form.event-title-field-placeholder" = "name of your event*";

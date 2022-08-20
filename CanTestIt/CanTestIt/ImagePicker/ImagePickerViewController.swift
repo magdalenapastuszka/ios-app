@@ -21,6 +21,11 @@ final class ImagePickerViewController: BaseViewController {
         view = mainView
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        viewModel.loadImages()
+    }
+    
     private func bindAction() {
         viewModel.$data
             .sink { [weak self] data in
