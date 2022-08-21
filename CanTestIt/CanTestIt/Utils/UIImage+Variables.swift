@@ -26,6 +26,7 @@ extension UIImage {
     static let eventPrice = UIImage(named: "eventPrice")!
     static let eventCategory = UIImage(named: "eventCategory")!
     static let emptyImage = UIImage(named: "emptyImage")!
+    static let close = UIImage(named: "close")!
     
     static let image1 = UIImage(named: "image1")!
     static let image2 = UIImage(named: "image2")!

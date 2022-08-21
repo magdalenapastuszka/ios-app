@@ -8,10 +8,6 @@ extension UIViewController {
             }
         }
         
-        if presentingViewController != nil {
-            return false
-        }
-        
         if navigationController?.presentingViewController?.presentedViewController == navigationController {
             return true
         }
@@ -36,6 +32,16 @@ extension UIViewController {
     func configureGoBackNav() {
         let backButton = UIBarButtonItem(
             image: .arrowLeft,
+            style: .plain,
+            target: self,
+            action: #selector(dismissOrPopup)
+        )
+        navigationItem.leftBarButtonItem = backButton
+    }
+    
+    func configureCloseNav() {
+        let backButton = UIBarButtonItem(
+            image: .close,
             style: .plain,
             target: self,
             action: #selector(dismissOrPopup)

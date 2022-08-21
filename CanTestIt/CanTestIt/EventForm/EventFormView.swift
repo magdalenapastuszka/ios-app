@@ -184,6 +184,9 @@ final class EventFormView: BaseView {
     }
     
     func fill(with event: Event) {
+        pictureButton.setTitle("", for: .normal)
+        pictureButton.setImage(UIImage(named: event.image), for: .normal)
+        
         eventTtitleTextField.text = event.name
         if let startDate = event.startDate {
             startDateTextField.text = DateFormatter.yyyyMMddHHmm.string(from: startDate)

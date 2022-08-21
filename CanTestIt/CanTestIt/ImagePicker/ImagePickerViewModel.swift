@@ -7,10 +7,18 @@ final class ImagePickerViewModel {
     @Published var isLoading = false
 
     private let imagesCache: EventImagesCache
+    private let didChooseImage: (UIImage) -> Void
+    private let dismissView: () -> Void
     private var imagesCancellable: AnyCancellable?
     
-    init(imagesCache: EventImagesCache) {
+    init(
+        imagesCache: EventImagesCache,
+        didChooseImage: @escaping (UIImage) -> Void,
+        dismissView: @escaping () -> Void
+    ) {
         self.imagesCache = imagesCache
+        self.didChooseImage = didChooseImage
+        self.dismissView = dismissView
     }
     
     func loadModel() -> ImagePickerView.Model {
@@ -33,6 +41,9 @@ final class ImagePickerViewModel {
     }
     
     func handleDidTapChooseButton(selectedPage: Int?) {
+        guard let selectedPage = selectedPage else { return }
         
+        didChooseImage(data[selectedPage].image)
+        dismissView()
     }
 }

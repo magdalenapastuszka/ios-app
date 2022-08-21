@@ -28,12 +28,14 @@ final class ImagePickerViewController: BaseViewController {
     
     private func bindAction() {
         viewModel.$data
+            .receive(on: RunLoop.main)
             .sink { [weak self] data in
                 self?.mainView.reloadCollectionView(with: data)
             }
             .store(in: &cancellables)
         
         viewModel.$isLoading
+            .receive(on: RunLoop.main)
             .sink{ [weak self] newValue in
                 newValue ? self?.showHud() : self?.dismissHud()
             }

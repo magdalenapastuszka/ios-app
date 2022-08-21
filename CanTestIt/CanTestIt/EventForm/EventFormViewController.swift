@@ -31,18 +31,21 @@ final class EventFormViewController: BaseViewController {
     
     private func bindAction() {
         viewModel.$error
+            .receive(on: RunLoop.main)
             .sink { [weak self] error in
                 self?.mainView.showError(message: error)
             }
             .store(in: &cancellables)
         
         viewModel.$isLoading
+            .receive(on: RunLoop.main)
             .sink { [weak self] isLoading in
                 isLoading ? self?.showHud() : self?.dismissHud()
             }
             .store(in: &cancellables)
         
         viewModel.$categoriesDropdownData
+            .receive(on: RunLoop.main)
             .sink { [weak self] dropdownData in
                 self?.mainView.fill(dropDownData: dropdownData)
             }

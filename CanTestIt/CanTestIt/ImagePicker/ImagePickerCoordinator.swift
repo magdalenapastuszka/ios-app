@@ -14,10 +14,18 @@ final class ImagePickerCoordiantor: Coordinator {
         self.appEngine = appEngine
     }
     
-    func start() {
+    func start(didChooseImage: @escaping (UIImage) -> Void) {
         let vc = ImagePickerViewController(
-            viewModel: ImagePickerViewModel(imagesCache: appEngine.eventImagesCache))
-        vc.configureGoBackNav()
-        navigationController.go(to: vc, as: .push)
+            viewModel: ImagePickerViewModel(
+                imagesCache: appEngine.eventImagesCache,
+                didChooseImage: didChooseImage,
+                dismissView: dismissView
+            ))
+        vc.configureCloseNav()
+        navigationController.go(to: vc, as: .modal)
+    }
+    
+    private func dismissView() {
+        navigationController.dismiss(animated: true)
     }
 }

@@ -58,7 +58,7 @@ final class DateTextField: TextFieldWithPadding {
     }
     
     @objc private func didTapDone() {
-        self.text = datePicker.date.formatted(date: .numeric, time: .shortened)
+        self.text = DateFormatter.yyyyMMddHHmm.string(from: datePicker.date)
         self.resignFirstResponder()
     }
 }

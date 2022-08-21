@@ -28,7 +28,6 @@ final class MenuCoordiantor: Coordinator {
     }
     
     private func logOut() {
-        ImagePickerCoordiantor(navigationController: navigationController, appEngine: appEngine).start()
 //        loginCoordinator.start()
     }
 }

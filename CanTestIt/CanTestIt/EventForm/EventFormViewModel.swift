@@ -1,6 +1,7 @@
 import Foundation
 import UIMagicDropDown
 import Combine
+import UIKit
 
 final class EventFormViewModel {
     @Published var error: String?
@@ -10,13 +11,13 @@ final class EventFormViewModel {
     private var cancellables = Set<AnyCancellable>()
     private var event: Event?
     private let categoriesCache: CategoriesCache
-    private let showImagePicker: () -> Void
+    private let showImagePicker: (@escaping (UIImage) -> Void) -> Void
     private let dismissView: () -> Void
 
     init(
         event: Event?,
         categoriesCache: CategoriesCache,
-        showImagePicker: @escaping () -> Void,
+        showImagePicker: @escaping (@escaping (UIImage) -> Void) -> Void,
         dismissView: @escaping () -> Void
     ) {
         self.event = event
@@ -74,6 +75,8 @@ final class EventFormViewModel {
     }
     
     func didTapPictureButton() {
-        showImagePicker()
+        showImagePicker() { _ in
+            
+        }
     }
 }

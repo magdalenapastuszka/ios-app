@@ -35,7 +35,7 @@ final class EventFormCoordinator: Coordinator {
         navigationController.dismiss(animated: true)
     }
     
-    private func showImagePicker() {
-        imagePickerCoordinator.start()
+    private func showImagePicker(didChooseImage: @escaping (UIImage) -> Void) {
+        imagePickerCoordinator.start(didChooseImage: didChooseImage)
     }
 }
