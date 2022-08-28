@@ -3,6 +3,8 @@ import UIMagicDropDown
 import Combine
 import UIKit
 
+typealias EventFormAPIManager = EventsAPIManagerCreator & EventsAPIDeletor
+
 final class EventFormViewModel {
     @Published var error: String?
     @Published var isLoading: Bool = false
@@ -12,7 +14,7 @@ final class EventFormViewModel {
     private var cancellables = Set<AnyCancellable>()
     private var event: Event?
     private let categoriesCache: CategoriesCache
-    private let eventsCreator: EventsAPIManagerCreator
+    private let eventFormAPIManager: EventFormAPIManager
     private let isDeleteButtonHidden: Bool
     private let showImagePicker: (@escaping (String) -> Void) -> Void
     private let dismissView: () -> Void
@@ -20,14 +22,14 @@ final class EventFormViewModel {
     init(
         event: Event?,
         categoriesCache: CategoriesCache,
-        eventsCreator: EventsAPIManagerCreator,
+        eventFormAPIManager: EventFormAPIManager,
         isDeleteButtonHidden: Bool,
         showImagePicker: @escaping (@escaping (String) -> Void) -> Void,
         dismissView: @escaping () -> Void
     ) {
         self.event = event
         self.categoriesCache = categoriesCache
-        self.eventsCreator = eventsCreator
+        self.eventFormAPIManager = eventFormAPIManager
         self.isDeleteButtonHidden = isDeleteButtonHidden
         self.dismissView = dismissView
         self.showImagePicker = showImagePicker
@@ -89,7 +91,7 @@ final class EventFormViewModel {
         }
         
         error = nil
-        eventsCreator.createEvent(event: Event(
+        eventFormAPIManager.createEvent(event: Event(
             name: name,
             description: "",
             category: categoriesDropdownData[categoryIndex].label,
@@ -110,16 +112,22 @@ final class EventFormViewModel {
     }
     
     func didTapDeleteButton() {
+        guard let id = event?.id else { return }
         
+        isLoading = true
+        eventFormAPIManager.deleteEvent(with: id)
+            .sink { [weak self] _ in
+                self?.isLoading = false
+            } receiveValue: { [weak self] result in
+                guard result else { return }
+                
+                self?.dismissView()
+            }.store(in: &cancellables)
     }
     
     func didTapPictureButton() {
         showImagePicker() { [weak self] image in
             self?.selectedImage = image
         }
-    }
-    
-    private func validate(formData: EventFormData) {
-
     }
 }

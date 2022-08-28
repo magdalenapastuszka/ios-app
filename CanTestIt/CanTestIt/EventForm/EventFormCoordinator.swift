@@ -24,7 +24,7 @@ final class EventFormCoordinator: Coordinator {
         let vc = EventFormViewController(viewModel: EventFormViewModel(
             event: event,
             categoriesCache: appEngine.categoriesCache,
-            eventsCreator: appEngine.eventsCreator,
+            eventFormAPIManager: appEngine.eventsAPIManager,
             isDeleteButtonHidden: isDeleteButtonHidden,
             showImagePicker: showImagePicker,
             dismissView: dismissView

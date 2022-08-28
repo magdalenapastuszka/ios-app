@@ -9,7 +9,13 @@ protocol EventsAPIManagerCreator {
     func createEvent(event: Event) -> AnyPublisher<Bool, NetworkRequestError>
 }
 
-final class EventsAPIManager: EventsAPIManagerFetcher, EventsAPIManagerCreator {
+protocol EventsAPIDeletor {
+    func deleteEvent(with id: String) -> AnyPublisher<Bool, NetworkRequestError>
+}
+
+protocol EventsAPIManager: EventsAPIManagerFetcher, EventsAPIManagerCreator, EventsAPIDeletor {}
+
+final class EventsAPIManagerImpl: EventsAPIManager {
     private let apiClient: APIClient
     
     init(apiClient: APIClient) {
@@ -22,5 +28,9 @@ final class EventsAPIManager: EventsAPIManagerFetcher, EventsAPIManagerCreator {
     
     func createEvent(event: Event) -> AnyPublisher<Bool, NetworkRequestError> {
         apiClient.dispatch(CreateEventRequest(event: event))
+    }
+    
+    func deleteEvent(with id: String) -> AnyPublisher<Bool, NetworkRequestError> {
+        apiClient.dispatch(DeleteEventRequest(id: id))
     }
 }

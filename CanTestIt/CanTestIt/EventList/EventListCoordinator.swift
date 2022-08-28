@@ -25,7 +25,7 @@ final class EventListCoordinator: Coordinator {
     
     func start() {
         let vc = EventListViewController(viewModel: EventListViewModel(
-            eventsFetcher: EventsAPIManager(apiClient: appEngine.apiClient),
+            eventsFetcher: appEngine.eventsAPIManager,
             showEventForm: showEventForm
         ))
         vc.configureHamburgerNav(target: self, action: #selector(showMenu))
