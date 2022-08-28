@@ -5,6 +5,7 @@ protocol AppEngine {
     var userDefaultsManager: UserDefaultsMenager { get }
     var categoriesCache: CategoriesCache { get }
     var eventImagesCache: EventImagesCache { get }
+    var eventsCreator: EventsAPIManagerCreator { get }
 }
 
 final class AppEngineImpl: AppEngine {
@@ -16,4 +17,5 @@ final class AppEngineImpl: AppEngine {
     lazy var eventImagesCache: EventImagesCache = EventImagesCacheImpl(
         imagesFetcher: ImagesAPIManager(apiClient: apiClient)
     )
+    lazy var eventsCreator: EventsAPIManagerCreator = EventsAPIManager(apiClient: apiClient)
 }

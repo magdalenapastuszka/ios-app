@@ -14,7 +14,7 @@ final class ImagePickerCoordiantor: Coordinator {
         self.appEngine = appEngine
     }
     
-    func start(didChooseImage: @escaping (UIImage) -> Void) {
+    func start(didChooseImage: @escaping (String) -> Void) {
         let vc = ImagePickerViewController(
             viewModel: ImagePickerViewModel(
                 imagesCache: appEngine.eventImagesCache,

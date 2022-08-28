@@ -45,6 +45,7 @@
 "event-form.save-button-title" = "Save";
 "event-form.save-cancel-title" = "Cancel";
 "event-form.save-delete-title" = "Delete";
+"event-form.error" = "Please fill in all required fields";
 
 "pln-currency" = "PLN";
 

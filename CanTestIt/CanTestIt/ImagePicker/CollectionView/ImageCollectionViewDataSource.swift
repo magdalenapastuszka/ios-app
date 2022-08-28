@@ -6,7 +6,7 @@ enum ImageCollectionSection: Hashable {
 }
 
 struct ImageCollectionSectionItem: Hashable {
-    let image: UIImage
+    let name: String
 }
 
 final class ImageCollectionViewDataSource: UICollectionViewDiffableDataSource<ImageCollectionSection, ImageCollectionSectionItem> {
@@ -14,7 +14,7 @@ final class ImageCollectionViewDataSource: UICollectionViewDiffableDataSource<Im
     init(_ collectionView: UICollectionView) {
         super.init(collectionView: collectionView) { collectionView, indexPath, item in
             let cell = collectionView.reuse(ImageCollectionViewCell.self, indexPath)
-            cell.configure(with: item.image)
+            cell.configure(with: UIImage(named: item.name)!)
             return cell
         }
     }

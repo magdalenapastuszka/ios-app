@@ -2,6 +2,15 @@ import Foundation
 import UIKit
 import UIMagicDropDown
 
+struct EventFormData {
+    let name: String?
+    let category: Int?
+    let price: String?
+    let dateFrom: String?
+    let dateTo: String?
+    let isPremium: Bool
+}
+
 final class EventFormView: BaseView {
     struct Model {
         let emptyPicture: UIImage
@@ -151,14 +160,14 @@ final class EventFormView: BaseView {
         $0.setTitleColor(.placeholderColor, for: .normal)
     }
     
-    private let handleDidTapSaveButton: () -> Void
+    private let handleDidTapSaveButton: (EventFormData) -> Void
     private let handleDidTapCancelButton: () -> Void
     private let handleDidTapDeleteButton: () -> Void
     private let handleDidTapPictureButton: () -> Void
     
     init(
         model: Model,
-        handleDidTapSaveButton: @escaping () -> Void,
+        handleDidTapSaveButton: @escaping (EventFormData) -> Void,
         handleDidTapCancelButton: @escaping () -> Void,
         handleDidTapDeleteButton: @escaping () -> Void,
         handleDidTapPictureButton: @escaping () -> Void
@@ -503,7 +512,14 @@ final class EventFormView: BaseView {
     }
     
     @objc private func didTapSaveButton() {
-        handleDidTapSaveButton()
+        handleDidTapSaveButton(EventFormData(
+            name: eventTtitleTextField.text,
+            category: categoryDropdownField.itemSelected,
+            price: priceTextField.text,
+            dateFrom: startDateTextField.text,
+            dateTo: endDateTextField.text,
+            isPremium: premiumEventSwitch.isOn
+        ))
     }
     
     @objc private func didTapCancelButton() {

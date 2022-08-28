@@ -18,12 +18,11 @@ final class EventListViewModel {
     private var events: [Event] = []
     private var cancellable: AnyCancellable?
     private let eventsFetcher: EventsAPIManagerFetcher
-    private let showEventForm: (Event?) -> Void
+    private let showEventForm: (Event?, Bool) -> Void
     
     init(
         eventsFetcher: EventsAPIManagerFetcher,
-        showEventForm: @escaping (Event?
-        ) -> Void) {
+        showEventForm: @escaping (Event?, Bool) -> Void) {
         self.eventsFetcher = eventsFetcher
         self.showEventForm = showEventForm
     }
@@ -62,11 +61,11 @@ final class EventListViewModel {
     }
     
     func didTapEvent(index: Int) {
-        showEventForm(filteredEvents[index])
+        showEventForm(filteredEvents[index], true)
     }
     
     func didTapAddButton() {
-        showEventForm(nil)
+        showEventForm(nil, false)
     }
     
     private func createEmptyTableViewData() {

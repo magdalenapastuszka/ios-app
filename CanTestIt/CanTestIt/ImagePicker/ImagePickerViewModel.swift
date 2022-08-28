@@ -7,13 +7,13 @@ final class ImagePickerViewModel {
     @Published var isLoading = false
 
     private let imagesCache: EventImagesCache
-    private let didChooseImage: (UIImage) -> Void
+    private let didChooseImage: (String) -> Void
     private let dismissView: () -> Void
     private var imagesCancellable: AnyCancellable?
     
     init(
         imagesCache: EventImagesCache,
-        didChooseImage: @escaping (UIImage) -> Void,
+        didChooseImage: @escaping (String) -> Void,
         dismissView: @escaping () -> Void
     ) {
         self.imagesCache = imagesCache
@@ -34,7 +34,7 @@ final class ImagePickerViewModel {
                 },
                 receiveValue: { [weak self] images in
                     self?.data = images.compactMap {
-                        ImageCollectionSectionItem(image: UIImage(named: $0)!)
+                        ImageCollectionSectionItem(name: $0)
                     }
                 }
             )
@@ -43,7 +43,7 @@ final class ImagePickerViewModel {
     func handleDidTapChooseButton(selectedPage: Int?) {
         guard let selectedPage = selectedPage else { return }
         
-        didChooseImage(data[selectedPage].image)
+        didChooseImage(data[selectedPage].name)
         dismissView()
     }
 }

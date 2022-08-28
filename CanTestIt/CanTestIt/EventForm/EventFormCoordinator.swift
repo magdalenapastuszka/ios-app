@@ -20,10 +20,12 @@ final class EventFormCoordinator: Coordinator {
         self.appEngine = appEngine
     }
     
-    func start() {
+    func start(isDeleteButtonHidden: Bool) {
         let vc = EventFormViewController(viewModel: EventFormViewModel(
             event: event,
             categoriesCache: appEngine.categoriesCache,
+            eventsCreator: appEngine.eventsCreator,
+            isDeleteButtonHidden: isDeleteButtonHidden,
             showImagePicker: showImagePicker,
             dismissView: dismissView
         ))
@@ -35,7 +37,7 @@ final class EventFormCoordinator: Coordinator {
         navigationController.dismiss(animated: true)
     }
     
-    private func showImagePicker(didChooseImage: @escaping (UIImage) -> Void) {
+    private func showImagePicker(didChooseImage: @escaping (String) -> Void) {
         imagePickerCoordinator.start(didChooseImage: didChooseImage)
     }
 }
