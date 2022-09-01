@@ -61,11 +61,11 @@ final class EventListViewModel {
     }
     
     func didTapEvent(index: Int) {
-        showEventForm(filteredEvents[index], true)
+        showEventForm(filteredEvents[index], false)
     }
     
     func didTapAddButton() {
-        showEventForm(nil, false)
+        showEventForm(nil, true)
     }
     
     private func createEmptyTableViewData() {
