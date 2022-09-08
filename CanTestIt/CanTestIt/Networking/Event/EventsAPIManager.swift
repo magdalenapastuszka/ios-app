@@ -6,7 +6,7 @@ protocol EventsAPIManagerFetcher {
 }
 
 protocol EventsAPIManagerCreator {
-    func createEvent(event: Event) -> AnyPublisher<Bool, NetworkRequestError>
+    func createEvent(event: Event) -> AnyPublisher<NoReply, NetworkRequestError>
 }
 
 protocol EventsAPIDeletor {
@@ -26,7 +26,7 @@ final class EventsAPIManagerImpl: EventsAPIManager {
         apiClient.dispatch(GetEventsRequest())
     }
     
-    func createEvent(event: Event) -> AnyPublisher<Bool, NetworkRequestError> {
+    func createEvent(event: Event) -> AnyPublisher<NoReply, NetworkRequestError> {
         apiClient.dispatch(CreateEventRequest(event: event))
     }
     

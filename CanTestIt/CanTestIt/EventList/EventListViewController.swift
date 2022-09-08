@@ -23,8 +23,8 @@ final class EventListViewController: BaseViewController {
         view = mainView
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         viewModel.loadEvents()
     }
     

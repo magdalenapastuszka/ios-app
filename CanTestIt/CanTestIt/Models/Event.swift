@@ -9,7 +9,7 @@ final class Event: Codable {
     var dateFrom: String
     var dateTo: String
     var image: String
-    var isPremium: Bool
+    var isPremium: Bool?
     var id: String?
     
     var startDate: Date? {

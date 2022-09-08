@@ -8,8 +8,6 @@ final class EventListViewModel {
     
     private var filteredEvents: [Event] = [] {
         didSet {
-            guard !oldValue.isEmpty else { return }
-            
             filteredEvents.isEmpty
             ? createEmptyTableViewData()
             : createTableViewData()
@@ -52,7 +50,8 @@ final class EventListViewModel {
     }
     
     func didChangeSearchField(text: String?) {
-        guard let text = text else {
+        guard let text = text,
+        !text.isEmpty else {
             filteredEvents = events
             return
         }

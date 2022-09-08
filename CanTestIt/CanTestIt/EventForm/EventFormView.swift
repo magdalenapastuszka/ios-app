@@ -213,7 +213,7 @@ final class EventFormView: BaseView {
             endDateTextField.text = DateFormatter.yyyyMMddHHmm.string(from: endDate)
         }
         priceTextField.text = "\(event.price)"
-        premiumEventSwitch.isOn = event.isPremium
+        premiumEventSwitch.isOn = event.isPremium ?? false
         categoryDropdownField.itemSelected = categoryDropdownField.items?.firstIndex(where: { $0.label == event.category })
     }
     
