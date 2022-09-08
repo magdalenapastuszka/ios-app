@@ -1,6 +1,8 @@
 import UIKit
 
 final class DateTextField: TextFieldWithPadding {
+    private(set) var date: Date?
+    
     private let toolbar = UIToolbar().then {
         let doneButton = UIBarButtonItem(
             title: "date-picker-view.done-button-title".localized,
@@ -58,6 +60,7 @@ final class DateTextField: TextFieldWithPadding {
     }
     
     @objc private func didTapDone() {
+        self.date = datePicker.date
         self.text = DateFormatter.yyyyMMddHHmm.string(from: datePicker.date)
         self.resignFirstResponder()
     }

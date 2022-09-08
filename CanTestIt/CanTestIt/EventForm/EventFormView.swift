@@ -6,8 +6,8 @@ struct EventFormData {
     let name: String?
     let category: Int?
     let price: String?
-    let dateFrom: String?
-    let dateTo: String?
+    let dateFrom: Date?
+    let dateTo: Date?
     let isPremium: Bool
 }
 
@@ -21,6 +21,7 @@ final class EventFormView: BaseView {
         let eventFieldIcon: UIImage
         let categoryFieldTitle: String
         let categoryFieldPlaceholder: String
+        let categoryFieldData: [UIMagicDropdownData]
         let categoryFieldIcon: UIImage
         let startDateFieldTitle: String
         let startDateFieldPlaceholder: String
@@ -79,9 +80,9 @@ final class EventFormView: BaseView {
         $0.font = .font(size: 10, weight: .regular)
     }
     
-    private let categoryDropdownField = UIMagicDropdown(
+    private lazy var categoryDropdownField = UIMagicDropdown(
         theme: MagicDropDownConfig.category,
-        items: []
+        items: model.categoryFieldData
     )
     
     private let startDateTitleLabel = UILabel().then {
@@ -160,6 +161,7 @@ final class EventFormView: BaseView {
         $0.setTitleColor(.placeholderColor, for: .normal)
     }
     
+    private let model: Model
     private let handleDidTapSaveButton: (EventFormData) -> Void
     private let handleDidTapCancelButton: () -> Void
     private let handleDidTapDeleteButton: () -> Void
@@ -173,6 +175,7 @@ final class EventFormView: BaseView {
         handleDidTapPictureButton: @escaping () -> Void
 
     ) {
+        self.model = model
         self.handleDidTapSaveButton = handleDidTapSaveButton
         self.handleDidTapCancelButton = handleDidTapCancelButton
         self.handleDidTapDeleteButton = handleDidTapDeleteButton
@@ -188,8 +191,14 @@ final class EventFormView: BaseView {
         errorLabel.text = message
     }
     
-    func fill(dropDownData: [UIMagicDropdownData]) {
-        categoryDropdownField.items = dropDownData
+    func setImage(name: String?) {
+        if let name = name {
+            pictureButton.setTitle("", for: .normal)
+            pictureButton.setImage(UIImage(named: name), for: .normal)
+        } else {
+            pictureButton.setTitle(model.emptyPictureTitle, for: .normal)
+            pictureButton.setImage(model.emptyPicture, for: .normal)
+        }
     }
     
     func fill(with event: Event) {
@@ -516,8 +525,8 @@ final class EventFormView: BaseView {
             name: eventTtitleTextField.text,
             category: categoryDropdownField.itemSelected,
             price: priceTextField.text,
-            dateFrom: startDateTextField.text,
-            dateTo: endDateTextField.text,
+            dateFrom: startDateTextField.date,
+            dateTo: endDateTextField.date,
             isPremium: premiumEventSwitch.isOn
         ))
     }
@@ -531,6 +540,7 @@ final class EventFormView: BaseView {
     }
     
     @objc private func didTapPictureButton() {
+        endEditing(true)
         handleDidTapPictureButton()
     }
 }

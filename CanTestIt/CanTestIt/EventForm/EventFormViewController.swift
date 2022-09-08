@@ -24,11 +24,6 @@ final class EventFormViewController: BaseViewController {
         view = mainView
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        viewModel.loadCategoriesDropdownData()
-    }
-    
     private func bindAction() {
         viewModel.$error
             .receive(on: RunLoop.main)
@@ -44,10 +39,10 @@ final class EventFormViewController: BaseViewController {
             }
             .store(in: &cancellables)
         
-        viewModel.$categoriesDropdownData
+        viewModel.$selectedImage
             .receive(on: RunLoop.main)
-            .sink { [weak self] dropdownData in
-                self?.mainView.fill(dropDownData: dropdownData)
+            .sink { [weak self] name in
+                self?.mainView.setImage(name: name)
             }
             .store(in: &cancellables)
     }

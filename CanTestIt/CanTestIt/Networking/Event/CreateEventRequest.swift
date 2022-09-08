@@ -1,7 +1,7 @@
 import Foundation
 
 struct CreateEventRequest: HTTPRequest {
-    typealias ReturnType = Bool
+    typealias ReturnType = NoReply
     
     let path: String = "events"
     let queryParams: HTTPQueryParams? = nil

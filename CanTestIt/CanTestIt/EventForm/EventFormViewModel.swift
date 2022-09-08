@@ -8,12 +8,11 @@ typealias EventFormAPIManager = EventsAPIManagerCreator & EventsAPIDeletor
 final class EventFormViewModel {
     @Published var error: String?
     @Published var isLoading: Bool = false
-    @Published var categoriesDropdownData: [UIMagicDropdownData] = []
     @Published var selectedImage: String?
     
     private var cancellables = Set<AnyCancellable>()
     private var event: Event?
-    private let categoriesCache: CategoriesCache
+    private let categories: [Category]
     private let eventFormAPIManager: EventFormAPIManager
     private let isDeleteButtonHidden: Bool
     private let showImagePicker: (@escaping (String) -> Void) -> Void
@@ -21,14 +20,14 @@ final class EventFormViewModel {
     
     init(
         event: Event?,
-        categoriesCache: CategoriesCache,
+        categories: [Category],
         eventFormAPIManager: EventFormAPIManager,
         isDeleteButtonHidden: Bool,
         showImagePicker: @escaping (@escaping (String) -> Void) -> Void,
         dismissView: @escaping () -> Void
     ) {
         self.event = event
-        self.categoriesCache = categoriesCache
+        self.categories = categories
         self.eventFormAPIManager = eventFormAPIManager
         self.isDeleteButtonHidden = isDeleteButtonHidden
         self.dismissView = dismissView
@@ -49,6 +48,7 @@ final class EventFormViewModel {
             eventFieldIcon: .eventName,
             categoryFieldTitle: "event-form.category-field-title" .localized,
             categoryFieldPlaceholder: "event-form.category-field-placeholder".localized,
+            categoryFieldData: categories.map({ UIMagicDropdownData(label: $0.name, value: $0.code) }),
             categoryFieldIcon: .eventCategory,
             startDateFieldTitle: "event-form.start-date-field-title".localized,
             startDateFieldPlaceholder: "event-form.start-date-field-placeholder".localized,
@@ -67,14 +67,6 @@ final class EventFormViewModel {
         )
     }
     
-    func loadCategoriesDropdownData(){
-        categoriesCache.fetchCategories()
-            .sink { [weak self] categories in
-                self?.categoriesDropdownData = categories.map { UIMagicDropdownData(label: $0.name, value: $0.code) }
-            }
-            .store(in: &cancellables)
-    }
-    
     func didTapSaveButton(formData: EventFormData) {
         guard let name = formData.name,
               let categoryIndex = formData.category,
@@ -83,8 +75,6 @@ final class EventFormViewModel {
               let dateTo = formData.dateTo,
               let image = selectedImage,
               !name.isEmpty,
-              !dateFrom.isEmpty,
-              !dateTo.isEmpty,
               !image.isEmpty else {
             error = "event-form.error".localized
             return
@@ -94,15 +84,21 @@ final class EventFormViewModel {
         eventFormAPIManager.createEvent(event: Event(
             name: name,
             description: "",
-            category: categoriesDropdownData[categoryIndex].label,
+            category: categories[categoryIndex].code,
             price: price,
-            dateFrom: dateFrom,
-            dateTo: dateTo,
+            dateFrom: dateFrom.ISO8601Format(),
+            dateTo: dateTo.ISO8601Format(),
             image: image,
             isPremium: formData.isPremium,
             id: event?.id
-        )).sink { [weak self] _ in
+        )).sink { [weak self] response in
             self?.isLoading = false
+            switch response {
+            case .failure(_):
+                self?.error = "event-form.error".localized
+            case .finished:
+                self?.dismissView()
+            }
         } receiveValue: { _ in }
             .store(in: &cancellables)
     }
