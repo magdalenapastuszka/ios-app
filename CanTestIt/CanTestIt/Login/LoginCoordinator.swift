@@ -23,6 +23,7 @@ final class LoginCoordinator: Coordinator {
     func start() {
         let vc = UIHostingController(rootView: LoginView(
             viewModel: LoginViewModel(
+                userAPIManager: appEngine.userAPIManager,
                 showWebsite: showWebsite,
                 showEventList: showEventList
             )

@@ -3,8 +3,8 @@ import SwiftUI
 struct LoginView: View {
     struct Model {
         let title: String
-        let emailTitle: String
-        let emailPlaceholder: String
+        let loginTitle: String
+        let loginPlaceholder: String
         let passwordTitle: String
         let passwordPlaceholder: String
         let buttonTitle: String
@@ -37,13 +37,13 @@ struct LoginView: View {
                 .font(.title2)
                 .padding([.top], Constants.topPadding)
                         
-            Text(viewModel.model?.emailTitle ?? "")
+            Text(viewModel.model?.loginTitle ?? "")
                 .font(.callout)
                 .foregroundColor(Color.textColor)
                 .padding([.top], Constants.topPadding)
             
             InputField(
-                placeholder: viewModel.model?.emailPlaceholder,
+                placeholder: viewModel.model?.loginPlaceholder,
                 rightItem: nil,
                 leftItem: nil,
                 isSecuredEntry: false,
@@ -100,10 +100,7 @@ struct LoginView: View {
             
             Button(
                 action: {
-                    self.viewModel.handleLoginButtonTap(
-                        email: email ?? "",
-                        password: password ?? ""
-                    )
+                    self.viewModel.handleLoginButtonTap()
                 },
                 label: { Text(viewModel.model?.buttonTitle ?? "")
                         .frame(
@@ -141,6 +138,7 @@ struct LoginView: View {
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView(viewModel: LoginViewModel(
+            userAPIManager: UserAPIManagerImpl(apiClient: APIClient(baseURL: "")),
             showWebsite: {},
             showEventList: {}
         ))

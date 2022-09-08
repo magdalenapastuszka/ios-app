@@ -3,8 +3,8 @@
 "intro.button-title" = "Get Started";
 
 "login.title" = "Welcome\nBack!";
-"login.email-textfield-title" = "User Email";
-"login.email-textfield-placeholder" = "Enter user email";
+"login.login-textfield-title" = "Username";
+"login.login-textfield-placeholder" = "Enter username";
 "login.password-textfield-title" = "Password";
 "login.password-textfield-placeholder" = "Enter password";
 "login.button-title" = "Login";
