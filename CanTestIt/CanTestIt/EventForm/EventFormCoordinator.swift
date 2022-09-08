@@ -5,7 +5,6 @@ import Combine
 final class EventFormCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
-    var event: Event?
     
     private lazy var imagePickerCoordinator = ImagePickerCoordiantor(
         navigationController: navigationController,
@@ -25,7 +24,7 @@ final class EventFormCoordinator: Coordinator {
         getCategories()
     }
     
-    func start(isDeleteButtonHidden: Bool) {
+    func start(event: Event?, isDeleteButtonHidden: Bool) {
         let vc = EventFormViewController(viewModel: EventFormViewModel(
             event: event,
             categories: categories,

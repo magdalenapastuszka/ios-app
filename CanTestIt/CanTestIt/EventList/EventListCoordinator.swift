@@ -37,6 +37,6 @@ final class EventListCoordinator: Coordinator {
     }
     
     private func showEventForm(event: Event?, isDeleteButtonHidden: Bool) {
-        evenFormCoordinator.start(isDeleteButtonHidden: isDeleteButtonHidden)
+        evenFormCoordinator.start(event: event, isDeleteButtonHidden: isDeleteButtonHidden)
     }
 }
