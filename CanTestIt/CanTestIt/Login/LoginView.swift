@@ -11,9 +11,7 @@ struct LoginView: View {
         let link: NSAttributedString
     }
     
-    private let viewModel: LoginViewModel
-    @State private var email: String?
-    @State private var password: String?
+    @ObservedObject private var viewModel: LoginViewModel
     
     private enum Constants {
         static let topPadding: CGFloat = 55
@@ -49,7 +47,7 @@ struct LoginView: View {
                 isSecuredEntry: false,
                 handleLeftTap: {},
                 delegate: nil,
-                text: $email
+                text: $viewModel.login
             )
             .frame(height: .defaultControlHeight, alignment: .leading)
                 .background(
@@ -80,7 +78,7 @@ struct LoginView: View {
                 isSecuredEntry: true,
                 handleLeftTap: {},
                 delegate: nil,
-                text: $password
+                text: $viewModel.password
             )
             .frame(height: .defaultControlHeight, alignment: .leading)
             .background(

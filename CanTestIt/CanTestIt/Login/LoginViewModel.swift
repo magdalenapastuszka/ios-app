@@ -6,11 +6,9 @@ final class LoginViewModel: ObservableObject {
     @Published var error: String?
     @Published var isLoading: Bool = false
     
-    @State var login: String?
-    @State var password: String?
-    
-    var bbb: String = ""
-    
+    @Published var login: String?
+    @Published var password: String?
+        
     let showWebsite: ()  -> Void
     private var cancellable: AnyCancellable?
     private let showEventList: () -> Void
@@ -48,6 +46,7 @@ final class LoginViewModel: ObservableObject {
         error = nil
         isLoading = true
         cancellable = userAPIManager.login(login: login, password: password)
+            .receive(on: RunLoop.main)
             .sink { [weak self] response in
                 self?.isLoading = false
                 if case .failure = response {
