@@ -60,7 +60,7 @@ final class EventListViewModel {
     }
     
     func didTapEvent(index: Int) {
-        guard !events.isEmpty else { return }
+        guard !filteredEvents.isEmpty else { return }
         
         showEventForm(filteredEvents[index], false)
     }

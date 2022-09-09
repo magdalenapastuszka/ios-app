@@ -56,6 +56,7 @@ final class EventFormView: BaseView {
         $0.setTitleColor(.placeholderColor, for: .normal)
         $0.contentVerticalAlignment = .center
         $0.contentHorizontalAlignment = .center
+        
     }
     
     private let titleLabel = UILabel().then {
@@ -197,24 +198,34 @@ final class EventFormView: BaseView {
     
     func setImage(name: String?) {
         if let name = name {
+            pictureButton.contentVerticalAlignment = .center
+            pictureButton.contentHorizontalAlignment = .center
+            pictureButton.contentMode = .center
+            pictureButton.imageView?.contentMode = .scaleAspectFit
             pictureButton.setTitle("", for: .normal)
             pictureButton.setImage(UIImage(named: name), for: .normal)
         } else {
+            pictureButton.contentVerticalAlignment = .center
+            pictureButton.contentHorizontalAlignment = .center
             pictureButton.setTitle(model.emptyPictureTitle, for: .normal)
             pictureButton.setImage(model.emptyPicture, for: .normal)
         }
     }
     
     private func fill(with event: Event) {
+        pictureButton.contentVerticalAlignment = .fill
+        pictureButton.contentHorizontalAlignment = .fill
         pictureButton.setTitle("", for: .normal)
         pictureButton.setImage(UIImage(named: event.image), for: .normal)
         
         eventTtitleTextField.text = event.name
         if let startDate = event.startDate {
             startDateTextField.text = DateFormatter.yyyyMMddHHmm.string(from: startDate)
+            startDateTextField.date = event.startDate
         }
         if let endDate = event.endDate {
             endDateTextField.text = DateFormatter.yyyyMMddHHmm.string(from: endDate)
+            endDateTextField.date = event.endDate
         }
         priceTextField.text = "\(event.price)"
         premiumEventSwitch.isOn = event.isPremium ?? false

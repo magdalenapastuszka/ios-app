@@ -39,7 +39,7 @@ final class EventFormCoordinator: Coordinator {
     
     private func getCategories() {
         cancellable = appEngine.categoriesCache.fetchCategories()
-            .sink {[weak self] categories in
+            .sink { [weak self] categories in
                 self?.categories = categories
             }
     }

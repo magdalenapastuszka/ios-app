@@ -1,7 +1,7 @@
 import UIKit
 
 final class DateTextField: TextFieldWithPadding {
-    private(set) var date: Date?
+    var date: Date?
     
     private let toolbar = UIToolbar().then {
         let doneButton = UIBarButtonItem(
