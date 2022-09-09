@@ -89,7 +89,7 @@ final class EventListViewModel {
                             price: $0.plnPrice,
                             category: $0.category,
                             startDateTitle: "event-form.start-date-field-title".localized,
-                            startDate: $0.dateFrom,
+                            startDate: DateFormatter.yyyyMMdd.string(from: $0.startDate ?? Date()),
                             startHour: $0.startHour
                         ))
                     }

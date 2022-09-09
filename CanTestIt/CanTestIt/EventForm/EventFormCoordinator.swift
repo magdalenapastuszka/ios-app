@@ -46,7 +46,7 @@ final class EventFormCoordinator: Coordinator {
     
     private func dismissView() {
         DispatchQueue.main.async { [weak self] in
-            self?.navigationController.dismiss(animated: true)
+            self?.navigationController.popViewController(animated: true)
         }
     }
     

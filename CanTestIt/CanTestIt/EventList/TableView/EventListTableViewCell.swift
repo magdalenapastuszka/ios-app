@@ -158,8 +158,8 @@ final class EventListTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             pictureView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             pictureView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            pictureView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            pictureView.topAnchor.constraint(equalTo: contentView.topAnchor)
+            pictureView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Constants.padding),
+            pictureView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Constants.padding)
         ])
     }
     
@@ -168,7 +168,7 @@ final class EventListTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             infoContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             infoContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            infoContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            infoContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Constants.padding),
         ])
     }
     

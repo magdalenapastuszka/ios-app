@@ -34,7 +34,7 @@ final class EventListTableViewDataSource: UITableViewDiffableDataSource<EventLis
         }
     }
 
-    func reload(with data: [EventListData], animated: Bool = true) {
+    func reload(with data: [EventListData], animated: Bool = false) {
         var snapshot = snapshot()
         snapshot.deleteAllItems()
         for item in data {
