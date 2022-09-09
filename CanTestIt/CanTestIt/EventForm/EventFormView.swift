@@ -37,6 +37,7 @@ final class EventFormView: BaseView {
         let cancelButtonTitle: String
         let deleteButtonTitle: String
         let isDeleteButtonHidden: Bool
+        let event: Event?
     }
     
     private enum Constants {
@@ -184,6 +185,9 @@ final class EventFormView: BaseView {
         setUpViewHierarchy()
         setUpConstraints()
         fill(with: model)
+        if let event = model.event {
+            fill(with: event)
+        }
         bindAction()
     }
     
@@ -201,7 +205,7 @@ final class EventFormView: BaseView {
         }
     }
     
-    func fill(with event: Event) {
+    private func fill(with event: Event) {
         pictureButton.setTitle("", for: .normal)
         pictureButton.setImage(UIImage(named: event.image), for: .normal)
         
@@ -214,7 +218,7 @@ final class EventFormView: BaseView {
         }
         priceTextField.text = "\(event.price)"
         premiumEventSwitch.isOn = event.isPremium ?? false
-        categoryDropdownField.itemSelected = categoryDropdownField.items?.firstIndex(where: { $0.label == event.category })
+//        categoryDropdownField.itemSelected = categoryDropdownField.items?.firstIndex(where: { $0.label == event.category })
     }
     
     private func fill(with model: Model) {

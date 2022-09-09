@@ -33,6 +33,9 @@ struct NetworkDispatcher {
                  !(200...299).contains(response.statusCode) {
                     throw httpError(response.statusCode)
                 }
+                if data.isEmpty && ReturnType.self is NoReply.Type {
+                    return "{\"title\": \"empty\"}".data(using: .utf8)!
+                }
                 return data
             })
             .decode(type: ReturnType.self, decoder: decoder)

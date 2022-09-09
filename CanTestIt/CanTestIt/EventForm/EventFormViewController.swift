@@ -1,5 +1,6 @@
 import UIKit
 import Combine
+import NotificationCenter
 
 final class EventFormViewController: BaseViewController {
     private lazy var mainView = EventFormView(
@@ -43,6 +44,15 @@ final class EventFormViewController: BaseViewController {
             .receive(on: RunLoop.main)
             .sink { [weak self] name in
                 self?.mainView.setImage(name: name)
+            }
+            .store(in: &cancellables)
+        
+        viewModel.$notificationMessage
+            .receive(on: RunLoop.main)
+            .sink { message in
+                guard let message = message else { return }
+                
+                NotificationCenter.shared.showMessage(with: message)
             }
             .store(in: &cancellables)
     }

@@ -50,3 +50,12 @@
 "pln-currency" = "PLN";
 
 "date-picker-view.done-button-title" = "Done";
+
+"notification.checkmark.title" = "Well done!";
+"notification.checkmark.description" = "You successfully added new Event!";
+"notification.error.title" = "Oh Snap!";
+"notification.error.description" = "There was a problem with your request.";
+"notification.info.title" = "Hi there!";
+"notification.info.description" = "Do you have a problem? Just use this contact form.";
+"notification.warning.title" = "Warning!";
+"notification.warning.description" = "Sorry! There was a problem with your request.";

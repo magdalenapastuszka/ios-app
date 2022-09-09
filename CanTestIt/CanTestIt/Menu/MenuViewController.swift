@@ -23,6 +23,5 @@ final class MenuViewController: BaseViewController {
             .sink { [weak self] data in
                 self?.mainView.reloadTable(with: data)
             }
-        NotificationCenter.shared.showMessage(with: NotificationParameters(title: "fsdfsf", subtitle: "fsfsdfsf", state: .error))
     }
 }

@@ -1,3 +1,5 @@
 import Foundation
 
-struct NoReply: Codable {}
+struct NoReply: Codable {
+    let title: String
+}

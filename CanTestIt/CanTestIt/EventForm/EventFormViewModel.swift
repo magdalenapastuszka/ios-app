@@ -2,6 +2,7 @@ import Foundation
 import UIMagicDropDown
 import Combine
 import UIKit
+import NotificationCenter
 
 typealias EventFormAPIManager = EventsAPIManagerCreator & EventsAPIDeletor
 
@@ -9,6 +10,7 @@ final class EventFormViewModel {
     @Published var error: String?
     @Published var isLoading: Bool = false
     @Published var selectedImage: String?
+    @Published var notificationMessage: NotificationParameters?
     
     private var cancellables = Set<AnyCancellable>()
     private var event: Event?
@@ -63,7 +65,8 @@ final class EventFormViewModel {
             saveButtonTitle: "event-form.save-button-title".localized,
             cancelButtonTitle: "event-form.save-cancel-title".localized,
             deleteButtonTitle: "event-form.save-delete-title".localized,
-            isDeleteButtonHidden: isDeleteButtonHidden
+            isDeleteButtonHidden: isDeleteButtonHidden,
+            event: event
         )
     }
     
@@ -86,8 +89,8 @@ final class EventFormViewModel {
             description: "",
             category: categories[categoryIndex].code,
             price: price,
-            dateFrom: dateFrom.ISO8601Format(),
-            dateTo: dateTo.ISO8601Format(),
+            dateFrom: DateFormatter.iso8601.string(from: dateFrom),
+            dateTo: DateFormatter.iso8601.string(from: dateTo),
             image: image,
             isPremium: formData.isPremium,
             id: event?.id
@@ -95,8 +98,9 @@ final class EventFormViewModel {
             self?.isLoading = false
             switch response {
             case .failure(_):
-                self?.error = "event-form.error".localized
+                self?.notificationMessage = .error
             case .finished:
+                self?.notificationMessage = .checkmark
                 self?.dismissView()
             }
         } receiveValue: { _ in }
@@ -112,13 +116,17 @@ final class EventFormViewModel {
         
         isLoading = true
         eventFormAPIManager.deleteEvent(with: id)
-            .sink { [weak self] _ in
+            .sink { [weak self] response in
                 self?.isLoading = false
-            } receiveValue: { [weak self] result in
-                guard result else { return }
-                
-                self?.dismissView()
-            }.store(in: &cancellables)
+                switch response {
+                case .finished:
+                    self?.notificationMessage = .checkmark
+                    self?.dismissView()
+                case .failure(_):
+                    self?.notificationMessage = .error
+                }
+            } receiveValue: { _ in }
+            .store(in: &cancellables)
     }
     
     func didTapPictureButton() {

@@ -1,7 +1,7 @@
 import Foundation
 
 struct DeleteEventRequest: HTTPRequest {
-    typealias ReturnType = Bool
+    typealias ReturnType = NoReply
     
     var path: String { "events/\(id)" }
     let queryParams: HTTPQueryParams? = nil

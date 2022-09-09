@@ -100,6 +100,7 @@
 		6C84A3A828C92BF100E63E47 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C84A3A728C92BF100E63E47 /* LoginRequest.swift */; };
 		6C84A3AB28CA75C200E63E47 /* Optional+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C84A3AA28CA75C200E63E47 /* Optional+Extension.swift */; };
 		6C84A3B028CA78E800E63E47 /* NoReply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C84A3AF28CA78E800E63E47 /* NoReply.swift */; };
+		6C84A3B228CAE93100E63E47 /* NotificationParameters+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C84A3B128CAE93100E63E47 /* NotificationParameters+Extension.swift */; };
 		6CB9B9BD28B1444A00B540D9 /* DateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB9B9BC28B1444A00B540D9 /* DateTextField.swift */; };
 		6CB9B9C028B164C300B540D9 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB9B9BF28B164C300B540D9 /* UIButton+Extension.swift */; };
 		6CC9079C28BBFA3900C13B10 /* DeleteEventRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC9079B28BBFA3900C13B10 /* DeleteEventRequest.swift */; };
@@ -238,6 +239,7 @@
 		6C84A3A728C92BF100E63E47 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		6C84A3AA28CA75C200E63E47 /* Optional+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extension.swift"; sourceTree = "<group>"; };
 		6C84A3AF28CA78E800E63E47 /* NoReply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoReply.swift; sourceTree = "<group>"; };
+		6C84A3B128CAE93100E63E47 /* NotificationParameters+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationParameters+Extension.swift"; sourceTree = "<group>"; };
 		6CB9B9BC28B1444A00B540D9 /* DateTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTextField.swift; sourceTree = "<group>"; };
 		6CB9B9BF28B164C300B540D9 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		6CC9079B28BBFA3900C13B10 /* DeleteEventRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteEventRequest.swift; sourceTree = "<group>"; };
@@ -365,6 +367,7 @@
 				5B0EA4902892CA85009FAB90 /* UICollectionView+Extension.swift */,
 				6C54530428AA7CCC000C843C /* DateFormatter+Extension.swift */,
 				6C84A3AA28CA75C200E63E47 /* Optional+Extension.swift */,
+				6C84A3B128CAE93100E63E47 /* NotificationParameters+Extension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -757,6 +760,7 @@
 				5B0EA40E28873AED009FAB90 /* IntroView.swift in Sources */,
 				5B0EA3FA2887322C009FAB90 /* Coordinator.swift in Sources */,
 				6C54530A28AAC3F6000C843C /* EventImagesCache.swift in Sources */,
+				6C84A3B228CAE93100E63E47 /* NotificationParameters+Extension.swift in Sources */,
 				5B0EA4932892CB2A009FAB90 /* ImageCollectionViewCell.swift in Sources */,
 				6C54530528AA7CCC000C843C /* DateFormatter+Extension.swift in Sources */,
 				5B0EA456288EE671009FAB90 /* UITableViewCell+Extension.swift in Sources */,

@@ -45,7 +45,9 @@ final class EventFormCoordinator: Coordinator {
     }
     
     private func dismissView() {
-        navigationController.dismiss(animated: true)
+        DispatchQueue.main.async { [weak self] in
+            self?.navigationController.dismiss(animated: true)
+        }
     }
     
     private func showImagePicker(didChooseImage: @escaping (String) -> Void) {

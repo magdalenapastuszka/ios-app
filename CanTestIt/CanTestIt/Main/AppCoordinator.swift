@@ -42,6 +42,10 @@ final class AppCoordinator: Coordinator {
     }
     
     private func configureStyle() {
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = .backgroundColor
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
         navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController.navigationBar.shadowImage = UIImage()
         navigationController.navigationBar.backgroundColor = .backgroundColor
