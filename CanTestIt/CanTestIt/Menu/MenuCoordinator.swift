@@ -21,13 +21,18 @@ final class MenuCoordiantor: Coordinator {
     
     func start() {
         let vc = MenuViewController(viewModel: MenuViewModel(
-            logOut: logOut
+            logOut: logOut,
+            presentEventList: presentEventList
         ))
         vc.configureGoBackNav()
         navigationController.go(to: vc, as: .push)
     }
     
     private func logOut() {
-//        loginCoordinator.start()
+        loginCoordinator.start()
+    }
+    
+    private func presentEventList() {
+        navigationController.popViewController(animated: true)
     }
 }

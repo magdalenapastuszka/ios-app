@@ -3,17 +3,22 @@ import Foundation
 final class MenuViewModel {
     @Published var menuRows: [MenuListData] = []
     
-    private var logOut: (() -> Void)?
+    private let logOut: () -> Void
+    private let presentEventList: () -> Void
     
-    init(logOut: @escaping () -> Void) {
+    init(
+        logOut: @escaping () -> Void,
+        presentEventList: @escaping () -> Void
+    ) {
         self.logOut = logOut
+        self.presentEventList = presentEventList
         configure()
     }
     
     func loadModel() -> MenuView.Model {
         MenuView.Model(
-            name: "James Bond",
-            email: "james@007.com"
+            name: "Administrator",
+            email: "cantest@cantest.it"
         )
     }
     
@@ -24,7 +29,7 @@ final class MenuViewModel {
                     image: .menuEvents,
                     title: "menu.events".localized,
                     textColor: .textColor,
-                    action: {}
+                    action: presentEventList
                 )),
                 .main(MenuListTableViewCell.Model(
                     image: .menuFinance,
