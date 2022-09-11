@@ -225,7 +225,7 @@ final class EventFormView: BaseView {
         }
         priceTextField.text = "\(event.price)"
         premiumEventSwitch.isOn = event.isPremium ?? false
-//        categoryDropdownField.itemSelected = categoryDropdownField.items?.firstIndex(where: { $0.label == event.category })
+        categoryDropdownField.itemSelected = categoryDropdownField.items?.firstIndex(where: { $0.value as! String == event.category })
     }
     
     private func fill(with model: Model) {
@@ -421,8 +421,7 @@ final class EventFormView: BaseView {
         NSLayoutConstraint.activate([
             categoryDropdownField.leadingAnchor.constraint(equalTo: formView.leadingAnchor, constant: .defaultPadding),
             categoryDropdownField.trailingAnchor.constraint(equalTo: formView.trailingAnchor, constant: -.defaultPadding),
-            categoryDropdownField.topAnchor.constraint(equalTo: categoryTitleLabel.bottomAnchor, constant: Constants.smallSpacing),
-//            categoryDropdownField.heightAnchor.constraint(equalToConstant: .defaultControlHeight)
+            categoryDropdownField.topAnchor.constraint(equalTo: categoryTitleLabel.bottomAnchor, constant: Constants.smallSpacing)
         ])
     }
     
