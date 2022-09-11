@@ -51,12 +51,16 @@ final class EventFormView: BaseView {
     
     private let formView = UIStackView()
     
-    private let pictureButton = UIButton().then {
+    private let emptyPictureButton = UIButton().then {
         $0.backgroundColor = .textFieldBackgroundColor
         $0.setTitleColor(.placeholderColor, for: .normal)
         $0.contentVerticalAlignment = .center
         $0.contentHorizontalAlignment = .center
-        
+    }
+    
+    private let pictureButton = UIButton().then {
+        $0.backgroundColor = .textFieldBackgroundColor
+        $0.setTitle("", for: .normal)
     }
     
     private let titleLabel = UILabel().then {
@@ -198,25 +202,17 @@ final class EventFormView: BaseView {
     
     func setImage(name: String?) {
         if let name = name {
-            pictureButton.contentVerticalAlignment = .center
-            pictureButton.contentHorizontalAlignment = .center
-            pictureButton.contentMode = .center
-            pictureButton.imageView?.contentMode = .scaleAspectFit
-            pictureButton.setTitle("", for: .normal)
             pictureButton.setImage(UIImage(named: name), for: .normal)
+            pictureButton.isHidden = false
+            emptyPictureButton.isHidden = true
         } else {
-            pictureButton.contentVerticalAlignment = .center
-            pictureButton.contentHorizontalAlignment = .center
-            pictureButton.setTitle(model.emptyPictureTitle, for: .normal)
-            pictureButton.setImage(model.emptyPicture, for: .normal)
+            emptyPictureButton.isHidden = false
+            pictureButton.isHidden = true
         }
     }
     
     private func fill(with event: Event) {
-        pictureButton.contentVerticalAlignment = .fill
-        pictureButton.contentHorizontalAlignment = .fill
-        pictureButton.setTitle("", for: .normal)
-        pictureButton.setImage(UIImage(named: event.image), for: .normal)
+        setImage(name: event.image)
         
         eventTtitleTextField.text = event.name
         if let startDate = event.startDate {
@@ -233,9 +229,9 @@ final class EventFormView: BaseView {
     }
     
     private func fill(with model: Model) {
-        pictureButton.setImage(model.emptyPicture, for: .normal)
-        pictureButton.setTitle(model.emptyPictureTitle, for: .normal)
-        pictureButton.alignVertical()
+        emptyPictureButton.setImage(model.emptyPicture, for: .normal)
+        emptyPictureButton.setTitle(model.emptyPictureTitle, for: .normal)
+        emptyPictureButton.alignVertical()
 
         titleLabel.text = model.viewTitle
         eventTitleLabel.text = model.eventFieldTitle
@@ -293,6 +289,7 @@ final class EventFormView: BaseView {
         scrollView.addSubview(formView)
         
         formView.addSubviews([
+            emptyPictureButton,
             pictureButton,
             titleLabel,
             eventTitleLabel,
@@ -320,6 +317,7 @@ final class EventFormView: BaseView {
     private func setUpConstraints() {
         setUpScrollViewConstraints()
         setUpContainerStackViewConstraints()
+        setUpEmptyPictureButtonConstraints()
         setUpPictureButtonConstraints()
         setUpTitleLabelConstraints()
         setUpEventTitleLabelConstraints()
@@ -367,7 +365,17 @@ final class EventFormView: BaseView {
             pictureButton.leadingAnchor.constraint(equalTo: formView.leadingAnchor),
             pictureButton.trailingAnchor.constraint(equalTo: formView.trailingAnchor),
             pictureButton.topAnchor.constraint(equalTo: formView.topAnchor),
-            pictureButton.heightAnchor.constraint(equalTo: pictureButton.widthAnchor)
+            pictureButton.heightAnchor.constraint(equalTo: emptyPictureButton.widthAnchor)
+        ])
+    }
+    
+    private func setUpEmptyPictureButtonConstraints() {
+        emptyPictureButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            emptyPictureButton.leadingAnchor.constraint(equalTo: formView.leadingAnchor),
+            emptyPictureButton.trailingAnchor.constraint(equalTo: formView.trailingAnchor),
+            emptyPictureButton.topAnchor.constraint(equalTo: formView.topAnchor),
+            emptyPictureButton.heightAnchor.constraint(equalTo: emptyPictureButton.widthAnchor)
         ])
     }
     
@@ -376,7 +384,7 @@ final class EventFormView: BaseView {
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: formView.leadingAnchor, constant: .defaultPadding),
             titleLabel.trailingAnchor.constraint(equalTo: formView.trailingAnchor, constant: -.defaultPadding),
-            titleLabel.topAnchor.constraint(equalTo: pictureButton.bottomAnchor, constant: Constants.spacing)
+            titleLabel.topAnchor.constraint(equalTo: emptyPictureButton.bottomAnchor, constant: Constants.spacing)
         ])
     }
     
@@ -532,6 +540,7 @@ final class EventFormView: BaseView {
         saveButton.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
         cancelButton.addTarget(self, action: #selector(didTapCancelButton), for: .touchUpInside)
         deleteButton.addTarget(self, action: #selector(didTapDeleteButton), for: .touchUpInside)
+        emptyPictureButton.addTarget(self, action: #selector(didTapPictureButton), for: .touchUpInside)
         pictureButton.addTarget(self, action: #selector(didTapPictureButton), for: .touchUpInside)
     }
     
