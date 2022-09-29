@@ -84,6 +84,7 @@
 		5B0EA4A328946E7C009FAB90 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0EA4A228946E7C009FAB90 /* UIStackView+Extension.swift */; };
 		6C2E27A7289E92B000D95703 /* EventFormCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2E27A6289E92B000D95703 /* EventFormCoordinator.swift */; };
 		6C2E27AC28A045C700D95703 /* MagicDropDownConfig+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2E27AB28A045C600D95703 /* MagicDropDownConfig+Extension.swift */; };
+		6C49001428E58D47006F6F3F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 6C49001328E58D47006F6F3F /* Kingfisher */; };
 		6C5452F028AA37CD000C843C /* EventsAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5452EF28AA37CD000C843C /* EventsAPIManager.swift */; };
 		6C5452F228AA3A11000C843C /* GetEventsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5452F128AA3A11000C843C /* GetEventsRequest.swift */; };
 		6C5452F428AA3A37000C843C /* CreateEventRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5452F328AA3A37000C843C /* CreateEventRequest.swift */; };
@@ -250,6 +251,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C49001428E58D47006F6F3F /* Kingfisher in Frameworks */,
 				6C54530328AA71C0000C843C /* JGProgressHUD-SwiftUI in Frameworks */,
 				5B0EA47128919C1D009FAB90 /* NotificationCenter.framework in Frameworks */,
 				5B0EA49928930F31009FAB90 /* UIMagicDropDown in Frameworks */,
@@ -581,6 +583,7 @@
 			packageProductDependencies = (
 				5B0EA49828930F31009FAB90 /* UIMagicDropDown */,
 				6C54530228AA71C0000C843C /* JGProgressHUD-SwiftUI */,
+				6C49001328E58D47006F6F3F /* Kingfisher */,
 			);
 			productName = CanTestIt;
 			productReference = 5B0EA3C3288730CF009FAB90 /* CanTestIt.app */;
@@ -657,6 +660,7 @@
 			packageReferences = (
 				5B0EA49728930F31009FAB90 /* XCRemoteSwiftPackageReference "UIMagicDropDown" */,
 				6C54530128AA71C0000C843C /* XCRemoteSwiftPackageReference "JGProgressHUD-SwiftUI" */,
+				6C49001228E58D47006F6F3F /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 5B0EA3C4288730CF009FAB90 /* Products */;
 			projectDirPath = "";
@@ -1139,6 +1143,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		6C49001228E58D47006F6F3F /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 		6C54530128AA71C0000C843C /* XCRemoteSwiftPackageReference "JGProgressHUD-SwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/JonasGessner/JGProgressHUD-SwiftUI";
@@ -1154,6 +1166,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5B0EA49728930F31009FAB90 /* XCRemoteSwiftPackageReference "UIMagicDropDown" */;
 			productName = UIMagicDropDown;
+		};
+		6C49001328E58D47006F6F3F /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6C49001228E58D47006F6F3F /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 		6C54530228AA71C0000C843C /* JGProgressHUD-SwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
