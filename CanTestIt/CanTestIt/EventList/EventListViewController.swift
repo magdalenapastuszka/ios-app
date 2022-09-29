@@ -30,12 +30,14 @@ final class EventListViewController: BaseViewController {
     
     private func bindAction() {
         viewModel.$tableViewData
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] data in
                 self?.mainView.reloadTable(with: data)
             }
             .store(in: &cancellables)
         
         viewModel.$isLoading
+            .receive(on: DispatchQueue.main)
             .sink{ [weak self] newValue in
                 newValue ? self?.showHud() : self?.dismissHud()
             }

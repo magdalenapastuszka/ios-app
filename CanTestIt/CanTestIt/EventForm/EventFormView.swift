@@ -59,9 +59,11 @@ final class EventFormView: BaseView {
     }
     
     private let pictureButton = UIButton().then {
-        $0.backgroundColor = .textFieldBackgroundColor
+        $0.backgroundColor = .clear
         $0.setTitle("", for: .normal)
     }
+
+    private let pictureImageView = UIImageView()
     
     private let titleLabel = UILabel().then {
         $0.textColor = .primaryColor
@@ -202,12 +204,14 @@ final class EventFormView: BaseView {
     
     func setImage(name: String?) {
         if let name = name {
-            pictureButton.setImage(UIImage(named: name), for: .normal)
+            pictureImageView.handleImage(with: name)
             pictureButton.isHidden = false
+            pictureImageView.isHidden = false
             emptyPictureButton.isHidden = true
         } else {
             emptyPictureButton.isHidden = false
             pictureButton.isHidden = true
+            pictureImageView.isHidden = true
         }
     }
     
@@ -290,6 +294,7 @@ final class EventFormView: BaseView {
         
         formView.addSubviews([
             emptyPictureButton,
+            pictureImageView,
             pictureButton,
             titleLabel,
             eventTitleLabel,
@@ -319,6 +324,7 @@ final class EventFormView: BaseView {
         setUpContainerStackViewConstraints()
         setUpEmptyPictureButtonConstraints()
         setUpPictureButtonConstraints()
+        setUpPictureImageViewConstraints()
         setUpTitleLabelConstraints()
         setUpEventTitleLabelConstraints()
         setUpEventTtitleTextFieldConstraints()
@@ -359,13 +365,23 @@ final class EventFormView: BaseView {
         ])
     }
     
+    private func setUpPictureImageViewConstraints() {
+        pictureImageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            pictureImageView.leadingAnchor.constraint(equalTo: formView.leadingAnchor),
+            pictureImageView.trailingAnchor.constraint(equalTo: formView.trailingAnchor),
+            pictureImageView.topAnchor.constraint(equalTo: formView.topAnchor),
+            pictureImageView.heightAnchor.constraint(equalTo: pictureImageView.widthAnchor)
+        ])
+    }
+    
     private func setUpPictureButtonConstraints() {
         pictureButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             pictureButton.leadingAnchor.constraint(equalTo: formView.leadingAnchor),
             pictureButton.trailingAnchor.constraint(equalTo: formView.trailingAnchor),
             pictureButton.topAnchor.constraint(equalTo: formView.topAnchor),
-            pictureButton.heightAnchor.constraint(equalTo: emptyPictureButton.widthAnchor)
+            pictureButton.heightAnchor.constraint(equalTo: pictureButton.widthAnchor)
         ])
     }
     

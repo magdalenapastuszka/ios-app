@@ -27,28 +27,28 @@ final class EventFormViewController: BaseViewController {
     
     private func bindAction() {
         viewModel.$error
-            .receive(on: RunLoop.main)
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] error in
                 self?.mainView.showError(message: error)
             }
             .store(in: &cancellables)
         
         viewModel.$isLoading
-            .receive(on: RunLoop.main)
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] isLoading in
                 isLoading ? self?.showHud() : self?.dismissHud()
             }
             .store(in: &cancellables)
         
         viewModel.$selectedImage
-            .receive(on: RunLoop.main)
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] name in
                 self?.mainView.setImage(name: name)
             }
             .store(in: &cancellables)
         
         viewModel.$notificationMessage
-            .receive(on: RunLoop.main)
+            .receive(on: DispatchQueue.main)
             .sink { message in
                 guard let message = message else { return }
                 

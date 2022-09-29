@@ -4,7 +4,7 @@ final class EventListTableViewCell: UITableViewCell {
     struct Model: Hashable {
         let id = UUID()
         let title: String
-        let image: UIImage
+        let image: String
         let priceTitle: String
         let price: String
         let category: String
@@ -30,7 +30,7 @@ final class EventListTableViewCell: UITableViewCell {
     }
     
     private let pictureView = UIImageView().then {
-        $0.contentMode = .scaleAspectFit
+        $0.contentMode = .scaleAspectFill
         $0.layer.cornerRadius = Constants.cornerRadius
         $0.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
     }
@@ -100,7 +100,7 @@ final class EventListTableViewCell: UITableViewCell {
     }
     
     func configure(with model: Model) {
-        pictureView.image = model.image
+        pictureView.handleImage(with: model.image)
         titleLabel.text = model.title
         priceTitleLabel.text = model.priceTitle
         priceLabel.text = model.price
@@ -156,6 +156,7 @@ final class EventListTableViewCell: UITableViewCell {
     private func setUpPictureViewConstraints() {
         pictureView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
+            pictureView.heightAnchor.constraint(equalTo: pictureView.widthAnchor),
             pictureView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             pictureView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             pictureView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Constants.padding),

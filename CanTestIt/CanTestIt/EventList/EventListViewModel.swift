@@ -84,7 +84,7 @@ final class EventListViewModel {
                     filteredEvents.map {
                         .main(.init(
                             title: $0.name,
-                            image: UIImage(named: $0.image)!,
+                            image: $0.image,
                             priceTitle: "event-form.price-field-title".localized,
                             price: $0.plnPrice,
                             category: $0.category,

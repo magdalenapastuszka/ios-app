@@ -14,7 +14,7 @@ final class ImageCollectionViewDataSource: UICollectionViewDiffableDataSource<Im
     init(_ collectionView: UICollectionView) {
         super.init(collectionView: collectionView) { collectionView, indexPath, item in
             let cell = collectionView.reuse(ImageCollectionViewCell.self, indexPath)
-            cell.configure(with: UIImage(named: item.name)!)
+            cell.configure(with: item.name)
             return cell
         }
     }

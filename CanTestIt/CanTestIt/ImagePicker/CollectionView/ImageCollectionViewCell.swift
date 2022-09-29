@@ -15,8 +15,8 @@ final class ImageCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with image: UIImage) {
-        pictureView.image = image
+    func configure(with name: String) {
+        pictureView.handleImage(with: name)
     }
     
     private func setUpPictureViewConstraints() {
