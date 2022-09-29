@@ -17,6 +17,7 @@ struct InputField: UIViewRepresentable {
     var rightItem: UIImage?
     var leftItem: UIImage?
     var isSecuredEntry = false
+    var autocapitalizationType: UITextAutocapitalizationType = .none
     var handleLeftTap: (() -> ()) = {}
     var delegate: InputFieldDelegate?
     @Binding var text: String?
@@ -29,6 +30,7 @@ struct InputField: UIViewRepresentable {
         textField.text = text
         textField.textColor = .textColor
         textField.placeholderColor(.placeholderColor)
+        textField.autocapitalizationType = autocapitalizationType
         
         if let rightimg = rightItem {
             rightView.setImage(rightimg, for: .normal)
