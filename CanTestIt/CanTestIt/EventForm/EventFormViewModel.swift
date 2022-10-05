@@ -4,7 +4,7 @@ import Combine
 import UIKit
 import NotificationCenter
 
-typealias EventFormAPIManager = EventsAPIManagerCreator & EventsAPIDeletor
+typealias EventFormAPIManager = EventsAPIManagerCreator & EventsAPIDeletor & EventsAPIManagerUpdater
 
 final class EventFormViewModel {
     @Published var error: String?
@@ -71,6 +71,10 @@ final class EventFormViewModel {
     }
     
     func didTapSaveButton(formData: EventFormData) {
+        event.isNil ? createEvent(from: formData) : updateEvent(from: formData)
+    }
+    
+    private func createEvent(from formData: EventFormData) {
         guard let name = formData.name,
               let categoryIndex = formData.category,
               let price = formData.price?.floatValue,
@@ -93,6 +97,43 @@ final class EventFormViewModel {
             dateTo: DateFormatter.iso8601.string(from: dateTo),
             image: image,
             isPremium: formData.isPremium,
+            id: nil
+        )).sink { [weak self] response in
+            self?.isLoading = false
+            switch response {
+            case .failure(_):
+                self?.notificationMessage = .error
+            case .finished:
+                self?.notificationMessage = NotificationParameters.checkmark(description: "notification.added-event.description".localized)
+                self?.dismissView()
+            }
+        } receiveValue: { _ in }
+            .store(in: &cancellables)
+    }
+    
+    private func updateEvent(from formData: EventFormData) {
+        guard let name = formData.name,
+              let categoryIndex = formData.category,
+              let price = formData.price?.floatValue,
+              let dateFrom = formData.dateFrom,
+              let dateTo = formData.dateTo,
+              let image = selectedImage,
+              !name.isEmpty,
+              !image.isEmpty else {
+            error = "event-form.error".localized
+            return
+        }
+        
+        error = nil
+        eventFormAPIManager.updateEvent(event: Event(
+            name: name,
+            description: "",
+            category: categories[categoryIndex].code,
+            price: price,
+            dateFrom: DateFormatter.iso8601.string(from: dateFrom),
+            dateTo: DateFormatter.iso8601.string(from: dateTo),
+            image: image,
+            isPremium: formData.isPremium,
             id: event?.id
         )).sink { [weak self] response in
             self?.isLoading = false
@@ -100,7 +141,7 @@ final class EventFormViewModel {
             case .failure(_):
                 self?.notificationMessage = .error
             case .finished:
-                self?.notificationMessage = .checkmark
+                self?.notificationMessage = NotificationParameters.checkmark(description: "notification.updated-event.description".localized)
                 self?.dismissView()
             }
         } receiveValue: { _ in }
@@ -120,7 +161,7 @@ final class EventFormViewModel {
                 self?.isLoading = false
                 switch response {
                 case .finished:
-                    self?.notificationMessage = .checkmark
+                    self?.notificationMessage = NotificationParameters.checkmark(description: "notification.deleted-event.description".localized)
                     self?.dismissView()
                 case .failure(_):
                     self?.notificationMessage = .error

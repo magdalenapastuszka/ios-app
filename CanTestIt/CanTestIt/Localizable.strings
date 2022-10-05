@@ -52,7 +52,9 @@
 "date-picker-view.done-button-title" = "Done";
 
 "notification.checkmark.title" = "Well done!";
-"notification.checkmark.description" = "You successfully added new Event!";
+"notification.added-event.description" = "You successfully added new Event!";
+"notification.deleted-event.description" = "You successfully deleted Event!";
+"notification.updated-event.description" = "You successfully updated Event!";
 "notification.error.title" = "Oh Snap!";
 "notification.error.description" = "There was a problem with your request.";
 "notification.info.title" = "Hi there!";

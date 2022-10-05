@@ -8,11 +8,13 @@ extension NotificationParameters {
         state: .error
     )
     
-    static let checkmark = NotificationParameters(
-        title: "notification.checkmark.title".localized,
-        subtitle: "notification.checkmark.description".localized,
-        state: .checkmark
-    )
+    static func checkmark(title: String = "notification.checkmark.title".localized, description: String) -> NotificationParameters {
+        NotificationParameters(
+            title: title,
+            subtitle: description,
+            state: .checkmark
+        )
+    }
     
     static let warning = NotificationParameters(
         title: "notification.warning.title".localized,
