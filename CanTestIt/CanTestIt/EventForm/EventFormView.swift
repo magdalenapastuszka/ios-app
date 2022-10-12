@@ -197,6 +197,7 @@ final class EventFormView: BaseView {
         if let event = model.event {
             fill(with: event)
         }
+        registerKeyboardListener()
         bindAction()
     }
     
@@ -583,6 +584,32 @@ final class EventFormView: BaseView {
     @objc private func didTapPictureButton() {
         endEditing(true)
         handleDidTapPictureButton()
+    }
+    
+    private func registerKeyboardListener(){
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.keyboardDidShow(notification:)),
+            name: UIResponder.keyboardDidShowNotification, object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.keyboardDidHide(notification:)),
+            name: UIResponder.keyboardDidHideNotification, object: nil
+        )
+    }
+    
+    //MARK: Methods to manage keybaord
+    @objc func keyboardDidShow(notification: NSNotification) {
+        var info = notification.userInfo
+        let keyBoardSize = info![UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
+        scrollView.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyBoardSize.height, right: 0.0)
+        scrollView.scrollIndicatorInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyBoardSize.height, right: 0.0)
+    }
+    
+    @objc func keyboardDidHide(notification: NSNotification) {
+        scrollView.contentInset = UIEdgeInsets.zero
+        scrollView.scrollIndicatorInsets = UIEdgeInsets.zero
     }
 }
 
