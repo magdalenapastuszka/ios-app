@@ -91,7 +91,9 @@ final class EventFormView: BaseView {
     private lazy var categoryDropdownField = UIMagicDropdown(
         theme: MagicDropDownConfig.category,
         items: model.categoryFieldData
-    )
+    ).then {
+        $0.reloadInputViews()
+    }
     
     private let startDateTitleLabel = UILabel().then {
         $0.textColor = .textColor
