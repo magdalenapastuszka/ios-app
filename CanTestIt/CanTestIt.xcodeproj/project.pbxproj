@@ -104,6 +104,7 @@
 		6C84A3AB28CA75C200E63E47 /* Optional+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C84A3AA28CA75C200E63E47 /* Optional+Extension.swift */; };
 		6C84A3B028CA78E800E63E47 /* NoReply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C84A3AF28CA78E800E63E47 /* NoReply.swift */; };
 		6C84A3B228CAE93100E63E47 /* NotificationParameters+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C84A3B128CAE93100E63E47 /* NotificationParameters+Extension.swift */; };
+		6CADCC0328F8382F0011EA78 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CADCC0228F8382F0011EA78 /* logo.png */; };
 		6CB9B9BD28B1444A00B540D9 /* DateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB9B9BC28B1444A00B540D9 /* DateTextField.swift */; };
 		6CB9B9C028B164C300B540D9 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB9B9BF28B164C300B540D9 /* UIButton+Extension.swift */; };
 		6CC9079C28BBFA3900C13B10 /* DeleteEventRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC9079B28BBFA3900C13B10 /* DeleteEventRequest.swift */; };
@@ -245,6 +246,7 @@
 		6C84A3AA28CA75C200E63E47 /* Optional+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extension.swift"; sourceTree = "<group>"; };
 		6C84A3AF28CA78E800E63E47 /* NoReply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoReply.swift; sourceTree = "<group>"; };
 		6C84A3B128CAE93100E63E47 /* NotificationParameters+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationParameters+Extension.swift"; sourceTree = "<group>"; };
+		6CADCC0228F8382F0011EA78 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		6CB9B9BC28B1444A00B540D9 /* DateTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTextField.swift; sourceTree = "<group>"; };
 		6CB9B9BF28B164C300B540D9 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		6CC9079B28BBFA3900C13B10 /* DeleteEventRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteEventRequest.swift; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 		5B0EA3C5288730CF009FAB90 /* CanTestIt */ = {
 			isa = PBXGroup;
 			children = (
+				6CADCC0128F838240011EA78 /* logo */,
 				5B0EA49B2893120B009FAB90 /* EventForm */,
 				5B0EA4822892C124009FAB90 /* ImagePicker */,
 				5B0EA45C2890218B009FAB90 /* Menu */,
@@ -569,6 +572,14 @@
 			path = User;
 			sourceTree = "<group>";
 		};
+		6CADCC0128F838240011EA78 /* logo */ = {
+			isa = PBXGroup;
+			children = (
+				6CADCC0228F8382F0011EA78 /* logo.png */,
+			);
+			path = logo;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -702,6 +713,7 @@
 			files = (
 				5B0EA3D3288730D1009FAB90 /* LaunchScreen.storyboard in Resources */,
 				5B0EA41C2887EFD9009FAB90 /* Localizable.strings in Resources */,
+				6CADCC0328F8382F0011EA78 /* logo.png in Resources */,
 				5B0EA3D0288730D1009FAB90 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
