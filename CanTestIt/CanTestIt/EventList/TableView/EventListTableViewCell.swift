@@ -4,10 +4,10 @@ final class EventListTableViewCell: UITableViewCell {
     struct Model: Hashable {
         let id = UUID()
         let title: String
-        let image: String
+        let image: String?
         let priceTitle: String
         let price: String
-        let category: String
+        let category: String?
         let startDateTitle: String
         let startDate: String
         let startHour: String?

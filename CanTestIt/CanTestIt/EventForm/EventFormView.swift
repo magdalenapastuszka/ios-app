@@ -79,6 +79,7 @@ final class EventFormView: BaseView {
         $0.textColor = .textColor
         $0.placeholderColor(.placeholderColor)
         $0.layer.cornerRadius = .defaultCornerRadius
+        $0.layer.borderWidth = 1
         $0.backgroundColor = .textFieldBackgroundColor
         $0.leftViewMode = .always
     }
@@ -130,6 +131,7 @@ final class EventFormView: BaseView {
         $0.textColor = .textColor
         $0.placeholderColor(.placeholderColor)
         $0.layer.cornerRadius = .defaultCornerRadius
+        $0.layer.borderWidth = 1
         $0.backgroundColor = .textFieldBackgroundColor
         $0.keyboardType = .numberPad
         $0.leftViewMode = .always
@@ -176,20 +178,22 @@ final class EventFormView: BaseView {
     private let handleDidTapCancelButton: () -> Void
     private let handleDidTapDeleteButton: () -> Void
     private let handleDidTapPictureButton: () -> Void
+    private let handleClearError: (EventFormObligatoryField) -> Void
     
     init(
         model: Model,
         handleDidTapSaveButton: @escaping (EventFormData) -> Void,
         handleDidTapCancelButton: @escaping () -> Void,
         handleDidTapDeleteButton: @escaping () -> Void,
-        handleDidTapPictureButton: @escaping () -> Void
-
+        handleDidTapPictureButton: @escaping () -> Void,
+        handleClearError: @escaping (EventFormObligatoryField) -> Void
     ) {
         self.model = model
         self.handleDidTapSaveButton = handleDidTapSaveButton
         self.handleDidTapCancelButton = handleDidTapCancelButton
         self.handleDidTapDeleteButton = handleDidTapDeleteButton
         self.handleDidTapPictureButton = handleDidTapPictureButton
+        self.handleClearError = handleClearError
         super.init()
         setUpViewHierarchy()
         setUpConstraints()
@@ -203,6 +207,17 @@ final class EventFormView: BaseView {
     
     func showError(message: String?) {
         errorLabel.text = message
+    }
+    
+    func showError(for fields: [EventFormObligatoryField]) {
+        fields.forEach {
+            switch $0 {
+            case .price:
+                priceTextField.layer.borderColor = UIColor.errorColor.cgColor
+            case .title:
+                eventTtitleTextField.layer.borderColor = UIColor.errorColor.cgColor
+            }
+        }
     }
     
     func setImage(name: String?) {
@@ -554,6 +569,10 @@ final class EventFormView: BaseView {
     }
     
     private func bindAction() {
+        eventTtitleTextField.addTarget(self, action: #selector(valueChanged(_ :)), for: .editingChanged)
+        priceTextField.addTarget(self, action: #selector(valueChanged(_ :)), for: .editingChanged)
+        eventTtitleTextField.delegate = self
+        priceTextField.delegate = self
         categoryDropdownField.dropDownDelegate = self
         saveButton.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
         cancelButton.addTarget(self, action: #selector(didTapCancelButton), for: .touchUpInside)
@@ -610,6 +629,26 @@ final class EventFormView: BaseView {
     @objc func keyboardDidHide(notification: NSNotification) {
         scrollView.contentInset = UIEdgeInsets.zero
         scrollView.scrollIndicatorInsets = UIEdgeInsets.zero
+    }
+    
+    @objc func valueChanged(_ textField: UITextField) {
+        clearError(for: textField)
+    }
+    
+    private func clearError(for textField: UITextField) {
+        if textField == priceTextField {
+            handleClearError(.price)
+        }
+        if textField == eventTtitleTextField {
+            handleClearError(.title)
+        }
+        textField.layer.borderColor = UIColor.clear.cgColor
+    }
+}
+
+extension EventFormView: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        clearError(for: textField)
     }
 }
 

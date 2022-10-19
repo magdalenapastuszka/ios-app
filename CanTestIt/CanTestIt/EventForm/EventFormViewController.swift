@@ -8,7 +8,8 @@ final class EventFormViewController: BaseViewController {
         handleDidTapSaveButton: viewModel.didTapSaveButton,
         handleDidTapCancelButton: viewModel.didTapCancelButton,
         handleDidTapDeleteButton: viewModel.didTapDeleteButton,
-        handleDidTapPictureButton: viewModel.didTapPictureButton
+        handleDidTapPictureButton: viewModel.didTapPictureButton,
+        handleClearError: viewModel.clearError(from:)
     )
 
     private let viewModel: EventFormViewModel
@@ -30,6 +31,13 @@ final class EventFormViewController: BaseViewController {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] error in
                 self?.mainView.showError(message: error)
+            }
+            .store(in: &cancellables)
+        
+        viewModel.$obligatoryFieldsWithError
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] fieldsWithError in
+                self?.mainView.showError(for: fieldsWithError)
             }
             .store(in: &cancellables)
         

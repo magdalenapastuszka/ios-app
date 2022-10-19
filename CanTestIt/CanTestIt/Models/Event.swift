@@ -3,17 +3,18 @@ import UIKit
 
 final class Event: Codable {
     var name: String
-    var description: String
-    var category: String
+    var description: String?
+    var category: String?
     var price: Float
-    var dateFrom: String
-    var dateTo: String
-    var image: String
+    var dateFrom: String?
+    var dateTo: String?
+    var image: String?
     var isPremium: Bool?
     var id: String?
     
     var startDate: Date? {
-        DateFormatter.iso8601.date(from: dateFrom)
+        guard let dateFrom else { return nil }
+        return DateFormatter.iso8601.date(from: dateFrom)
     }
     
     var startHour: String? {
@@ -25,7 +26,8 @@ final class Event: Codable {
     }
     
     var endDate: Date? {
-        DateFormatter.iso8601.date(from: dateTo)
+        guard let dateTo else { return nil }
+        return DateFormatter.iso8601.date(from: dateTo)
     }
     
     var endHour: String? {
@@ -42,12 +44,12 @@ final class Event: Codable {
     
     init(
         name: String,
-        description: String,
-        category: String,
+        description: String?,
+        category: String?,
         price: Float,
-        dateFrom: String,
-        dateTo: String,
-        image: String,
+        dateFrom: String?,
+        dateTo: String?,
+        image: String?,
         isPremium: Bool,
         id: String? = nil
     ) {
