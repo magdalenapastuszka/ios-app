@@ -13,7 +13,7 @@ final class Event: Codable {
     var id: String?
     
     var startDate: Date? {
-        guard let dateFrom else { return nil }
+        guard let dateFrom  = dateFrom else { return nil }
         return DateFormatter.iso8601.date(from: dateFrom)
     }
     
@@ -26,7 +26,7 @@ final class Event: Codable {
     }
     
     var endDate: Date? {
-        guard let dateTo else { return nil }
+        guard let dateTo = dateTo else { return nil }
         return DateFormatter.iso8601.date(from: dateTo)
     }
     
