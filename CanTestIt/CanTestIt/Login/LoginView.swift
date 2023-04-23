@@ -49,6 +49,7 @@ struct LoginView: View {
                 delegate: nil,
                 text: $viewModel.login
             )
+            .accessibilityIdentifier(ElementId.Login.usernameTextField)
             .frame(height: .defaultControlHeight, alignment: .leading)
                 .background(
                     RoundedRectangle(
@@ -80,6 +81,7 @@ struct LoginView: View {
                 delegate: nil,
                 text: $viewModel.password
             )
+            .accessibilityIdentifier(ElementId.Login.passwordTextField)
             .frame(height: .defaultControlHeight, alignment: .leading)
             .background(
                 RoundedRectangle(
@@ -109,11 +111,13 @@ struct LoginView: View {
                         )
                         .foregroundColor(.buttonTitleColor)
                 })
+            .accessibilityIdentifier(ElementId.Login.loginButton)
             .font(.callout)
             .background(Color.primaryColor)
             .cornerRadius(.defaultCornerRadius)
             .padding([.top], Constants.bigSpacing)
             Text(viewModel.error ?? "")
+                .accessibilityIdentifier(ElementId.Login.errorMessageText)
                 .font(.body)
                 .foregroundColor(Color.errorColor)
             Spacer()
@@ -125,6 +129,7 @@ struct LoginView: View {
                     .gesture(TapGesture().onEnded(viewModel.showWebsite))
                 Spacer()
             }
+            .accessibilityIdentifier(ElementId.Login.visitPageLink)
             .padding([.bottom], Constants.padding)
         }
         .frame(width: UIScreen.main.bounds.width - 32)

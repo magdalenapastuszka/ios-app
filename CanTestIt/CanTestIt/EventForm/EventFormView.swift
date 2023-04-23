@@ -254,6 +254,7 @@ final class EventFormView: BaseView {
         emptyPictureButton.setImage(model.emptyPicture, for: .normal)
         emptyPictureButton.setTitle(model.emptyPictureTitle, for: .normal)
         emptyPictureButton.alignVertical()
+        emptyPictureButton.accessibilityIdentifier = ElementId.AddEvent.coverPhotoButton
 
         titleLabel.text = model.viewTitle
         eventTitleLabel.text = model.eventFieldTitle
@@ -264,6 +265,7 @@ final class EventFormView: BaseView {
             image: model.eventFieldIcon,
             leftPadding: .defaultPadding
         )
+        eventTtitleTextField.accessibilityIdentifier = ElementId.AddEvent.eventNameTextField
         
         categoryTitleLabel.text = model.categoryFieldTitle
         categoryDropdownField.hintMessage = model.categoryFieldPlaceholder
@@ -276,6 +278,7 @@ final class EventFormView: BaseView {
             image: model.startDateIcon,
             leftPadding: .defaultPadding
         )
+        startDateTextField.accessibilityIdentifier = ElementId.AddEvent.startDateTextField
         
         endDateTitleLabel.text = model.endDateFieldTitle
         endDateTextField.placeholder = model.endDateFieldPlaceholder
@@ -285,6 +288,7 @@ final class EventFormView: BaseView {
             image: model.endDateIcon,
             leftPadding: .defaultPadding
         )
+        endDateTextField.accessibilityIdentifier = ElementId.AddEvent.endDateTextField
         
         priceTitleLabel.text = model.priceFieldTitle
         priceTextField.placeholder = model.priceFieldPlaceholder
@@ -294,10 +298,12 @@ final class EventFormView: BaseView {
             image: model.priceFieldIcon,
             leftPadding: .defaultPadding
         )
+        priceTextField.accessibilityIdentifier = ElementId.AddEvent.eventPriceTextField
         
         premiumEventTitleLabel.text = model.premiumSwitchTitle
         
         saveButton.setTitle(model.saveButtonTitle, for: .normal)
+        saveButton.accessibilityIdentifier = ElementId.AddEvent.saveButton
         cancelButton.setTitle(model.cancelButtonTitle, for: .normal)
         deleteButton.setTitle(model.deleteButtonTitle, for: .normal)
         
@@ -457,6 +463,7 @@ final class EventFormView: BaseView {
             categoryDropdownField.trailingAnchor.constraint(equalTo: formView.trailingAnchor, constant: -.defaultPadding),
             categoryDropdownField.topAnchor.constraint(equalTo: categoryTitleLabel.bottomAnchor, constant: Constants.smallSpacing)
         ])
+        categoryDropdownField.accessibilityIdentifier = ElementId.AddEvent.eventCategoryDropdown
     }
     
     private func setUpStartDateTitleLabelConstraints() {
@@ -528,7 +535,9 @@ final class EventFormView: BaseView {
             premiumEventSwitch.topAnchor.constraint(equalTo: priceTextField.bottomAnchor, constant: Constants.smallSpacing),
             premiumEventSwitch.widthAnchor.constraint(equalToConstant: Constants.switchWidth)
         ])
+        premiumEventSwitch.accessibilityIdentifier = ElementId.AddEvent.premiumEventSwitch
     }
+    
     
     private func setUpPremiumEventTitleLabelConstraints() {
         premiumEventTitleLabel.translatesAutoresizingMaskIntoConstraints = false

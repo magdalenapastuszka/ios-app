@@ -103,6 +103,7 @@ final class EventListView: BaseView {
     
     private func fill(with model: Model) {
         welcomeLabel.text = model.welcomeText
+        welcomeLabel.accessibilityIdentifier = ElementId.EventList.eventListHeader
         titleLabel.text = model.title
         eventsButton.setTitle(model.eventsButtonTitle, for: .normal)
         searchField.placeholder = model.searchFieldPlaceholder
@@ -195,6 +196,7 @@ final class EventListView: BaseView {
             addButton.heightAnchor.constraint(equalToConstant: Constants.addButtonSize),
             addButton.widthAnchor.constraint(equalToConstant: Constants.addButtonSize)
         ])
+        addButton.accessibilityIdentifier = ElementId.EventList.addEventButton
     }
     
     private func setUpEventsButtonConstraints() {
